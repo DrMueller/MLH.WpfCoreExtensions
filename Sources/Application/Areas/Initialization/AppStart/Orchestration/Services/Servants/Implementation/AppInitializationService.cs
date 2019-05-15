@@ -1,15 +1,16 @@
+﻿using System.Threading.Tasks;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.Orchestration.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.SubAreas.ViewModelMapping.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.Orchestration.Services.Implementation
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.Orchestration.Services.Servants.Implementation
 {
-    internal class AppStartService : IAppStartService
+    internal class AppInitializationService : IAppInitializationService
     {
         private readonly IViewModelMappingInitializationService _viewModelMappingInitService;
         private readonly ViewModelContainer _viewModelContainer;
 
-        public AppStartService(
+        public AppInitializationService(
             IViewModelMappingInitializationService viewModelMappingInitService,
             ViewModelContainer viewModelContainer)
         {
@@ -17,9 +18,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.Orchestration.
             _viewModelContainer = viewModelContainer;
         }
 
-        public void StartApp(WpfAppConfig config)
+        public async Task StartAppAsync(WpfAppConfig config)
         {
             _viewModelMappingInitService.Initialize(config.WpfAssembly);
+            await _viewModelContainer.InitializeAsync();
             ShowApp();
         }
 

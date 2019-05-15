@@ -9,15 +9,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Areas\WpfUI\Individuals\Views\IndividualsOverviewView.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Mmu.Mlh.LanguageExtensions" Version="2.1.18" />
     <PackageReference Include="Mmu.Mlh.ServiceProvisioning" Version="2.0.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\" />
+    <Folder Include="Areas\DataAccess\Repositories\" />
+    <Folder Include="Areas\Domain\Models\" />
+    <Folder Include="Areas\WpfUI\Individuals\ViewData\" />
+    <Folder Include="Areas\WpfUI\Individuals\ViewServices\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Mmu.Mlh.WpfCoreExtensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Areas\WpfUI\Individuals\Views\IndividualsOverviewView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

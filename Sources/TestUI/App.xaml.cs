@@ -1,5 +1,6 @@
 ﻿using System.Windows;
-using Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.Initialization;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.Orchestration.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.Orchestration.Services.Implementation;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI
 {
@@ -8,9 +9,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
-            InitializationService.Initialize();
+            var assembly = typeof(App).Assembly;
+            var appConfig = new WpfAppConfig(assembly);
+            await AppStartService.StartAppAsync(appConfig);
         }
     }
 }

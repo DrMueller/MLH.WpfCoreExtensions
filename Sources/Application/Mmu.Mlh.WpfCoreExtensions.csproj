@@ -1,29 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>Mmu.Mlh.WpfCoreExtensions</AssemblyName>
     <RootNamespace>Mmu.Mlh.WpfCoreExtensions</RootNamespace>
     <Features>IOperation</Features>
     <CodeAnalysisRuleSet>..\..\CA_ProductionCode.ruleset</CodeAnalysisRuleSet>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Areas\MvvmShell\Container\ViewContainer.xaml" />
     <None Remove="Areas\MvvmShell\Container\ViewContainerDict.xaml" />
+    <None Remove="Infrastructure\Assets\M.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Navigation\" />
-    <Folder Include="Areas\Validation\" />
-    <Folder Include="Areas\ViewExtensions\" />
+    <Content Include="Infrastructure\Assets\M.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\MvvmShell\ViewModels\Services\Implementation\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Mmu.Mlh.LanguageExtensions" Version="2.1.18" />
-    <PackageReference Include="StructureMap" Version="4.7.1" />
+    <PackageReference Include="Mmu.Mlh.ServiceProvisioning" Version="2.0.7" />
   </ItemGroup>
 
   <ItemGroup>

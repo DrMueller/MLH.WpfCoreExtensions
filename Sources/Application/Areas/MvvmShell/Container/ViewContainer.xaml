@@ -4,13 +4,32 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+            d:DesignHeight="600"
+            d:DesignWidth="600"
+            x:Name="ViewContainerWindow"
+            Title="Todo Title"
+            TextElement.FontSize="16"
+            TextElement.FontWeight="Medium"
+            Width="600"
+            Height="600">
 
     <Window.Resources>
         <ResourceDictionary Source="ViewContainerDict.xaml" />
     </Window.Resources>
 
     <Grid>
-        <ContentPresenter Content="{Binding CurrentContent, Mode=OneWay}" />
+        <DockPanel LastChildFill="True">
+            <ContentPresenter
+                DockPanel.Dock="Top"
+                Content="{Binding ., Mode=OneWay}"
+                ContentTemplate="{StaticResource MainHeader}" />
+
+            <ListBox
+                ItemContainerStyle="{StaticResource MainNavigationContainerStyle}"
+                ItemTemplate="{StaticResource MainNavigation}"
+                ItemsSource="{Binding NavigationEntries, Mode=OneWay}" />
+
+            <ContentPresenter DockPanel.Dock="Right" Content="{Binding CurrentContent, Mode=OneWay}" />
+        </DockPanel>
     </Grid>
 </Window>

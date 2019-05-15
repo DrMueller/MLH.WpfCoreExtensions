@@ -1,8 +1,8 @@
-﻿using System.Windows.Controls;
+using System.Windows.Controls;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Views.Interfaces;
-using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.Home.ViewModels;
+using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Home.ViewModels;
 
-namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.Home.Views
+namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Home.Views
 {
     /// <summary>
     /// Interaction logic for HomeView.xaml

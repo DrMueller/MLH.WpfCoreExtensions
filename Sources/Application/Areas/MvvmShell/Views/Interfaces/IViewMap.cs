@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Interfaces;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Views.Interfaces
 {
