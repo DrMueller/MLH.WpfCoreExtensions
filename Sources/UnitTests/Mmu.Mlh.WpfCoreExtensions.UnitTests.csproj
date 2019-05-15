@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Features>IOperation</Features>
+    <CodeAnalysisRuleSet>..\..\CA_TestCode.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="TestingAreas\Areas\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mmu.Mlh.LanguageExtensions" Version="2.1.18" />
+    <PackageReference Include="Mmu.Mlh.TestingExtensions" Version="2.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Mmu.Mlh.WpfCoreExtensions.csproj" />
+  </ItemGroup>
+</Project>
