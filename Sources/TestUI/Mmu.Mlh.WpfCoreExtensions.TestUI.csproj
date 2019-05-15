@@ -16,4 +16,8 @@
   <ItemGroup>
     <Folder Include="Areas\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Mmu.Mlh.WpfCoreExtensions.csproj" />
+  </ItemGroup>
 </Project>
