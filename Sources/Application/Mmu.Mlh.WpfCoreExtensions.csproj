@@ -15,11 +15,14 @@
   <ItemGroup>
     <None Remove="Areas\MvvmShell\Container\ViewContainer.xaml" />
     <None Remove="Areas\MvvmShell\Container\ViewContainerDict.xaml" />
+    <None Remove="Areas\ViewExtensions\Components\CommandBars\CommandBar.xaml" />
+    <None Remove="Areas\ViewExtensions\Components\CommandButtons\CommandButton.xaml" />
     <None Remove="Infrastructure\Assets\M.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Infrastructure\Assets\M.png" />
+    <Resource Include="Infrastructure\Assets\FA_Cog_Green.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,10 +32,17 @@
   <ItemGroup>
     <PackageReference Include="Mmu.Mlh.LanguageExtensions" Version="2.1.18" />
     <PackageReference Include="Mmu.Mlh.ServiceProvisioning" Version="2.0.7" />
+    <PackageReference Include="NLog" Version="4.6.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Areas\MvvmShell\Container\ViewContainer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Areas\ViewExtensions\Components\CommandBars\Controls\CommandBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Areas\ViewExtensions\Components\CommandButtons\CommandButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

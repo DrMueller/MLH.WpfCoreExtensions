@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Navigation.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Navigation.Services;
@@ -11,9 +13,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
 {
     internal sealed class ViewModelContainer : INotifyPropertyChanged
     {
+        private readonly IInformationSubscriptionService _informationSubscriptionService;
         private readonly INavigationConfigurationService _navigationConfigService;
         private readonly INavigationEntryFactory _navigationEntryFactory;
         private IViewModel _currentContent;
+        private InformationEntryViewData _informationEntry;
+        private IEnumerable<NavigationEntry> _navigationEntries;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -32,19 +37,46 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
             }
         }
 
-        public IEnumerable<NavigationEntry> NavigationEntries { get; private set; }
+        public InformationEntryViewData InformationEntry
+        {
+            get => _informationEntry;
+            set
+            {
+                if (value != _informationEntry)
+                {
+                    _informationEntry = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public IEnumerable<NavigationEntry> NavigationEntries
+        {
+            get => _navigationEntries;
+            set
+            {
+                if (value != _navigationEntries)
+                {
+                    _navigationEntries = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public ViewModelContainer(
             INavigationConfigurationService navigationConfigService,
-            INavigationEntryFactory navigationEntryFactory)
+            INavigationEntryFactory navigationEntryFactory,
+            IInformationSubscriptionService informationSubscriptionService)
         {
             _navigationConfigService = navigationConfigService;
             _navigationEntryFactory = navigationEntryFactory;
+            _informationSubscriptionService = informationSubscriptionService;
         }
 
         public async Task InitializeAsync()
         {
             _navigationConfigService.Initialize(vm => CurrentContent = vm);
+            _informationSubscriptionService.Register(vd => InformationEntry = vd);
             NavigationEntries = await _navigationEntryFactory.CreateAllAsync();
             NavigationEntries.FirstOrDefault()?.NavigationCommand.Execute(null);
         }

@@ -1,0 +1,18 @@
+﻿<ResourceDictionary x:Class="Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Components.InformationBarDict"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <BooleanToVisibilityConverter x:Key="BoolToVisibilityCnv" />
+
+    <Storyboard x:Key="SbRotate">
+        <DoubleAnimation
+            Storyboard.TargetProperty="(UIElement.RenderTransform).Angle"
+            From="0" To="360" Duration="0:0:2"
+            RepeatBehavior="Forever" />
+    </Storyboard>
+
+    <Style TargetType="TextBox" x:Key="InformationBar" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="12pt" />
+    </Style>
+</ResourceDictionary>

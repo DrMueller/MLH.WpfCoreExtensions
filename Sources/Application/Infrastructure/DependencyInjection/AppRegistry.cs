@@ -1,9 +1,15 @@
-﻿using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.Orchestration.Services.Servants;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.Orchestration.Services.Servants.Implementation;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.SubAreas.ViewModelMapping.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.SubAreas.ViewModelMapping.Services.Implementation;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.SubAreas.ViewModelMapping.Services.Servants;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.SubAreas.ViewModelMapping.Services.Servants.Implementation;
+﻿using Mmu.Mlh.WpfCoreExtensions.Areas.ExceptionHandling.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.ExceptionHandling.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Servants;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Servants.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Logging.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Logging.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation;
@@ -23,12 +29,23 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
                 scanner.WithDefaultConventions();
             });
 
-            // AppStart
+            // ExceptionHandling
+            For<IExceptionHandler>().Use<ExceptionHandler>().Singleton();
+            For<IExceptionInitializationService>().Use<ExceptionInitializationService>().Singleton();
+
+            // InformationHandling
+            For<IInformationPublisher>().Use<InformationPublisher>().Singleton();
+            For<IInformationSubscriptionService>().Use<InformationSubscriptionService>().Singleton();
+
+            // Initialization
             For<IAppInitializationService>().Use<AppInitializationService>().Singleton();
             For<IViewModelMappingInitializationService>().Use<ViewModelMappingInitializationService>().Singleton();
             For<IDataTemplateFactory>().Use<DataTemplateFactory>().Singleton();
             For<IResourceDictionaryFactory>().Use<ResourceDictionaryFactory>().Singleton();
             For<IViewViewModelMapFactory>().Use<ViewViewModelMapFactory>().Singleton();
+
+            // Logging
+            For<ILoggingService>().Use<LoggingService>().Singleton();
 
             // MvvmShell
             For<ViewModelContainer>().Singleton();

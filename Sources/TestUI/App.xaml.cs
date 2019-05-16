@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.Orchestration.Models;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.AppStart.Orchestration.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI
 {
