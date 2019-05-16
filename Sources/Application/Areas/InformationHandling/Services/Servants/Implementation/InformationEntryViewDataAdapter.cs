@@ -16,32 +16,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services.Servants.
                 infoEntry.DisplayLengthInSeconds);
         }
 
-        //private static SolidBrush AdaptBrush(InformationEntryType entryType)
-        //{
-        //    switch (entryType)
-        //    {
-        //        case InformationEntryType.Info:
-        //            {
-        //                return new SolidBrush(Color.Black);
-        //            }
-
-        //        case InformationEntryType.Success:
-        //            {
-        //                return new SolidBrush(Color.DarkGreen);
-        //            }
-
-        //        case InformationEntryType.Exception:
-        //            {
-        //                return new SolidBrush(Color.DarkRed);
-        //            }
-
-        //        default:
-        //            {
-        //                return new SolidBrush(Color.Black);
-        //            }
-        //    }
-        //}
-
         private static Brush AdaptBrush(InformationEntryType entryType)
         {
             switch (entryType)

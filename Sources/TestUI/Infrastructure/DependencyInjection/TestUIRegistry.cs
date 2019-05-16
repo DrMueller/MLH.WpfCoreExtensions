@@ -1,5 +1,6 @@
 ﻿using Mmu.Mlh.DataAccess.FileSystem.Infrastructure.Settings.Services;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.Settings.Services;
+using Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.Settings.Services.Implementation;
 using StructureMap;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.DependencyInjection
@@ -15,6 +16,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.DependencyInjection
             });
 
             For<IFileSystemSettingsProvider>().Use<SettingsProvider>().Singleton();
+            For<ISettingsProvider>().Use<SettingsProvider>().Singleton();
         }
     }
 }

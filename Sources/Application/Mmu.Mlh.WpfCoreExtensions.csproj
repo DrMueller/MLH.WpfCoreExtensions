@@ -18,10 +18,14 @@
     <None Remove="Areas\ViewExtensions\Components\CommandBars\CommandBar.xaml" />
     <None Remove="Areas\ViewExtensions\Components\CommandButtons\CommandButton.xaml" />
     <None Remove="Infrastructure\Assets\M.png" />
+    <None Remove="Nlog.config" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Infrastructure\Assets\M.png" />
+    <Content Include="Nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Infrastructure\Assets\FA_Cog_Green.png" />
   </ItemGroup>
 
@@ -41,5 +45,9 @@
     <Compile Update="Areas\ViewExtensions\Components\CommandButtons\CommandButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Aspects\Settings\" />
   </ItemGroup>
 </Project>

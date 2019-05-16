@@ -7,8 +7,8 @@
     </Style>
 
     <Style TargetType="Button" BasedOn="{StaticResource baseStyle}">
-        <Setter Property="MinWidth" Value="80" />
         <Setter Property="Height" Value="30" />
+        <Setter Property="MinWidth" Value="80" />
     </Style>
 
     <Style TargetType="DatePicker" BasedOn="{StaticResource baseStyle}">
