@@ -10,14 +10,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Navigation.Services.Implementation
 {
     internal class NavigationEntryFactory : INavigationEntryFactory
     {
-        private readonly INavigationService _navigationService;
         private readonly IViewModelFactory _viewModelFactory;
+        private readonly IViewModelDisplayService _vmDisplayService;
 
         public NavigationEntryFactory(
-            INavigationService navigationService,
+            IViewModelDisplayService vmDisplayService,
             IViewModelFactory viewModelFactory)
         {
-            _navigationService = navigationService;
+            _vmDisplayService = vmDisplayService;
             _viewModelFactory = viewModelFactory;
         }
 
@@ -37,7 +37,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Navigation.Services.Implementation
             var navigationCommand = new RelayCommand(
                 () =>
                 {
-                    _navigationService.NavigateToAsync(viewModel);
+                    _vmDisplayService.DisplayAsync(viewModel);
                 });
 
             return new NavigationEntry(navigationCommand, viewModel.NavigationDescription);

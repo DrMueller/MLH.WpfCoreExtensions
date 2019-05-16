@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Commands;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Navigation.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewServices;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewModels.Overview;
@@ -10,7 +10,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
     public class CommandContainer : IViewModelCommandContainer<IndividualDetailsViewModel>
     {
         private readonly IIndividualDetailsViewService _detailsService;
-        private readonly INavigationService _navigationService;
+        private readonly IViewModelDisplayService _vmDisplayService;
         private IndividualDetailsViewModel _context;
 
         public CommandsViewData Commands { get; private set; }
@@ -40,10 +40,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
         }
 
         public CommandContainer(
-            INavigationService navigationService,
+            IViewModelDisplayService vmDisplayService,
             IIndividualDetailsViewService detailsService)
         {
-            _navigationService = navigationService;
+            _vmDisplayService = vmDisplayService;
             _detailsService = detailsService;
         }
 
@@ -60,7 +60,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
 
         private async Task NavigateToOverviewAsync()
         {
-            await _navigationService.NavigateToAsync<IndividualsOverviewViewModel>();
+            await _vmDisplayService.DisplayAsync<IndividualsOverviewViewModel>();
         }
     }
 }

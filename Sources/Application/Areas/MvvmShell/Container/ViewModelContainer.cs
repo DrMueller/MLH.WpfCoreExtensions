@@ -5,7 +5,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.ViewData;
-using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Interfaces;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Navigation.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Navigation.Services;
 
@@ -14,7 +15,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
     internal sealed class ViewModelContainer : INotifyPropertyChanged
     {
         private readonly IInformationSubscriptionService _informationSubscriptionService;
-        private readonly INavigationConfigurationService _navigationConfigService;
+        private readonly IViewModelDisplayConfigurationService _vmDisplayConfigService;
         private readonly INavigationEntryFactory _navigationEntryFactory;
         private IViewModel _currentContent;
         private InformationEntryViewData _informationEntry;
@@ -64,18 +65,18 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
         }
 
         public ViewModelContainer(
-            INavigationConfigurationService navigationConfigService,
+            IViewModelDisplayConfigurationService vmDisplayConfigService,
             INavigationEntryFactory navigationEntryFactory,
             IInformationSubscriptionService informationSubscriptionService)
         {
-            _navigationConfigService = navigationConfigService;
+            _vmDisplayConfigService = vmDisplayConfigService;
             _navigationEntryFactory = navigationEntryFactory;
             _informationSubscriptionService = informationSubscriptionService;
         }
 
         public async Task InitializeAsync()
         {
-            _navigationConfigService.Initialize(vm => CurrentContent = vm);
+            _vmDisplayConfigService.Initialize(vm => CurrentContent = vm);
             _informationSubscriptionService.Register(vd => InformationEntry = vd);
             NavigationEntries = await _navigationEntryFactory.CreateAllAsync();
             NavigationEntries.FirstOrDefault()?.NavigationCommand.Execute(null);

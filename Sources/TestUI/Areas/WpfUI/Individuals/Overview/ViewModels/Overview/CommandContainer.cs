@@ -1,9 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Commands;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Navigation.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewModels.Details;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewServices;
@@ -13,8 +14,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
     public class CommandContainer : IViewModelCommandContainer<IndividualsOverviewViewModel>
     {
         private readonly IInformationPublisher _informationPublisher;
-        private readonly INavigationService _navigationService;
         private readonly IIndividualOverviewViewService _overviewService;
+        private readonly IViewModelDisplayService _vmDisplayService;
         private IndividualsOverviewViewModel _context;
         public CommandsViewData Commands { get; private set; }
 
@@ -35,7 +36,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             {
                 return new ViewModelCommand(
                     "Create",
-                    new AsyncRelayCommand(() => _navigationService.NavigateToAsync<IndividualDetailsViewModel>()));
+                    new AsyncRelayCommand(() => _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(Maybe.CreateNone<string>())));
             }
         }
 
@@ -60,7 +61,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
                 return new ViewModelCommand(
                     "Update",
                     new RelayCommand(
-                        async () => await _navigationService.NavigateToAsync<IndividualDetailsViewModel>(),
+                        async () =>
+                        {
+                            var idMaybe = Maybe.CreateSome(_context.SelectedIndividual.Id);
+                            await _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(idMaybe);
+                        },
                         () => IsIndividualSelected));
             }
         }
@@ -68,11 +73,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         public CommandContainer(
             IInformationPublisher informationPublisher,
             IIndividualOverviewViewService overviewService,
-            INavigationService navigationService)
+            IViewModelDisplayService vmDisplayService)
         {
             _informationPublisher = informationPublisher;
             _overviewService = overviewService;
-            _navigationService = navigationService;
+            _vmDisplayService = vmDisplayService;
         }
 
         public Task InitializeAsync(IndividualsOverviewViewModel context)
@@ -91,6 +96,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         {
             _informationPublisher.Publish(InformationEntry.CreateInfo($"Deleting Individual {_context.SelectedIndividual.FormattedName}..", true));
             await _overviewService.DeleteIndividualAsync(_context.SelectedIndividual.Id);
+            _context.Individuals.Remove(_context.SelectedIndividual);
             _informationPublisher.Publish(InformationEntry.CreateSuccess($"Individual deleted", false, 5));
         }
     }

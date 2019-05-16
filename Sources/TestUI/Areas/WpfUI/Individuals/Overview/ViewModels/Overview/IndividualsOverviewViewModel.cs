@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
@@ -13,9 +13,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private readonly CommandContainer _commandContainer;
         private readonly IIndividualOverviewViewService _overviewService;
         public CommandsViewData Commands => _commandContainer.Commands;
-
         public string HeadingDescription => "Hello Individuals";
-        public IEnumerable<IndividulOverviewViewData> Individuals { get; private set; }
+        public ObservableCollection<IndividulOverviewViewData> Individuals { get; private set; }
         public string NavigationDescription => "Individuals";
         public int NavigationSequence => 2;
         public IndividulOverviewViewData SelectedIndividual { get; set; }
@@ -28,10 +27,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             _overviewService = overviewService;
         }
 
-        public async Task InitializeAsync()
+        public async Task InitializeAsync(params object[] initParams)
         {
             await _commandContainer.InitializeAsync(this);
-            Individuals = await _overviewService.LoadAllAsync();
+            var individuals = await _overviewService.LoadAllAsync();
+            Individuals = new ObservableCollection<IndividulOverviewViewData>(individuals);
         }
     }
 }

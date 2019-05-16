@@ -24,5 +24,6 @@
         <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding IndividualDetails.LastName, Mode=TwoWay}" />
 
         <Label Grid.Row="2" Grid.Column="0" Content="Birthdate:" VerticalAlignment="Center" />
+        <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding IndividualDetails.Birthdate, Mode=TwoWay}" />
     </Grid>
 </UserControl>

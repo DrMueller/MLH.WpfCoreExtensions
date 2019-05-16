@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Interfaces;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation
 {
@@ -27,19 +28,19 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implemen
                     .Select(f => f.GetType())
                     .ToList();
 
-            var createTasks = viewModelsWithBehaviorType.Select(CreateAsync);
+            var createTasks = viewModelsWithBehaviorType.Select(vm => CreateAsync(vm));
             var createdVieModels = await Task.WhenAll(createTasks);
             var result = createdVieModels.Cast<TBehavior>().ToList();
             return result;
         }
 
-        public async Task<T> CreateAsync<T>()
+        public async Task<T> CreateAsync<T>(params object[] initParams)
             where T : IViewModel
         {
-            return (T)await CreateAsync(typeof(T));
+            return (T)await CreateAsync(typeof(T), initParams);
         }
 
-        private async Task<IViewModel> CreateAsync(Type viewModelType)
+        private async Task<IViewModel> CreateAsync(Type viewModelType, params object[] initParams)
         {
             var viewModelBaseType = typeof(IViewModel);
             if (!viewModelBaseType.IsAssignableFrom(viewModelType))
@@ -50,7 +51,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implemen
             var result = (IViewModel)_serviceLocator.GetService(viewModelType);
             if (result is IInitializableViewModel initializable)
             {
-                await initializable.InitializeAsync();
+                await initializable.InitializeAsync(initParams);
             }
 
             return result;
