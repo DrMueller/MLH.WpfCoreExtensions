@@ -4,35 +4,37 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Models
 {
     public class InformationEntry
     {
-        public bool ShowBusy { get; }
-        public int? LengthInSeconds { get; }
+        public int? DisplayLengthInSeconds { get; }
+        public InformationEntryType EntryType { get; }
         public string Message { get; }
+        public bool ShowBusy { get; }
 
-        private InformationEntry(string message, bool isBusy, int? lengthInSeconds)
+        private InformationEntry(string message, InformationEntryType entryType, bool isBusy, int? lengthInSeconds)
         {
             Message = message;
+            EntryType = entryType;
             ShowBusy = isBusy;
-            LengthInSeconds = lengthInSeconds;
+            DisplayLengthInSeconds = lengthInSeconds;
         }
 
         public static InformationEntry CreateEmpty()
         {
-            return new InformationEntry(string.Empty, false, null);
-        }
-
-        public static InformationEntry CreateInfo(string infoMessage, bool isBusy, int? lengthInSeconds = null)
-        {
-            return new InformationEntry(infoMessage, isBusy, lengthInSeconds);
+            return new InformationEntry(string.Empty, InformationEntryType.Info, false, null);
         }
 
         public static InformationEntry CreateException(Exception exception)
         {
-            return new InformationEntry(exception.Message, false, null);
+            return new InformationEntry(exception.Message, InformationEntryType.Exception, false, null);
+        }
+
+        public static InformationEntry CreateInfo(string infoMessage, bool isBusy, int? lengthInSeconds = null)
+        {
+            return new InformationEntry(infoMessage, InformationEntryType.Info, isBusy, lengthInSeconds);
         }
 
         public static InformationEntry CreateSuccess(string successMessage, bool isBusy, int? lengthInSeconds = null)
         {
-            return new InformationEntry(successMessage, isBusy, lengthInSeconds);
+            return new InformationEntry(successMessage, InformationEntryType.Success, isBusy, lengthInSeconds);
         }
     }
 }

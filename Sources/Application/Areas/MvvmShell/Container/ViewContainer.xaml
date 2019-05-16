@@ -10,8 +10,8 @@
             x:Name="ViewContainerWindow"
             Title="Todo Title"
             WindowStartupLocation="CenterScreen"
-            Width="600"
-            Height="600">
+            Width="1200"
+            Height="800">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -36,7 +36,6 @@
                 DockPanel.Dock="Top"
                 Content="{Binding ., Mode=OneWay}"
                 ContentTemplate="{StaticResource MainHeader}" />
-
             <ListBox
                 ItemContainerStyle="{StaticResource MainNavigationContainerStyle}"
                 ItemTemplate="{StaticResource MainNavigation}"

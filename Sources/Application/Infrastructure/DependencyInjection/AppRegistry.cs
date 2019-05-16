@@ -2,6 +2,8 @@
 using Mmu.Mlh.WpfCoreExtensions.Areas.ExceptionHandling.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services.Servants;
+using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services.Servants.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services;
@@ -36,6 +38,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
             // InformationHandling
             For<IInformationPublisher>().Use<InformationPublisher>().Singleton();
             For<IInformationSubscriptionService>().Use<InformationSubscriptionService>().Singleton();
+            For<IInformationEntryViewDataAdapter>().Use<InformationEntryViewDataAdapter>().Singleton();
 
             // Initialization
             For<IAppInitializationService>().Use<AppInitializationService>().Singleton();

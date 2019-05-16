@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Models;
@@ -18,17 +17,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private readonly IViewModelDisplayService _vmDisplayService;
         private IndividualsOverviewViewModel _context;
         public CommandsViewData Commands { get; private set; }
-
-        private static ViewModelCommand ThrowException
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Throw Ex",
-                    new RelayCommand(
-                        () => throw new ArgumentException("Hello Test")));
-            }
-        }
 
         private ViewModelCommand CreateIndividual
         {
@@ -86,8 +74,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             Commands = new CommandsViewData(
                 CreateIndividual,
                 UpdateIndividual,
-                DeleteIndividual,
-                ThrowException);
+                DeleteIndividual);
 
             return Task.CompletedTask;
         }

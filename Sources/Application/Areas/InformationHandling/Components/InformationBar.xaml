@@ -12,11 +12,12 @@
         <ResourceDictionary Source="InformationBarDict.xaml" />
     </UserControl.Resources>
 
-    <Grid>
-        <StackPanel
+    <Border Style="{StaticResource InformationBorder}">
+        <Grid>
+            <StackPanel
             MaxHeight="100"
             Orientation="Horizontal">
-            <Image
+                <Image
                 Visibility="{Binding InformationEntry.ShowBusyIndicator, ElementName=Uc, Mode=OneWay, Converter={StaticResource BoolToVisibilityCnv}}"
                 x:Name="Img"
                 Height="20"
@@ -25,44 +26,43 @@
                 Source="{Binding InformationEntry.BusyIndicatorSource, ElementName=Uc, Mode=OneWay}"
                 RenderTransformOrigin="0.5,0.5"
                 Width="20">
+                    <Image.RenderTransform>
+                        <RotateTransform x:Name="RotTransform" />
+                    </Image.RenderTransform>
+                    <Image.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger
+                                Binding="{Binding InformationEntry.ShowBusyIndicator, ElementName=Uc, Mode=OneWay}"
+                                Value="true">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard x:Name="Sb" Storyboard="{StaticResource SbRotate}" />
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <StopStoryboard BeginStoryboardName="Sb" />
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
 
-                <Image.RenderTransform>
-                    <RotateTransform x:Name="RotTransform" />
-                </Image.RenderTransform>
+                                <DataTrigger
+                        Binding="{Binding InformationEntry.ShowBusyIndicator, ElementName=Uc, Mode=OneWay}"
+                        Value="false">
+                                    <DataTrigger.EnterActions>
+                                        <StopStoryboard BeginStoryboardName="Sb" />
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
 
-                <Image.Style>
-                    <Style>
-                        <Style.Triggers>
-                            <DataTrigger
-                            Binding="{Binding InformationEntry.ShowBusyIndicator, ElementName=Uc, Mode=OneWay}"
-                            Value="true">
-                                <DataTrigger.EnterActions>
-                                    <BeginStoryboard x:Name="Sb" Storyboard="{StaticResource SbRotate}" />
-                                </DataTrigger.EnterActions>
-                                <DataTrigger.ExitActions>
-                                    <StopStoryboard BeginStoryboardName="Sb" />
-                                </DataTrigger.ExitActions>
-                            </DataTrigger>
-
-                            <DataTrigger
-                            Binding="{Binding InformationEntry.ShowBusyIndicator, ElementName=Uc, Mode=OneWay}"
-                            Value="false">
-                                <DataTrigger.EnterActions>
-                                    <StopStoryboard BeginStoryboardName="Sb" />
-                                </DataTrigger.EnterActions>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
-
-            <TextBox
+                <TextBox
                 Text="{Binding InformationEntry.Message, ElementName=Uc, Mode=OneWay}"
                 HorizontalAlignment="Left"
                 IsReadOnly="True"
                 Style="{StaticResource InformationBar}"
                 TextWrapping="Wrap"
                 VerticalScrollBarVisibility="Auto" />
-        </StackPanel>
-    </Grid>
+            </StackPanel>
+        </Grid>
+    </Border>
 </UserControl>

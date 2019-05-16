@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="Areas\WpfUI\Individuals\Details\ViewModels\IndividualData\IndividualDataView.xaml" />
     <None Remove="Areas\WpfUI\Individuals\Details\ViewModels\IndividualDetailsView.xaml" />
+    <None Remove="Areas\WpfUI\InfosAndExceptions\ViewModels\InfosAndExceptionsView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +38,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Areas\WpfUI\Individuals\Overview\ViewModels\Overview\IndividualsOverviewView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Areas\WpfUI\InfosAndExceptions\ViewModels\InfosAndExceptions\InfosAndExceptionsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

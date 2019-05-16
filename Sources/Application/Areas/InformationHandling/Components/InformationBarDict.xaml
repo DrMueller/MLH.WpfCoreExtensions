@@ -11,8 +11,16 @@
             RepeatBehavior="Forever" />
     </Storyboard>
 
+    <Style TargetType="Border" x:Key="InformationBorder">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="0,20, 0, 20" />
+    </Style>
+
     <Style TargetType="TextBox" x:Key="InformationBar" BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontSize" Value="12pt" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Foreground" Value="{Binding InformationEntry.Foreground, Mode=OneWay}" />
     </Style>
 </ResourceDictionary>
