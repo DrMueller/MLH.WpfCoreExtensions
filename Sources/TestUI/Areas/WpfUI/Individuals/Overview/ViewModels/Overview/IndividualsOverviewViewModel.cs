@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Components.CommandBars.ViewData;
@@ -18,6 +19,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         public string NavigationDescription => "Individuals";
         public int NavigationSequence => 2;
         public IndividulOverviewViewData SelectedIndividual { get; set; }
+        public ICommand UpdateIndividualCommand => _commandContainer.UpdateIndividualCommand;
 
         public IndividualsOverviewViewModel(
             CommandContainer commandContainer,

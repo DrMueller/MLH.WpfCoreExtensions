@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services;
@@ -17,6 +18,20 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private readonly IViewModelDisplayService _vmDisplayService;
         private IndividualsOverviewViewModel _context;
         public CommandsViewData Commands { get; private set; }
+
+        public ICommand UpdateIndividualCommand
+        {
+            get
+            {
+                return new RelayCommand(
+                        async () =>
+                        {
+                            var idMaybe = Maybe.CreateSome(_context.SelectedIndividual.Id);
+                            await _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(idMaybe);
+                        },
+                        () => IsIndividualSelected);
+            }
+        }
 
         private ViewModelCommand CreateIndividual
         {
@@ -48,13 +63,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             {
                 return new ViewModelCommand(
                     "Update",
-                    new RelayCommand(
-                        async () =>
-                        {
-                            var idMaybe = Maybe.CreateSome(_context.SelectedIndividual.Id);
-                            await _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(idMaybe);
-                        },
-                        () => IsIndividualSelected));
+                    UpdateIndividualCommand);
             }
         }
 
