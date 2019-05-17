@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
-using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Models;
-using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Commands;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewModels.Details;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewServices;
 

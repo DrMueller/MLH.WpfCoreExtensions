@@ -13,10 +13,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Aspects\Settings\**" />
+    <EmbeddedResource Remove="Areas\Aspects\Settings\**" />
+    <None Remove="Areas\Aspects\Settings\**" />
+    <Page Remove="Areas\Aspects\Settings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Areas\MvvmShell\Container\ViewContainer.xaml" />
     <None Remove="Areas\MvvmShell\Container\ViewContainerDict.xaml" />
-    <None Remove="Areas\ViewExtensions\Components\CommandBars\CommandBar.xaml" />
-    <None Remove="Areas\ViewExtensions\Components\CommandButtons\CommandButton.xaml" />
+    <None Remove="Areas\MvvmShell\CommandManagement\Components\CommandBars\CommandBar.xaml" />
+    <None Remove="Areas\MvvmShell\CommandManagement\Components\CommandButtons\CommandButton.xaml" />
     <None Remove="Infrastructure\Assets\M.png" />
     <None Remove="Nlog.config" />
   </ItemGroup>
@@ -39,16 +46,15 @@
     <Compile Update="Areas\MvvmShell\Container\ViewContainer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Areas\ViewExtensions\Components\CommandBars\Controls\CommandBar.xaml.cs">
+    <Compile Update="Areas\MvvmShell\CommandManagement\Components\CommandBars\Controls\CommandBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Areas\ViewExtensions\Components\CommandButtons\CommandButton.xaml.cs">
+    <Compile Update="Areas\MvvmShell\CommandManagement\Components\CommandButtons\CommandButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Aspects\Settings\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 

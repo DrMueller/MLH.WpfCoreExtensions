@@ -4,7 +4,7 @@ using Mmu.Mlh.ServiceProvisioning.Areas.Initialization.Models;
 using Mmu.Mlh.ServiceProvisioning.Areas.Initialization.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants;
-using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Interfaces;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using StructureMap;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services

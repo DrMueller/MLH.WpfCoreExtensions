@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using Mmu.Mlh.WpfCoreExtensions.Areas.ExceptionHandling.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Models;
-using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container;
@@ -10,10 +10,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
 {
     internal class AppInitializationService : IAppInitializationService
     {
-        private readonly IViewModelMappingInitializationService _viewModelMappingInitService;
-        private readonly ViewModelContainer _viewModelContainer;
         private readonly IExceptionInitializationService _exceptionInitializationService;
         private readonly IInformationPublisher _infoPublisher;
+        private readonly ViewModelContainer _viewModelContainer;
+        private readonly IViewModelMappingInitializationService _viewModelMappingInitService;
 
         public AppInitializationService(
             IViewModelMappingInitializationService viewModelMappingInitService,

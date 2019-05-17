@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Logging.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Commands;
-using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Components.CommandBars.ViewData;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging.ViweModels.Logging
 {

@@ -3,20 +3,20 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.InformationHandling.ViewData;
-using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Interfaces;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Navigation.Models;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Navigation.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
 {
     internal sealed class ViewModelContainer : INotifyPropertyChanged
     {
         private readonly IInformationSubscriptionService _informationSubscriptionService;
-        private readonly IVmDisplayConfigurationService _vmDisplayConfigService;
         private readonly INavigationEntryFactory _navigationEntryFactory;
+        private readonly IVmDisplayConfigurationService _vmDisplayConfigService;
         private IViewModel _currentContent;
         private InformationEntryViewData _informationEntry;
         private IEnumerable<NavigationEntry> _navigationEntries;
