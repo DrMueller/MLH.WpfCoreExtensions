@@ -5,7 +5,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Components.CommandBars.View
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Settings.ViewModels.Settings
 {
-    public class SettingsViewModel : ViewModelBase, INavigatableViewModel, IInitializableViewModel
+    public class SettingsViewModel : ViewModelBase, INavigatableVm, IInitializableVm
     {
         private readonly CommandContainer _commandContainer;
         public CommandsViewData Commands => _commandContainer.Commands;

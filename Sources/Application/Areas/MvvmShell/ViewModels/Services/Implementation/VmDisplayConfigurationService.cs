@@ -3,7 +3,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Interfaces;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation
 {
-    internal class ViewModelDisplayConfigurationService : IViewModelDisplayConfigurationService
+    internal class VmDisplayConfigurationService : IVmDisplayConfigurationService
     {
         private Action<IViewModel> _navigationCallback;
 

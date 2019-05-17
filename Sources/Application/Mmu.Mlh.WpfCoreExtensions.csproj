@@ -49,5 +49,12 @@
 
   <ItemGroup>
     <Folder Include="Areas\Aspects\Settings\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Infrastructure\Assets\App.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

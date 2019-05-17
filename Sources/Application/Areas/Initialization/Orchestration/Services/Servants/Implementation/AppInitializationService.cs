@@ -33,14 +33,16 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
             _viewModelMappingInitService.Initialize(config.WpfAssembly);
             await _viewModelContainer.InitializeAsync();
             _infoPublisher.Publish(InformationEntry.CreateInfo("Here could be your text..", false));
-            ShowApp();
+            ShowApp(config);
         }
 
-        private void ShowApp()
+        private void ShowApp(WpfAppConfig config)
         {
             var viewContainer = new ViewContainer
             {
-                DataContext = _viewModelContainer
+                DataContext = _viewModelContainer,
+                Title = config.AppTitle,
+                Icon = config.Icon
             };
 
             viewContainer.ShowDialog();

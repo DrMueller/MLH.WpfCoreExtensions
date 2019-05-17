@@ -12,7 +12,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI
         protected override async void OnStartup(StartupEventArgs e)
         {
             var assembly = typeof(App).Assembly;
-            var appConfig = new WpfAppConfig(assembly);
+            var appConfig = WpfAppConfig.CreateWithDefaultIcon(assembly, "Test UI");
             await AppStartService.StartAppAsync(appConfig);
         }
     }

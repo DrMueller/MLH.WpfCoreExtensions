@@ -10,7 +10,7 @@ using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewServi
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewModels.Details
 {
-    public class IndividualDetailsViewModel : ViewModelBase, IInitializableViewModel
+    public class IndividualDetailsViewModel : ViewModelBase, IInitializableVm, IDisplayableVm
     {
         private readonly CommandContainer _commandContainer;
         private readonly IIndividualDetailsViewService _detailsService;
@@ -32,6 +32,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
             }
         }
 
+        public string HeadingDescription { get; private set; }
+
         public IndividualDetailsViewModel(
             CommandContainer commandContainer,
             IIndividualDetailsViewService detailsService,
@@ -50,10 +52,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
                 whenSome: async id =>
                 {
                     IndividualDetails = await _detailsService.LoadAsync(id);
+                    HeadingDescription = "Edit Individual";
                 },
                 whenNone: () =>
                 {
                     IndividualDetails = new IndividualDetailsViewData();
+                    HeadingDescription = "New Individual";
                     return Task.CompletedTask;
                 });
 

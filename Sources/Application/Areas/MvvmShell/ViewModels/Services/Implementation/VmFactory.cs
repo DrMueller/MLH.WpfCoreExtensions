@@ -8,17 +8,17 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Interfaces;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation
 {
-    internal class ViewModelFactory : IViewModelFactory
+    internal class VmFactory : IVmFactory
     {
         private readonly IServiceLocator _serviceLocator;
 
-        public ViewModelFactory(IServiceLocator serviceLocator)
+        public VmFactory(IServiceLocator serviceLocator)
         {
             _serviceLocator = serviceLocator;
         }
 
         public async Task<IReadOnlyCollection<TBehavior>> CreateAllWithBehaviorAsync<TBehavior>()
-            where TBehavior : IViewModelWithBehaviorBase
+            where TBehavior : IVmWithBehavior
         {
             var behaviorType = typeof(TBehavior);
             var viewModelsWithBehaviorType =
@@ -49,7 +49,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implemen
             }
 
             var result = (IViewModel)_serviceLocator.GetService(viewModelType);
-            if (result is IInitializableViewModel initializable)
+            if (result is IInitializableVm initializable)
             {
                 await initializable.InitializeAsync(initParams);
             }

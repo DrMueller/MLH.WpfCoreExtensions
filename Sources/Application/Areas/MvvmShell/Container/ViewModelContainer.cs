@@ -15,7 +15,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
     internal sealed class ViewModelContainer : INotifyPropertyChanged
     {
         private readonly IInformationSubscriptionService _informationSubscriptionService;
-        private readonly IViewModelDisplayConfigurationService _vmDisplayConfigService;
+        private readonly IVmDisplayConfigurationService _vmDisplayConfigService;
         private readonly INavigationEntryFactory _navigationEntryFactory;
         private IViewModel _currentContent;
         private InformationEntryViewData _informationEntry;
@@ -65,7 +65,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
         }
 
         public ViewModelContainer(
-            IViewModelDisplayConfigurationService vmDisplayConfigService,
+            IVmDisplayConfigurationService vmDisplayConfigService,
             INavigationEntryFactory navigationEntryFactory,
             IInformationSubscriptionService informationSubscriptionService)
         {

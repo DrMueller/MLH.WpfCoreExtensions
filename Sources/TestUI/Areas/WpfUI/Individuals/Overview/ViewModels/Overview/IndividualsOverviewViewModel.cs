@@ -9,12 +9,12 @@ using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.ViewData;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewModels.Overview
 {
-    public class IndividualsOverviewViewModel : ViewModelBase, INavigatableViewModel, IInitializableViewModel
+    public class IndividualsOverviewViewModel : ViewModelBase, INavigatableVm, IInitializableVm
     {
         private readonly CommandContainer _commandContainer;
         private readonly IIndividualOverviewViewService _overviewService;
         public CommandsViewData Commands => _commandContainer.Commands;
-        public string HeadingDescription => "Hello Individuals";
+        public string HeadingDescription => "Individuals Overview";
         public ObservableCollection<IndividulOverviewViewData> Individuals { get; private set; }
         public string NavigationDescription => "Individuals";
         public int NavigationSequence => 2;

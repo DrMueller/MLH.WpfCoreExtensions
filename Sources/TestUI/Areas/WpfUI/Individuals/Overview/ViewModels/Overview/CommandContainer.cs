@@ -15,7 +15,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
     {
         private readonly IInformationPublisher _informationPublisher;
         private readonly IIndividualOverviewViewService _overviewService;
-        private readonly IViewModelDisplayService _vmDisplayService;
+        private readonly IVmDisplayService _vmDisplayService;
         private IndividualsOverviewViewModel _context;
         public CommandsViewData Commands { get; private set; }
 
@@ -70,7 +70,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         public CommandContainer(
             IInformationPublisher informationPublisher,
             IIndividualOverviewViewService overviewService,
-            IViewModelDisplayService vmDisplayService)
+            IVmDisplayService vmDisplayService)
         {
             _informationPublisher = informationPublisher;
             _overviewService = overviewService;

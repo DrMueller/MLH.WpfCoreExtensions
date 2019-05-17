@@ -52,9 +52,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
 
             // MvvmShell
             For<ViewModelContainer>().Singleton();
-            For<IViewModelDisplayConfigurationService>().Use<ViewModelDisplayConfigurationService>().Singleton();
-            For<IViewModelDisplayService>().Use<ViewModelDisplayService>().Singleton();
-            For<IViewModelFactory>().Use<ViewModelFactory>().Singleton();
+            For<IVmDisplayConfigurationService>().Use<VmDisplayConfigurationService>().Singleton();
+            For<IVmDisplayService>().Use<VmDisplayService>().Singleton();
+            For<IVmFactory>().Use<VmFactory>().Singleton();
 
             // Navigation
             For<INavigationEntryFactory>().Use<NavigationEntryFactory>().Singleton();
