@@ -10,7 +10,7 @@ using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewServi
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewModels.Details
 {
-    public class IndividualDetailsViewModel : ViewModelBase, IInitializableVm, IDisplayableVm
+    public class IndividualDetailsViewModel : ViewModelBase, IInitializableViewModel, IDisplayableViewModel
     {
         private readonly CommandContainer _commandContainer;
         private readonly IIndividualDetailsViewService _detailsService;

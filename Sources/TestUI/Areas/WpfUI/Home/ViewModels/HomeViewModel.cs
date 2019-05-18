@@ -3,7 +3,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Home.ViewModels
 {
-    public class HomeViewModel : ViewModelBase, INavigatableVm
+    public class HomeViewModel : ViewModelBase, INavigatableViewModel
     {
         public string NavigationDescription => "Home";
 

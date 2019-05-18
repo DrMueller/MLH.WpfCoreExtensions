@@ -4,10 +4,10 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services
 {
-    internal interface IVmFactory
+    internal interface IViewModelFactory
     {
         Task<IReadOnlyCollection<TBehavior>> CreateAllWithBehaviorAsync<TBehavior>()
-            where TBehavior : IVmWithBehavior;
+            where TBehavior : IViewModelWithBehavior;
 
         Task<T> CreateAsync<T>(params object[] initParams)
             where T : IViewModel;

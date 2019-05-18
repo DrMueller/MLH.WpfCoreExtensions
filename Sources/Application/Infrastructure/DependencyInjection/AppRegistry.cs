@@ -6,6 +6,10 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Serva
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Servants.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Dialogs.FileDialogs.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Dialogs.FileDialogs.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Dialogs.FolderDialogs.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Dialogs.FolderDialogs.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Services;
@@ -31,6 +35,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
                 scanner.WithDefaultConventions();
             });
 
+            // Dialogs
+            For<IFileDialogService>().Use<FileDialogService>().Singleton();
+            For<IFolderDialogService>().Use<FolderDialogService>().Singleton();
+
             // ExceptionHandling
             For<IExceptionHandler>().Use<ExceptionHandler>().Singleton();
             For<IExceptionInitializationService>().Use<ExceptionInitializationService>().Singleton();
@@ -52,9 +60,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
 
             // MvvmShell
             For<ViewModelContainer>().Singleton();
-            For<IVmDisplayConfigurationService>().Use<VmDisplayConfigurationService>().Singleton();
-            For<IVmDisplayService>().Use<VmDisplayService>().Singleton();
-            For<IVmFactory>().Use<VmFactory>().Singleton();
+            For<IViewModelDisplayConfigurationService>().Use<VmDisplayConfigurationService>().Singleton();
+            For<IViewModelDisplayService>().Use<VmDisplayService>().Singleton();
+            For<IViewModelFactory>().Use<VmFactory>().Singleton();
 
             // Navigation
             For<INavigationEntryFactory>().Use<NavigationEntryFactory>().Singleton();

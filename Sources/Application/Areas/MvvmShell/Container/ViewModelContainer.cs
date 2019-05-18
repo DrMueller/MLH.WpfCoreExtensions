@@ -16,7 +16,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
     {
         private readonly IInformationSubscriptionService _informationSubscriptionService;
         private readonly INavigationEntryFactory _navigationEntryFactory;
-        private readonly IVmDisplayConfigurationService _vmDisplayConfigService;
+        private readonly IViewModelDisplayConfigurationService _vmDisplayConfigService;
         private IViewModel _currentContent;
         private InformationEntryViewData _informationEntry;
         private IEnumerable<NavigationEntry> _navigationEntries;
@@ -65,7 +65,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
         }
 
         public ViewModelContainer(
-            IVmDisplayConfigurationService vmDisplayConfigService,
+            IViewModelDisplayConfigurationService vmDisplayConfigService,
             INavigationEntryFactory navigationEntryFactory,
             IInformationSubscriptionService informationSubscriptionService)
         {

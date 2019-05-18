@@ -5,7 +5,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewModels.InfosAndExceptions
 {
-    public class InfosAndExceptionsViewModel : ViewModelBase, IInitializableVm, INavigatableVm
+    public class InfosAndExceptionsViewModel : ViewModelBase, IInitializableViewModel, INavigatableViewModel
     {
         private readonly CommandContainer _commandContainer;
 

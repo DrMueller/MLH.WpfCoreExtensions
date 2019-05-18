@@ -10,7 +10,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
     public class CommandContainer : IViewModelCommandContainer<IndividualDetailsViewModel>
     {
         private readonly IIndividualDetailsViewService _detailsService;
-        private readonly IVmDisplayService _vmDisplayService;
+        private readonly IViewModelDisplayService _vmDisplayService;
         private IndividualDetailsViewModel _context;
 
         public CommandsViewData Commands { get; private set; }
@@ -40,7 +40,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
         }
 
         public CommandContainer(
-            IVmDisplayService vmDisplayService,
+            IViewModelDisplayService vmDisplayService,
             IIndividualDetailsViewService detailsService)
         {
             _vmDisplayService = vmDisplayService;

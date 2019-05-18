@@ -2,7 +2,7 @@
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
 {
-    public interface IInitializableVm : IVmWithBehavior
+    public interface IInitializableViewModel : IViewModelWithBehavior
     {
         Task InitializeAsync(params object[] initParams);
     }

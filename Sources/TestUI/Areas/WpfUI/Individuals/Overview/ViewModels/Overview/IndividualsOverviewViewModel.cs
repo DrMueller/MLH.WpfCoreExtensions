@@ -9,7 +9,7 @@ using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.ViewData;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewModels.Overview
 {
-    public class IndividualsOverviewViewModel : ViewModelBase, INavigatableVm, IInitializableVm
+    public class IndividualsOverviewViewModel : ViewModelBase, INavigatableViewModel, IInitializableViewModel
     {
         private readonly CommandContainer _commandContainer;
         private readonly IIndividualOverviewViewService _overviewService;

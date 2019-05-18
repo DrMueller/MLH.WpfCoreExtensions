@@ -1,6 +1,6 @@
 ﻿namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
 {
-    public interface IDisplayableVm : IVmWithBehavior
+    public interface IDisplayableViewModel : IViewModelWithBehavior
     {
         string HeadingDescription { get; }
     }

@@ -10,12 +10,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Ser
 {
     internal class NavigationEntryFactory : INavigationEntryFactory
     {
-        private readonly IVmFactory _viewModelFactory;
-        private readonly IVmDisplayService _vmDisplayService;
+        private readonly IViewModelFactory _viewModelFactory;
+        private readonly IViewModelDisplayService _vmDisplayService;
 
         public NavigationEntryFactory(
-            IVmDisplayService vmDisplayService,
-            IVmFactory viewModelFactory)
+            IViewModelDisplayService vmDisplayService,
+            IViewModelFactory viewModelFactory)
         {
             _vmDisplayService = vmDisplayService;
             _viewModelFactory = viewModelFactory;
@@ -23,7 +23,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Ser
 
         public async Task<IReadOnlyCollection<NavigationEntry>> CreateAllAsync()
         {
-            var navigationViewModels = await _viewModelFactory.CreateAllWithBehaviorAsync<INavigatableVm>();
+            var navigationViewModels = await _viewModelFactory.CreateAllWithBehaviorAsync<INavigatableViewModel>();
             var result = navigationViewModels
                 .OrderBy(f => f.NavigationSequence)
                 .Select(CreateNavigationEntry)
@@ -32,7 +32,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Ser
             return result;
         }
 
-        private NavigationEntry CreateNavigationEntry(INavigatableVm viewModel)
+        private NavigationEntry CreateNavigationEntry(INavigatableViewModel viewModel)
         {
             var navigationCommand = new RelayCommand(
                 () =>

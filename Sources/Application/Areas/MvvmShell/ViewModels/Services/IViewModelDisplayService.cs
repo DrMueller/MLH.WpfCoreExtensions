@@ -3,11 +3,11 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services
 {
-    public interface IVmDisplayService
+    public interface IViewModelDisplayService
     {
         Task DisplayAsync<T>(params object[] initParams)
-            where T : IDisplayableVm;
+            where T : IDisplayableViewModel;
 
-        Task DisplayAsync(IDisplayableVm target);
+        Task DisplayAsync(IDisplayableViewModel target);
     }
 }

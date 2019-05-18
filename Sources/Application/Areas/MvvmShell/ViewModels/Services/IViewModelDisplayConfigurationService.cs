@@ -2,7 +2,7 @@
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services
 {
-    internal interface IVmDisplayConfigurationService
+    internal interface IViewModelDisplayConfigurationService
     {
         void Initialize(Action<IViewModel> navigationCallback);
 
