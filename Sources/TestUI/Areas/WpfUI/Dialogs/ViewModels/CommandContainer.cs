@@ -3,6 +3,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Dialogs.FileDialogs.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Dialogs.FolderDialogs.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container.CommandManagement.ViewModelCommands;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Dialogs.ViewModels
 {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
-using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container.CommandManagement.ViewModelCommands;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData
 {

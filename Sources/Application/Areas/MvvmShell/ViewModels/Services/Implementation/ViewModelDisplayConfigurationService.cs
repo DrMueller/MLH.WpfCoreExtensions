@@ -2,7 +2,7 @@
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation
 {
-    internal class VmDisplayConfigurationService : IViewModelDisplayConfigurationService
+    internal class ViewModelDisplayConfigurationService : IViewModelDisplayConfigurationService
     {
         private Action<IViewModel> _navigationCallback;
 

@@ -7,11 +7,11 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation
 {
-    internal class VmFactory : IViewModelFactory
+    internal class ViewModelFactory : IViewModelFactory
     {
         private readonly IServiceLocator _serviceLocator;
 
-        public VmFactory(IServiceLocator serviceLocator)
+        public ViewModelFactory(IServiceLocator serviceLocator)
         {
             _serviceLocator = serviceLocator;
         }

@@ -3,12 +3,12 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation
 {
-    internal class VmDisplayService : IViewModelDisplayService
+    internal class ViewModelDisplayService : IViewModelDisplayService
     {
         private readonly IViewModelDisplayConfigurationService _displayConfigService;
         private readonly IViewModelFactory _viewModelFactory;
 
-        public VmDisplayService(
+        public ViewModelDisplayService(
             IViewModelDisplayConfigurationService displayConfigService,
             IViewModelFactory containerViewModelBaseFactory)
         {
