@@ -12,10 +12,10 @@
     </Storyboard>
 
     <Style TargetType="Border" x:Key="InformationBorder">
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0.1" />
         <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="Padding" Value="10" />
-        <Setter Property="Margin" Value="0,20, 0, 20" />
+        <Setter Property="Margin" Value="0, 10, 0, 10" />
     </Style>
 
     <Style TargetType="TextBox" x:Key="InformationBar" BasedOn="{StaticResource {x:Type TextBox}}">

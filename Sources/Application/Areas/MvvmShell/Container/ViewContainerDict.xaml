@@ -6,13 +6,33 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style TargetType="TextBlock" x:Key="MainHeaderTextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
-        <Setter Property="Panel.ZIndex" Value="-99" />
         <Setter Property="FontSize" Value="30" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Background" Value="Orange" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="HeaderBorder">
+        <Setter Property="BorderThickness" Value="0.1" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="Background" Value="LightBlue" />
+    </Style>
+
+    <Style TargetType="Grid" x:Key="ContainerGrid">
+        <Setter Property="Margin" Value="10" />
+    </Style>
+
+    <Style TargetType="ListBox" x:Key="NavigationListBox">
+        <Setter Property="Margin" Value="0,10,0,0" />
+        <Setter Property="BorderThickness" Value="0.3" />
+        <Setter Property="BorderBrush" Value="Black" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="ContentBorder">
+        <Setter Property="BorderThickness" Value="0.1" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="Margin" Value="10,10,0,0" />
     </Style>
 
     <DataTemplate x:Key="MainNavigation" DataType="{x:Type nav:NavigationEntry}">
@@ -20,15 +40,17 @@
     </DataTemplate>
 
     <DataTemplate x:Key="MainHeader" DataType="{x:Type vm:ViewModelContainer}">
-        <Grid>
-            <TextBlock Style="{StaticResource MainHeaderTextBlock}">
-                <TextBlock.Text>
-                    <PriorityBinding>
-                        <Binding Path="CurrentContent.HeadingDescription" />
-                    </PriorityBinding>
-                </TextBlock.Text>
-            </TextBlock>
-        </Grid>
+        <Border Style="{StaticResource HeaderBorder}">
+            <Grid>
+                <TextBlock Style="{StaticResource MainHeaderTextBlock}">
+                    <TextBlock.Text>
+                        <PriorityBinding>
+                            <Binding Path="CurrentContent.HeadingDescription" />
+                        </PriorityBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Grid>
+        </Border>
     </DataTemplate>
 
     <Style TargetType="ListBoxItem" x:Key="MainNavigationContainerStyle" BasedOn="{StaticResource {x:Type ListBoxItem}}">

@@ -22,8 +22,7 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid>
-
+    <Grid Style="{StaticResource ContainerGrid}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -37,11 +36,14 @@
                 Content="{Binding ., Mode=OneWay}"
                 ContentTemplate="{StaticResource MainHeader}" />
             <ListBox
+                Style="{StaticResource NavigationListBox}"
                 ItemContainerStyle="{StaticResource MainNavigationContainerStyle}"
                 ItemTemplate="{StaticResource MainNavigation}"
                 ItemsSource="{Binding NavigationEntries, Mode=OneWay}" />
 
-            <ContentPresenter DockPanel.Dock="Right" Content="{Binding CurrentContent, Mode=OneWay}" />
+            <Border Style="{StaticResource ContentBorder}">
+                <ContentPresenter DockPanel.Dock="Right" Content="{Binding CurrentContent, Mode=OneWay}" />
+            </Border>
         </DockPanel>
     </Grid>
 </Window>
