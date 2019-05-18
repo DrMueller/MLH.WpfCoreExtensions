@@ -1,6 +1,6 @@
 using System.Windows.Input;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container.CommandManagement.ViewModelCommands
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.ViewModelCommands
 {
     public class ViewModelCommand : IViewModelCommand
     {

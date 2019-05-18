@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI
 {
@@ -13,5 +9,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI
     /// </summary>
     public partial class App : Application
     {
+        protected override async void OnStartup(StartupEventArgs e)
+        {
+            var wpfAppConfig = WpfAppConfig.CreateWithDefaultIcon(typeof(App).Assembly, "Hello App");
+            await AppStartService.StartAppAsync(wpfAppConfig);
+        }
     }
 }

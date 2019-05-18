@@ -4,6 +4,27 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Features>IOperation</Features>
+    <CodeAnalysisRuleSet>..\..\CA_ProductionCode.ruleset</CodeAnalysisRuleSet>
+    <StartupObject>Mmu.Mlh.WpfCoreExtensions.NugetTestUI.App</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Areas\Individuals\ViewModels\IndividualsView.xaml" />
+    <None Remove="Areas\Individuals\ViewModels\Overview\IndividualsOverviewView.xaml" />
+    <None Remove="Areas\Organisations\ViewModels\Overview\OrganisationsOverviewView.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mmu.Mlh.WpfCoreExtensions" Version="1.0.19" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Areas\Individuals\ViewModels\Overview\IndividualsOverviewView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Areas\Organisations\ViewModels\Overview\OrganisationsOverviewView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>
