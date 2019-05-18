@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mmu.Mlh.WpfCoreExtensions" Version="1.0.19" />
+    <PackageReference Include="Mmu.Mlh.WpfCoreExtensions" Version="1.0.22" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,5 +26,11 @@
     <Compile Update="Areas\Organisations\ViewModels\Overview\OrganisationsOverviewView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="C:\Users\Matthias\.nuget\packages\mmu.mlh.wpfcoreextensions\1.0.22\contentFiles\any\netcoreapp3.0\Infrastructure\Assets\App.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
