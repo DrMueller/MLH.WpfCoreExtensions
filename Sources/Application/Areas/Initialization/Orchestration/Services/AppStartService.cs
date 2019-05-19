@@ -15,10 +15,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services
         {
             var containerConfig = ContainerConfiguration.CreateFromAssembly(config.WpfAssembly, initializeAutoMapper: true);
             var container = ContainerInitializationService.CreateInitializedContainer(containerConfig);
-
             ConfigureViewModels(container, config.WpfAssembly);
 
-            var initService = container.GetInstance<IAppInitializationService>();
+            var initService = container.GetInstance<IAppInitializationServant>();
             await initService.StartAppAsync(config);
         }
 

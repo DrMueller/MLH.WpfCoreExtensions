@@ -8,14 +8,14 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants.Implementation
 {
-    internal class AppInitializationService : IAppInitializationService
+    internal class AppInitializationServant : IAppInitializationServant
     {
         private readonly IExceptionInitializationService _exceptionInitializationService;
         private readonly IInformationPublisher _infoPublisher;
         private readonly ViewModelContainer _viewModelContainer;
         private readonly IViewModelMappingInitializationService _viewModelMappingInitService;
 
-        public AppInitializationService(
+        public AppInitializationServant(
             IViewModelMappingInitializationService viewModelMappingInitService,
             ViewModelContainer viewModelContainer,
             IExceptionInitializationService exceptionInitializationService,

@@ -2,7 +2,7 @@ using System.Windows.Media;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData
 {
-    public class InformationEntryViewData
+    internal class InformationEntryViewData
     {
         public static string BusyIndicatorSource => "/Mmu.Mlh.WpfCoreExtensions;component/Infrastructure/Assets/FA_Cog_Green.png";
         public int? DisplayLengthInSeconds { get; }

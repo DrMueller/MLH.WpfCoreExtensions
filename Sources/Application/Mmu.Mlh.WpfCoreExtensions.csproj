@@ -69,7 +69,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Initialization\SubAreas\Navigation\Models\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 </Project>

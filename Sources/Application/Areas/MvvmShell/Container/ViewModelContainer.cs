@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData;
@@ -12,7 +10,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
 {
-    internal sealed class ViewModelContainer : INotifyPropertyChanged
+    internal sealed class ViewModelContainer : ViewModelBase
     {
         private readonly IInformationSubscriptionService _informationSubscriptionService;
         private readonly INavigationEntryFactory _navigationEntryFactory;
@@ -20,8 +18,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
         private IViewModel _currentContent;
         private InformationEntryViewData _informationEntry;
         private IEnumerable<NavigationEntry> _navigationEntries;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public IViewModel CurrentContent
         {
@@ -80,11 +76,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
             _informationSubscriptionService.Register(vd => InformationEntry = vd);
             NavigationEntries = await _navigationEntryFactory.CreateAllAsync();
             NavigationEntries.FirstOrDefault()?.NavigationCommand.Execute(null);
-        }
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
