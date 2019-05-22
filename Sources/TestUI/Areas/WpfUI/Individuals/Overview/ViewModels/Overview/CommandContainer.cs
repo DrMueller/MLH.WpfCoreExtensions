@@ -7,6 +7,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.ViewModelCommands;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Models;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewModels.Details;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewServices;
 
@@ -56,6 +57,28 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             }
         }
 
+        private ViewModelCommand SearchMatthias2
+        {
+            get
+            {
+                return new ViewModelCommand(
+                    "Search Matthias2",
+                    new RelayCommand(
+                        () => _context.SearchExpression = GridSearchExpression.CreateFrom("Matthias2")));
+            }
+        }
+
+        private ViewModelCommand ClearSearch
+        {
+            get
+            {
+                return new ViewModelCommand(
+                    "Clear search",
+                    new RelayCommand(
+                        () => _context.SearchExpression = GridSearchExpression.CreateEmpty()));
+            }
+        }
+
         private bool IsIndividualSelected => _context.SelectedIndividual != null;
 
         private ViewModelCommand UpdateIndividual
@@ -84,7 +107,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             Commands = new CommandsViewData(
                 CreateIndividual,
                 UpdateIndividual,
-                DeleteIndividual);
+                DeleteIndividual,
+                SearchMatthias2,
+                ClearSearch);
 
             return Task.CompletedTask;
         }

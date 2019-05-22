@@ -22,18 +22,18 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             await _individualRepository.DeleteAsync(id);
         }
 
-        public async Task<IReadOnlyCollection<IndividulOverviewViewData>> LoadAllAsync()
+        public async Task<IReadOnlyCollection<IndividualOverviewViewData>> LoadAllAsync()
         {
             var allIndividuals = await _individualRepository.LoadAllAsync();
             var result = allIndividuals.Select(Adapt).ToList();
             return result;
         }
 
-        private IndividulOverviewViewData Adapt(Individual individual)
+        private IndividualOverviewViewData Adapt(Individual individual)
         {
             var formattedName = $"{individual.FirstName} {individual.LastName}";
             var formattedBirthdate = individual.Birthdate.ToString("dd.MM.yyyy");
-            return new IndividulOverviewViewData(formattedName, formattedBirthdate, individual.Id);
+            return new IndividualOverviewViewData(formattedName, formattedBirthdate, individual.Id);
         }
     }
 }

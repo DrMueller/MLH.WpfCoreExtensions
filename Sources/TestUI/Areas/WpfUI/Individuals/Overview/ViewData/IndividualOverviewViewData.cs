@@ -2,13 +2,13 @@
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.ViewData
 {
-    public class IndividulOverviewViewData
+    public class IndividualOverviewViewData
     {
         public string FormattedBirthdate { get; }
         public string FormattedName { get; }
         public string Id { get; }
 
-        public IndividulOverviewViewData(string formattedName, string formattedBirthdate, string id)
+        public IndividualOverviewViewData(string formattedName, string formattedBirthdate, string id)
         {
             Guard.StringNotNullOrEmpty(() => formattedName);
             Guard.StringNotNullOrEmpty(() => formattedBirthdate);

@@ -1,9 +1,11 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
+using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Models;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewServices;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.ViewData;
 
@@ -15,11 +17,28 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private readonly IIndividualOverviewViewService _overviewService;
         public CommandsViewData Commands => _commandContainer.Commands;
         public string HeadingDescription => "Individuals Overview";
-        public ObservableCollection<IndividulOverviewViewData> Individuals { get; private set; }
+        public ObservableCollection<IndividualOverviewViewData> Individuals { get; private set; }
         public string NavigationDescription => "Individuals";
         public int NavigationSequence => 2;
-        public IndividulOverviewViewData SelectedIndividual { get; set; }
+        public IndividualOverviewViewData SelectedIndividual { get; set; }
         public ICommand UpdateIndividualCommand => _commandContainer.UpdateIndividualCommand;
+
+        private GridSearchExpression _searchExpression;
+
+        public GridSearchExpression SearchExpression
+        {
+            get => _searchExpression;
+            set
+            {
+                if (_searchExpression == value)
+                {
+                    return;
+                }
+
+                _searchExpression = value;
+                OnPropertyChanged();
+            }
+        }
 
         public IndividualsOverviewViewModel(
             CommandContainer commandContainer,
@@ -33,7 +52,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         {
             await _commandContainer.InitializeAsync(this);
             var individuals = await _overviewService.LoadAllAsync();
-            Individuals = new ObservableCollection<IndividulOverviewViewData>(individuals);
+            Individuals = new ObservableCollection<IndividualOverviewViewData>(individuals);
+        }
+
+        public Func<object, bool> OnFiltering => FilterIndividual;
+
+        private bool FilterIndividual(object data)
+        {
+            var ind = (IndividualOverviewViewData)data;
+            return SearchExpression.IsPartOf(ind.FormattedName) || SearchExpression.IsPartOf(ind.FormattedBirthdate);
         }
     }
 }

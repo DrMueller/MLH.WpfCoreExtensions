@@ -8,6 +8,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
     {
         Task DeleteIndividualAsync(string id);
 
-        Task<IReadOnlyCollection<IndividulOverviewViewData>> LoadAllAsync();
+        Task<IReadOnlyCollection<IndividualOverviewViewData>> LoadAllAsync();
     }
 }

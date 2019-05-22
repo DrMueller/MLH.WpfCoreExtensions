@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:dp="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.AttachedProperties;assembly=Mmu.Mlh.WpfCoreExtensions"
              xmlns:controls="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.Controls;assembly=Mmu.Mlh.WpfCoreExtensions"
+             xmlns:grids="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids;assembly=Mmu.Mlh.WpfCoreExtensions"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -17,29 +18,35 @@
         <controls:CommandBar Grid.Row="0" Commands="{Binding Path=Commands, Mode=OneWay}" />
 
         <GroupBox Grid.Row="1" Header="Individuals">
-            <DataGrid
-                AutoGenerateColumns="False"
-                dp:DataGridDoubleClickCommandBinding.DataGridDoubleClickCommand="{Binding UpdateIndividualCommand, Mode=OneWay}"
-                CanUserAddRows="False"
-                CanUserDeleteRows="False"
-                Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}}"
-                IsReadOnly="false"
-                SelectedItem="{Binding SelectedIndividual, Mode=TwoWay}"
-                ItemsSource="{Binding Individuals, Mode=OneWay}"
-                VerticalScrollBarVisibility="Visible">
-                <DataGrid.Columns>
-                    <DataGridTextColumn
-                    Binding="{Binding FormattedName, Mode=OneWay}"
-                    Header="Name"
-                    IsReadOnly="true"
-                    Width="Auto" />
-                    <DataGridTextColumn
-                    Binding="{Binding FormattedBirthdate, Mode=OneWay}"
-                    Header="Birthdate"
-                    IsReadOnly="true"
-                    Width="*" />
-                </DataGrid.Columns>
-            </DataGrid>
+            <grids:SearchGrid
+                FilterCallback="{Binding OnFiltering, Mode=OneWay}"
+                GridEntries="{Binding Individuals, Mode=OneWay}"
+                SearchExpression="{Binding SearchExpression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <grids:SearchGrid.DataGrid>
+                    <DataGrid
+                        AutoGenerateColumns="False"
+                        dp:DataGridDoubleClickCommandBinding.DataGridDoubleClickCommand="{Binding UpdateIndividualCommand, Mode=OneWay}"
+                        CanUserAddRows="False"
+                        CanUserDeleteRows="False"
+                        Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}}"
+                        IsReadOnly="false"
+                        SelectedItem="{Binding SelectedIndividual, Mode=TwoWay}"
+                        VerticalScrollBarVisibility="Visible">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                            Binding="{Binding FormattedName, Mode=OneWay}"
+                            Header="Name"
+                            IsReadOnly="true"
+                            Width="Auto" />
+                            <DataGridTextColumn
+                            Binding="{Binding FormattedBirthdate, Mode=OneWay}"
+                            Header="Birthdate"
+                            IsReadOnly="true"
+                            Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </grids:SearchGrid.DataGrid>
+            </grids:SearchGrid>
         </GroupBox>
     </Grid>
 </UserControl>
