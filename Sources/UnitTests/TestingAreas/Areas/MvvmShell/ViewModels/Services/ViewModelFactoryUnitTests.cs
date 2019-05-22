@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
-using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingInfrastructure.ViewModelMocks;
 using Moq;
@@ -46,40 +42,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.MvvmShell.ViewM
             Assert.IsNotNull(actualViewModel.InitParams);
             Assert.AreEqual(initParam1, actualViewModel.InitParams[0]);
             Assert.AreEqual(initParam2, actualViewModel.InitParams[1]);
-        }
-
-        [Test]
-        public async Task CreatingWithBehavior_CreatesViewModelsWithBehavior()
-        {
-            // Arrange
-            var initializableViewModel = new InitializibleMockViewModel();
-            var navigatableViewModel = new NavigatableMockViewModel();
-
-            var viewModels = new List<ViewModelBase>
-            {
-                navigatableViewModel,
-                initializableViewModel
-            };
-
-            _serviceLocatorMock.Setup(f => f.GetAllServices<IViewModel>()).Returns(viewModels);
-            _serviceLocatorMock.Setup(f => f.GetService(It.IsAny<Type>())).Returns<Type>(type =>
-            {
-                if (typeof(InitializibleMockViewModel) == type)
-                {
-                    return initializableViewModel;
-                }
-
-                return navigatableViewModel;
-            });
-
-            // Act
-            var actualViewModels = await _sut.CreateAllWithBehaviorAsync<IInitializableViewModel>();
-
-            // Assert
-            Assert.IsNotNull(actualViewModels);
-            Assert.AreEqual(1, actualViewModels.Count);
-            var actualViewModel = actualViewModels.Single();
-            Assert.AreEqual(initializableViewModel, actualViewModel);
         }
     }
 }
