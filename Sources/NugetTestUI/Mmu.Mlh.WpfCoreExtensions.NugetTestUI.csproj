@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mmu.Mlh.WpfCoreExtensions" Version="1.0.22" />
+    <PackageReference Include="Mmu.Mlh.WpfCoreExtensions" Version="1.0.29" />
   </ItemGroup>
 
   <ItemGroup>
