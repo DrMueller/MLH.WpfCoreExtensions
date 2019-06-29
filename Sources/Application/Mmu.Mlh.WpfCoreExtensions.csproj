@@ -36,17 +36,9 @@
     <None Remove="Areas\MvvmShell\Container\ViewContainerDict.xaml" />
     <None Remove="Areas\MvvmShell\CommandManagement\Components\CommandBars\CommandBar.xaml" />
     <None Remove="Areas\MvvmShell\CommandManagement\Components\CommandButtons\CommandButton.xaml" />
-    <None Remove="Infrastructure\Assets\App.ico" />
-    <None Remove="Nlog.config" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Infrastructure\Assets\App.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Nlog.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Infrastructure\Assets\FA_Cog_Green.png" />
   </ItemGroup>
 

@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\DataAccess\Repositories\" />
+    <Folder Include="Infrastructure\Assets\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,5 +44,14 @@
     <Compile Update="Areas\WpfUI\InfosAndExceptions\ViewModels\InfosAndExceptions\InfosAndExceptionsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Infrastructure\Assets\App.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

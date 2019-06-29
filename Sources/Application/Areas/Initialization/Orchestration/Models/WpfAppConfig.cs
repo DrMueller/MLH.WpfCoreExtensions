@@ -27,13 +27,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models
 
         public static WpfAppConfig CreateWithDefaultIcon(Assembly wpfAssembly, string appTitle)
         {
-            var defaultIcon = ReadDefaultIcon();
+            var defaultIcon = ReadDefaultIcon(wpfAssembly);
             return new WpfAppConfig(wpfAssembly, appTitle, defaultIcon);
         }
 
-        private static ImageSource ReadDefaultIcon()
+        private static ImageSource ReadDefaultIcon(Assembly wpfAssembly)
         {
-            var assemblyBasePath = typeof(WpfAppConfig).Assembly.GetBasePath();
+            var assemblyBasePath = wpfAssembly.GetBasePath();
             var iconPath = Path.Combine(assemblyBasePath, "Infrastructure", "Assets", "App.ico");
             var iconUri = new Uri(iconPath);
             var icon = new BitmapImage(iconUri);
