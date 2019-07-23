@@ -3,7 +3,6 @@ name: 1.1$(rev:.r) # build numbering format
 variables:
   BuildConfiguration: 'Release'
   FolderToPack: 'Application'
-  ParentWorkitemId: 479
 
 resources:
   repositories:
@@ -18,8 +17,3 @@ jobs:
   parameters:
     FolderToPack: $(FolderToPack)
     BuildConfiguration: $(BuildConfiguration)
-
-- template: AzureDevOps/Templates/JobTemplates/NetCore/Create_AzureDevOps_Release.yaml@ALMStuff
-  parameters:
-    DependsOnJobName: 'BuildAndPublishToNuGet'
-    ParentWorkitemId: $(ParentWorkItemId)
