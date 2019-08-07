@@ -49,15 +49,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Areas\MvvmShell\Container\ViewContainer.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Areas\MvvmShell\CommandManagement\Components\CommandBars\Controls\CommandBar.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Areas\MvvmShell\CommandManagement\Components\CommandButtons\CommandButton.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Update="Areas\MvvmShell\Container\ViewContainer.xaml.cs" />
+    <Compile Update="Areas\MvvmShell\CommandManagement\Components\CommandBars\Controls\CommandBar.xaml.cs" />
+    <Compile Update="Areas\MvvmShell\CommandManagement\Components\CommandButtons\CommandButton.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>

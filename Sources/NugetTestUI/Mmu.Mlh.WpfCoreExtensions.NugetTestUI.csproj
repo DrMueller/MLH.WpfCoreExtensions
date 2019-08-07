@@ -20,12 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Areas\Individuals\ViewModels\Overview\IndividualsOverviewView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Areas\Organisations\ViewModels\Overview\OrganisationsOverviewView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Update="Areas\Individuals\ViewModels\Overview\IndividualsOverviewView.xaml.cs" />
+    <Compile Update="Areas\Organisations\ViewModels\Overview\OrganisationsOverviewView.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>

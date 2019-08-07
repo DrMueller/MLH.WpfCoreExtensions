@@ -32,18 +32,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Areas\WpfUI\Individuals\Details\ViewModels\Details\IndividualDetailsView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Areas\WpfUI\Individuals\Details\ViewModels\IndividualData\IndividualDataView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Areas\WpfUI\Individuals\Overview\ViewModels\Overview\IndividualsOverviewView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Areas\WpfUI\InfosAndExceptions\ViewModels\InfosAndExceptions\InfosAndExceptionsView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Update="Areas\WpfUI\Individuals\Details\ViewModels\Details\IndividualDetailsView.xaml.cs" />
+    <Compile Update="Areas\WpfUI\Individuals\Details\ViewModels\IndividualData\IndividualDataView.xaml.cs" />
+    <Compile Update="Areas\WpfUI\Individuals\Overview\ViewModels\Overview\IndividualsOverviewView.xaml.cs" />
+    <Compile Update="Areas\WpfUI\InfosAndExceptions\ViewModels\InfosAndExceptions\InfosAndExceptionsView.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
