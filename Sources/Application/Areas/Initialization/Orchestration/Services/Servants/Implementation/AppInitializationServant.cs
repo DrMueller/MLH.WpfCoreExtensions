@@ -1,4 +1,6 @@
+using System;
 using System.Threading.Tasks;
+using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
@@ -12,6 +14,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
     {
         private readonly IExceptionInitializationService _exceptionInitializationService;
         private readonly IInformationPublisher _infoPublisher;
+        private readonly IServiceLocator _serviceLocator;
         private readonly ViewModelContainer _viewModelContainer;
         private readonly IViewModelMappingInitializationService _viewModelMappingInitService;
 
@@ -19,20 +22,28 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
             IViewModelMappingInitializationService viewModelMappingInitService,
             ViewModelContainer viewModelContainer,
             IExceptionInitializationService exceptionInitializationService,
-            IInformationPublisher infoPublisher)
+            IInformationPublisher infoPublisher,
+            IServiceLocator serviceLocator)
         {
             _viewModelMappingInitService = viewModelMappingInitService;
             _viewModelContainer = viewModelContainer;
             _exceptionInitializationService = exceptionInitializationService;
             _infoPublisher = infoPublisher;
+            _serviceLocator = serviceLocator;
         }
 
-        public async Task StartAppAsync(WpfAppConfig config)
+        public async Task StartAppAsync(WpfAppConfig config, Action<IServiceLocator> afterInitializedCallback)
         {
             _exceptionInitializationService.HookGlobalExceptions();
             _viewModelMappingInitService.Initialize(config.WpfAssembly);
             await _viewModelContainer.InitializeAsync();
             _infoPublisher.Publish(InformationEntry.CreateInfo("Here could be your text..", false));
+
+            if (afterInitializedCallback != null)
+            {
+                afterInitializedCallback.Invoke(_serviceLocator);
+            }
+
             ShowApp(config);
         }
 
