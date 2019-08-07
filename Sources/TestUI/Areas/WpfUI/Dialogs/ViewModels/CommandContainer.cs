@@ -14,7 +14,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Dialogs.ViewModels
         private DialogsViewModel _context;
         public CommandsViewData Commands { get; private set; }
 
-        private ViewModelCommand SelectFile
+        private IViewModelCommand SelectFile
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Dialogs.ViewModels
             }
         }
 
-        private ViewModelCommand SelectFolder
+        private IViewModelCommand SelectFolder
         {
             get
             {

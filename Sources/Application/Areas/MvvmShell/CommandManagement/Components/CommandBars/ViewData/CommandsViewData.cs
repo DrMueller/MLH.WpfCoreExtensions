@@ -6,9 +6,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components
 {
     public class CommandsViewData
     {
-        public IReadOnlyCollection<ViewModelCommand> Entries { get; }
+        public IReadOnlyCollection<IViewModelCommand> Entries { get; }
 
-        public CommandsViewData(params ViewModelCommand[] entries)
+        public CommandsViewData(params IViewModelCommand[] entries)
         {
             Guard.ObjectNotNull(() => entries);
             Entries = entries;
