@@ -2,7 +2,7 @@ name: 1.1$(rev:.r) # build numbering format
 
 variables:
   BuildConfiguration: 'Release'
-  FolderToPublish: 'Application'
+  FolderToPack: 'Application'
 
 resources:
   repositories:
@@ -20,7 +20,7 @@ jobs:
   steps:
   - template: ../Steps/Initialize_And_Test.yaml
     parameters:
-      BuildConfiguration: ${{ parameters.BuildConfiguration }}
+      BuildConfiguration: $(BuildConfiguration)
   - template: ../Steps/Pack_And_Publish_To_NuGet.yaml
     parameters:
-      FolderToPack: ${{ parameters.FolderToPack }}
+      FolderToPack: $(FolderToPack)
