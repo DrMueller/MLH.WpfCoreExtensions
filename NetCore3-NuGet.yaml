@@ -1,0 +1,26 @@
+name: 1.0$(rev:.r) # build numbering format
+
+variables:
+  BuildConfiguration: 'Release'
+  FolderToPublish: 'Application'
+
+resources:
+  repositories:
+  - repository: ALMStuff
+    type: github
+    name: DrMueller/ALMStuff
+    ref: refs/heads/master
+    endpoint: GitHub-DrMueller
+
+jobs:
+- job: 'BuildAndPublishToNuGet'
+  displayName: 'Build and publish to NuGet'
+  pool:
+    name: 'Default'
+  steps:
+  - template: ../Steps/Initialize_And_Test.yaml
+    parameters:
+      BuildConfiguration: ${{ parameters.BuildConfiguration }}
+  - template: ../Steps/Pack_And_Publish_To_NuGet.yaml
+    parameters:
+      FolderToPack: ${{ parameters.FolderToPack }}
