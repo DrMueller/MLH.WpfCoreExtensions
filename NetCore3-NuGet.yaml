@@ -18,9 +18,9 @@ jobs:
   pool:
     name: 'Default'
   steps:
-  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Initialize_And_Test.yaml
+  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Initialize_And_Test.yaml@ALMStuff
     parameters:
       BuildConfiguration: $(BuildConfiguration)
-  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Pack_And_Publish_To_NuGet.yaml
+  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Pack_And_Publish_To_NuGet.yaml@ALMStuff
     parameters:
       FolderToPack: $(FolderToPack)
