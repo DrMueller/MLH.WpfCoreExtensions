@@ -1,0 +1,19 @@
+name: 1.0$(rev:.r) # build numbering format
+
+variables:
+  BuildConfiguration: 'Release'
+  FolderToPack: 'Application'
+
+resources:
+  repositories:
+  - repository: ALMStuff
+    type: github
+    name: DrMueller/ALMStuff
+    ref: refs/heads/master
+    endpoint: GitHub-DrMueller
+
+jobs:
+- template: AzureDevOps/Templates/JobTemplates/NetCore/Build_And_Publish_To_NuGet.yaml@ALMStuff
+  parameters:
+    FolderToPack: $(FolderToPack)
+    BuildConfiguration: $(BuildConfiguration)
