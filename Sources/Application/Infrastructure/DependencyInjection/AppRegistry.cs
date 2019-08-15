@@ -6,10 +6,6 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Serva
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Servants.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services.Implementation;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Dialogs.FileDialogs.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Dialogs.FileDialogs.Services.Implementation;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Dialogs.FolderDialogs.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Dialogs.FolderDialogs.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Services;
@@ -44,10 +40,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
             For<IInformationEntryViewDataAdapter>().Use<InformationEntryViewDataAdapter>().Singleton();
 
             For<ILoggingService>().Use<LoggingService>().Singleton();
-
-            // Dialogs
-            For<IFileDialogService>().Use<FileDialogService>().Singleton();
-            For<IFolderDialogService>().Use<FolderDialogService>().Singleton();
 
             // Initialization
             For<IAppInitializationServant>().Use<AppInitializationServant>().Singleton();
