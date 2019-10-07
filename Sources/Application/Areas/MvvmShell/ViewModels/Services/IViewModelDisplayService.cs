@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services
@@ -8,6 +9,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services
         Task DisplayAsync<T>(params object[] initParams)
             where T : IDisplayableViewModel;
 
-        Task DisplayAsync(IDisplayableViewModel target);
+        Task DisplayAsync(Type targetType);
     }
 }
