@@ -11,8 +11,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI
     {
         protected override async void OnStartup(StartupEventArgs e)
         {
-            var wpfAppConfig = WpfAppConfig.CreateWithDefaultIcon(typeof(App).Assembly, "Hello App");
-            await AppStartService.StartAppAsync(wpfAppConfig);
+            var assembly = typeof(App).Assembly;
+            var windowConfig = WindowConfiguration.CreateWithDefaultIcon(assembly, "Test UI");
+            var appConfig = new WpfAppConfiguration(assembly, windowConfig);
+            await AppStartService.StartAppAsync(appConfig);
         }
     }
 }
