@@ -52,7 +52,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Ser
             var navigationCommand = new RelayCommand(
                 () =>
                 {
-                    _vmDisplayService.DisplayAsync(viewModel);
+                    _vmDisplayService.DisplayAsync(viewModel.GetType());
                 });
 
             return new NavigationEntry(navigationCommand, viewModel.NavigationDescription);

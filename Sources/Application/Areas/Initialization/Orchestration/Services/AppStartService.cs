@@ -13,7 +13,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services
 {
     public static class AppStartService
     {
-        public static async Task StartAppAsync(WpfAppConfig config, Action<IServiceLocator> afterInitializedCallback = null)
+        public static async Task StartAppAsync(WpfAppConfiguration config, Action<IServiceLocator> afterInitializedCallback = null)
         {
             var containerConfig = ContainerConfiguration.CreateFromAssembly(config.WpfAssembly, initializeAutoMapper: true);
             var container = ContainerInitializationService.CreateInitializedContainer(containerConfig);

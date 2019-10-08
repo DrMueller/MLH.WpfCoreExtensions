@@ -1,11 +1,12 @@
 ﻿using System;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services
 {
     internal interface IViewModelDisplayConfigurationService
     {
-        void Initialize(Action<IViewModel> navigationCallback);
+        void Initialize(Action<IDisplayableViewModel> navigationCallback);
 
-        void OnDisplay(IViewModel viewModel);
+        void OnDisplay(IDisplayableViewModel viewModel);
     }
 }

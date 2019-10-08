@@ -7,6 +7,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
 {
     internal interface IAppInitializationServant
     {
-        Task StartAppAsync(WpfAppConfig config, Action<IServiceLocator> afterInitializedCallback);
+        Task StartAppAsync(WpfAppConfiguration config, Action<IServiceLocator> afterInitializedCallback);
     }
 }

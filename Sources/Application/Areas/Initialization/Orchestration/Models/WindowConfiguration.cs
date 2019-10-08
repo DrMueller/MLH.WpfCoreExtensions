@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Windows.Media;
@@ -8,30 +8,42 @@ using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models
 {
-    public class WpfAppConfig
+    public class WindowConfiguration
     {
         public string AppTitle { get; }
+        public int WindowWidth { get; }
+        public int WindowHeight { get; }
         public ImageSource Icon { get; }
-        public Assembly WpfAssembly { get; }
 
-        public WpfAppConfig(Assembly wpfAssembly, string appTitle, ImageSource icon)
+        public WindowConfiguration(
+            ImageSource icon,
+            string appTitle,
+            int windowWidth = 1200,
+            int windowHeight = 800)
         {
-            Guard.ObjectNotNull(() => wpfAssembly);
             Guard.StringNotNullOrEmpty(() => appTitle);
             Guard.ObjectNotNull(() => icon);
 
-            WpfAssembly = wpfAssembly;
             AppTitle = appTitle;
+            WindowWidth = windowWidth;
+            WindowHeight = windowHeight;
             Icon = icon;
         }
 
-        public static WpfAppConfig CreateWithDefaultIcon(Assembly wpfAssembly, string appTitle)
+        public static WindowConfiguration CreateWithDefaultIcon(
+            Assembly wpfAssembly,
+            string appTitle,
+            int windowWidth = 1200,
+            int windowHeight = 800)
         {
-            var defaultIcon = ReadDefaultIcon(wpfAssembly);
-            return new WpfAppConfig(wpfAssembly, appTitle, defaultIcon);
+            return new WindowConfiguration(
+                CreateDefaultImageSource(wpfAssembly),
+                appTitle,
+                windowWidth,
+                windowHeight);
         }
 
-        private static ImageSource ReadDefaultIcon(Assembly wpfAssembly)
+        private static ImageSource CreateDefaultImageSource(Assembly wpfAssembly)
         {
             var assemblyBasePath = wpfAssembly.GetBasePath();
             var iconPath = Path.Combine(assemblyBasePath, "Infrastructure", "Assets", "App.ico");

@@ -32,7 +32,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
             _serviceLocator = serviceLocator;
         }
 
-        public async Task StartAppAsync(WpfAppConfig config, Action<IServiceLocator> afterInitializedCallback)
+        public async Task StartAppAsync(WpfAppConfiguration config, Action<IServiceLocator> afterInitializedCallback)
         {
             _exceptionInitializationService.HookGlobalExceptions();
             _viewModelMappingInitService.Initialize(config.WpfAssembly);
@@ -47,13 +47,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
             ShowApp(config);
         }
 
-        private void ShowApp(WpfAppConfig config)
+        private void ShowApp(WpfAppConfiguration config)
         {
             var viewContainer = new ViewContainer
             {
                 DataContext = _viewModelContainer,
-                Title = config.AppTitle,
-                Icon = config.Icon
+                Title = config.WindowConfiguration.AppTitle,
+                Icon = config.WindowConfiguration.Icon,
+                Width = config.WindowConfiguration.WindowWidth,
+                Height = config.WindowConfiguration.WindowHeight
             };
 
             viewContainer.ShowDialog();
