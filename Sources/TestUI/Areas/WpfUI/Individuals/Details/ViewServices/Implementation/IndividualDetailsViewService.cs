@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.Domain.Factories;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.Domain.Repositories;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewData;
@@ -9,11 +10,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewS
     {
         private readonly IIndividualFactory _individualFactory;
         private readonly IIndividualRepository _individualRepository;
+        private readonly IViewModelFactory _viewModelFactory;
 
         public IndividualDetailsViewService(
+            IViewModelFactory viewModelFactory,
             IIndividualFactory individualFactory,
             IIndividualRepository individualRepository)
         {
+            _viewModelFactory = viewModelFactory;
             _individualFactory = individualFactory;
             _individualRepository = individualRepository;
         }
@@ -21,13 +25,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewS
         public async Task<IndividualDetailsViewData> LoadAsync(string id)
         {
             var individual = await _individualRepository.LoadByIdAsync(id);
-            var viewData = new IndividualDetailsViewData
-            {
-                Birthdate = individual.Birthdate,
-                FirstName = individual.FirstName,
-                Id = individual.Id,
-                LastName = individual.LastName
-            };
+            var viewData = await _viewModelFactory.CreateAsync<IndividualDetailsViewData>();
+            viewData.Birthdate = individual.Birthdate;
+            viewData.FirstName = individual.FirstName;
+            viewData.Id = individual.Id;
+            viewData.LastName = individual.LastName;
 
             return viewData;
         }

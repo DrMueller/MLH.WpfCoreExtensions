@@ -16,7 +16,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
-        public bool HasErrors => _container?.HasErrors ?? false;
+        public bool HasErrors => _container.HasErrors;
 
         public IEnumerable GetErrors(string propertyName) => _container.GetErrorMessages(propertyName);
 

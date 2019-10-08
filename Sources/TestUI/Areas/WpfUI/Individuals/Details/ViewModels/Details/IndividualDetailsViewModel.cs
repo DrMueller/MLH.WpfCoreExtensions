@@ -4,6 +4,7 @@ using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewModels.IndividualData;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewServices;
@@ -14,9 +15,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
     {
         private readonly CommandContainer _commandContainer;
         private readonly IIndividualDetailsViewService _detailsService;
+        private readonly IViewModelFactory _viewModelFactory;
         private IndividualDetailsViewData _individualDetails;
         public CommandsViewData Commands => _commandContainer.Commands;
 
+        public string HeadingDescription { get; private set; }
         public IndividualDataViewModel IndividualData { get; }
 
         public IndividualDetailsViewData IndividualDetails
@@ -32,13 +35,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
             }
         }
 
-        public string HeadingDescription { get; private set; }
-
         public IndividualDetailsViewModel(
+            IViewModelFactory viewModelFactory,
             CommandContainer commandContainer,
             IIndividualDetailsViewService detailsService,
             IndividualDataViewModel individualData)
         {
+            _viewModelFactory = viewModelFactory;
             _commandContainer = commandContainer;
             _detailsService = detailsService;
             IndividualData = individualData;
@@ -54,11 +57,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
                     IndividualDetails = await _detailsService.LoadAsync(id);
                     HeadingDescription = "Edit Individual";
                 },
-                whenNone: () =>
+                whenNone: async () =>
                 {
-                    IndividualDetails = new IndividualDetailsViewData();
+                    IndividualDetails = await _viewModelFactory.CreateAsync<IndividualDetailsViewData>();
                     HeadingDescription = "New Individual";
-                    return Task.CompletedTask;
                 });
 
             IndividualData.Initialize(IndividualDetails);
