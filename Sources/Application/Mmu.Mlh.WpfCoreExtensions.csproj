@@ -55,6 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Validations\Configuration\Models\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 </Project>
