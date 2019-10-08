@@ -35,9 +35,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services.Imp
                 throw new ArgumentException("You must pass a lambda of the form: '() => Class.Property' or '() => object.Property'");
             }
 
-            var propName = propertyExpression.Member.Name;
-            var rulesBuilder = new PropertyRulesBuilder<T>(propName, this);
-            _rulesBuilders.Add(rulesBuilder);
+            var propertyName = propertyExpression.Member.Name;
+            var rulesBuilder = _rulesBuilders.SingleOrDefault(f => f.PropertyName == propertyName);
+            if (rulesBuilder == null)
+            {
+                rulesBuilder = new PropertyRulesBuilder<T>(propertyName, this);
+                _rulesBuilders.Add(rulesBuilder);
+            }
+
             return rulesBuilder;
         }
     }

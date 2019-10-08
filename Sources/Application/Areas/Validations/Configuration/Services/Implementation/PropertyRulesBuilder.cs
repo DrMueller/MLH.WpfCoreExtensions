@@ -9,13 +9,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services.Imp
         where T : ValidatableViewModel<T>
     {
         private readonly IValidationConfigurationBuilder<T> _parent;
-        private readonly string _propertyName;
         private readonly List<IValidationRule> _rules;
+        public string PropertyName { get; }
 
         public PropertyRulesBuilder(string propertyName, IValidationConfigurationBuilder<T> parent)
         {
             _rules = new List<IValidationRule>();
-            _propertyName = propertyName;
+            PropertyName = propertyName;
             _parent = parent;
         }
 
@@ -32,7 +32,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services.Imp
 
         internal PropertyValidation BuildValidation()
         {
-            return new PropertyValidation(_propertyName, _rules);
+            return new PropertyValidation(PropertyName, _rules);
         }
     }
 }

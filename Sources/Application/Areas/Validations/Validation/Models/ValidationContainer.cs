@@ -22,12 +22,16 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
 
         internal IReadOnlyCollection<string> GetErrorMessages(string propertyName)
         {
-            var propertyValidations = _propertyValidations.Where(f => f.PropertyName == propertyName);
-            Guard.That(() => propertyValidations.Count() == 1, $"Property {propertyName} must be configured exactly once.");
+            var propertyValidation = _propertyValidations.SingleOrDefault(f => f.PropertyName == propertyName);
+
+            if (propertyValidation == null)
+            {
+                HasErrors = false;
+                return new List<string>();
+            }
 
             var propertyValue = _viewModel.GetType().GetProperty(propertyName)?.GetValue(_viewModel);
-            var errorMessages = propertyValidations.Single().GetValidationErrorMessages(propertyValue);
-
+            var errorMessages = propertyValidation.GetValidationErrorMessages(propertyValue);
             HasErrors = errorMessages.Any();
             return errorMessages;
         }
