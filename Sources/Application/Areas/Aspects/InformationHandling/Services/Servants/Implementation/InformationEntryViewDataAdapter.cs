@@ -30,7 +30,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.S
                         return Brushes.DarkGreen;
                     }
 
-                case InformationEntryType.Exception:
+                case InformationEntryType.Error:
                     {
                         return Brushes.DarkRed;
                     }

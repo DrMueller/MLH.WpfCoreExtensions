@@ -22,9 +22,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models
             return new InformationEntry(string.Empty, InformationEntryType.Info, false, null);
         }
 
-        public static InformationEntry CreateException(Exception exception)
+        public static InformationEntry CreateError(Exception exception)
         {
-            return new InformationEntry(exception.Message, InformationEntryType.Exception, false, null);
+            return new InformationEntry(exception.Message, InformationEntryType.Error, false, null);
+        }
+
+        public static InformationEntry CreateError(string errorMessage)
+        {
+            return new InformationEntry(errorMessage, InformationEntryType.Error, false, null);
         }
 
         public static InformationEntry CreateInfo(string infoMessage, bool showBusy, int? displayLengthInSeconds = null)

@@ -11,9 +11,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.Aspects.Excepti
     [TestFixture]
     public class ExceptionHandlerUnitTests
     {
-        private ExceptionHandler _sut;
-        private Mock<ILoggingService> _loggingServiceMock;
         private Mock<IInformationPublisher> _informationPublisherMock;
+        private Mock<ILoggingService> _loggingServiceMock;
+        private ExceptionHandler _sut;
 
         [SetUp]
         public void Align()
@@ -38,7 +38,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.Aspects.Excepti
         }
 
         [Test]
-        public void HandlingException_PublishesExceptionOnce_WithExceptionMessageAsText()
+        public void HandlingException_PublishesErrorOnce_WithExceptionMessageAsText()
         {
             // Arrange
             const string ExcpetionText = "Hello Tra";
@@ -54,7 +54,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.Aspects.Excepti
             // Assert
             Assert.IsNotNull(actualInfoEntry);
             Assert.AreEqual(ExcpetionText, actualInfoEntry.Message);
-            Assert.AreEqual(InformationEntryType.Exception, actualInfoEntry.EntryType);
+            Assert.AreEqual(InformationEntryType.Error, actualInfoEntry.EntryType);
         }
     }
 }

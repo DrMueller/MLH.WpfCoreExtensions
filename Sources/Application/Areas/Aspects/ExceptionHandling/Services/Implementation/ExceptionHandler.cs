@@ -23,7 +23,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services.Imp
         {
             _loggingService.LogException(exception);
             var mostInnerException = exception.GetMostInnerException();
-            _informationPublisher.Publish(InformationEntry.CreateException(mostInnerException));
+            _informationPublisher.Publish(InformationEntry.CreateError(mostInnerException));
         }
     }
 }

@@ -4,6 +4,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models
     {
         Info,
         Success,
-        Exception
+        Error
     }
 }

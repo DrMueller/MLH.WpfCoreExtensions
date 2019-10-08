@@ -21,20 +21,20 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.Aspects.Informa
         }
 
         [Test]
-        public void CreatingExeption_CreatesExceptionEntry_WithExceptionMessage_AsMessage()
+        public void CreatingExeption_CreatesErrorEntry_WithExceptionMessage_AsMessage()
         {
             // Arrange
             const string Message = "Hello Exception";
             var exception = new ArgumentException(Message);
 
             // Act
-            var actualInfoEntry = InformationEntry.CreateException(exception);
+            var actualInfoEntry = InformationEntry.CreateError(exception);
 
             // Assert
             Assert.AreEqual(false, actualInfoEntry.ShowBusy);
             Assert.AreEqual(Message, actualInfoEntry.Message);
             Assert.IsNull(actualInfoEntry.DisplayLengthInSeconds);
-            Assert.AreEqual(InformationEntryType.Exception, actualInfoEntry.EntryType);
+            Assert.AreEqual(InformationEntryType.Error, actualInfoEntry.EntryType);
         }
 
         [Test]
