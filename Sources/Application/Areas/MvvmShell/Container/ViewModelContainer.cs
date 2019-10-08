@@ -5,6 +5,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 
@@ -18,6 +19,19 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
         private IViewModel _currentContent;
         private InformationEntryViewData _informationEntry;
         private IEnumerable<NavigationEntry> _navigationEntries;
+
+        public static ParametredRelayCommand CloseApp
+        {
+            get
+            {
+                return new ParametredRelayCommand(
+                    o =>
+                    {
+                        var closable = (IClosableView)o;
+                        closable.Close();
+                    });
+            }
+        }
 
         public IViewModel CurrentContent
         {
