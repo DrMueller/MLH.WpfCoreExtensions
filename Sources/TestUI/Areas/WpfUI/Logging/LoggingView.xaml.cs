@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Views.Interfaces;
 
-namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging.ViweModels.Logging
+namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging
 {
     /// <summary>
     /// Interaction logic for LoggingView.xaml

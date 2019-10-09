@@ -35,6 +35,17 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             }
         }
 
+        private ViewModelCommand ClearSearch
+        {
+            get
+            {
+                return new ViewModelCommand(
+                    "Clear search",
+                    new RelayCommand(
+                        () => _context.SearchExpression = GridSearchExpression.CreateEmpty()));
+            }
+        }
+
         private ViewModelCommand CreateIndividual
         {
             get
@@ -57,6 +68,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             }
         }
 
+        private bool IsIndividualSelected => _context.SelectedIndividual != null;
+
         private ViewModelCommand SearchMatthias2
         {
             get
@@ -67,19 +80,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
                         () => _context.SearchExpression = GridSearchExpression.CreateFrom("Matthias2")));
             }
         }
-
-        private ViewModelCommand ClearSearch
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Clear search",
-                    new RelayCommand(
-                        () => _context.SearchExpression = GridSearchExpression.CreateEmpty()));
-            }
-        }
-
-        private bool IsIndividualSelected => _context.SelectedIndividual != null;
 
         private ViewModelCommand UpdateIndividual
         {

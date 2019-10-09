@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:dp="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.AttachedProperties;assembly=Mmu.Mlh.WpfCoreExtensions"
+             xmlns:dp="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.AttachedProperties;assembly=Mmu.Mlh.WpfCoreExtensions"
              xmlns:controls="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.Controls;assembly=Mmu.Mlh.WpfCoreExtensions"
-             xmlns:grids="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids;assembly=Mmu.Mlh.WpfCoreExtensions"
+             xmlns:grids="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Components;assembly=Mmu.Mlh.WpfCoreExtensions"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -24,8 +24,9 @@
                 SearchExpression="{Binding SearchExpression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <grids:SearchGrid.DataGrid>
                     <DataGrid
+                        dp:DoubleClickBinding.DoubleClickCommand="{Binding UpdateIndividualCommand, Mode=OneWay}"
+                        dp:DoubleClickBinding.DoubleClickParameter="{Binding .}"
                         AutoGenerateColumns="False"
-                        dp:DataGridDoubleClickCommandBinding.DataGridDoubleClickCommand="{Binding UpdateIndividualCommand, Mode=OneWay}"
                         CanUserAddRows="False"
                         CanUserDeleteRows="False"
                         Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}}"

@@ -5,7 +5,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.ViewModelCommands;
 
-namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging.ViweModels.Logging
+namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging
 {
     public class CommandContainer : IViewModelCommandContainer<LoggingViewModel>
     {

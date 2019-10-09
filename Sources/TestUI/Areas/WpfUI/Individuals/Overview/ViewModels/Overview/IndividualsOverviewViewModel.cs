@@ -15,15 +15,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
     {
         private readonly CommandContainer _commandContainer;
         private readonly IIndividualOverviewViewService _overviewService;
+        private GridSearchExpression _searchExpression;
         public CommandsViewData Commands => _commandContainer.Commands;
         public string HeadingDescription => "Individuals Overview";
         public ObservableCollection<IndividualOverviewViewData> Individuals { get; private set; }
         public string NavigationDescription => "Individuals";
         public int NavigationSequence => 2;
-        public IndividualOverviewViewData SelectedIndividual { get; set; }
-        public ICommand UpdateIndividualCommand => _commandContainer.UpdateIndividualCommand;
-
-        private GridSearchExpression _searchExpression;
+        public Func<object, bool> OnFiltering => FilterIndividual;
 
         public GridSearchExpression SearchExpression
         {
@@ -40,6 +38,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             }
         }
 
+        public IndividualOverviewViewData SelectedIndividual { get; set; }
+        public ICommand UpdateIndividualCommand => _commandContainer.UpdateIndividualCommand;
+
         public IndividualsOverviewViewModel(
             CommandContainer commandContainer,
             IIndividualOverviewViewService overviewService)
@@ -54,8 +55,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             var individuals = await _overviewService.LoadAllAsync();
             Individuals = new ObservableCollection<IndividualOverviewViewData>(individuals);
         }
-
-        public Func<object, bool> OnFiltering => FilterIndividual;
 
         private bool FilterIndividual(object data)
         {

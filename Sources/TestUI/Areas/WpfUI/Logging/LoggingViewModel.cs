@@ -3,7 +3,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.Com
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
-namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging.ViweModels.Logging
+namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging
 {
     public class LoggingViewModel : ViewModelBase, INavigatableViewModel, IInitializableViewModel
     {

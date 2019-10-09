@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Models;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Components
 {
     /// <summary>
     /// Interaction logic for SearchGrid.xaml
