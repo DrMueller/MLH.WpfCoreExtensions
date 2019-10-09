@@ -76,9 +76,19 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewD
                 .ApplyRule(new FirstNameMustBeMatthiasRule())
                 .BuildForProperty()
                 .ForProperty(f => f.LastName)
-                .ApplyRule(ValidationRuleFactory.StringNotNullOrEmpty())
+                .ApplyRule(FirstNameEqualsLastName)
                 .BuildForProperty()
                 .Build();
+        }
+
+        private ValidationResult FirstNameEqualsLastName(object value)
+        {
+            if (FirstName != LastName)
+            {
+                return ValidationResult.CreateInvalid("Firstname must equal Lastname.");
+            }
+
+            return ValidationResult.CreateValid();
         }
     }
 }
