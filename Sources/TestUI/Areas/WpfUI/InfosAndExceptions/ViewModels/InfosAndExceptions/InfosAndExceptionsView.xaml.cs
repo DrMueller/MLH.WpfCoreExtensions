@@ -1,8 +1,7 @@
 ﻿using System.Windows.Controls;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Views.Interfaces;
-using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewModels.InfosAndExceptions;
 
-namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewModels
+namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewModels.InfosAndExceptions
 {
     /// <summary>
     /// Interaction logic for InfosAndExceptionsView.xaml

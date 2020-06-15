@@ -32,7 +32,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.AttachedPropertie
 
         public static object GetDoubleClickParameter(DependencyObject dependencyObject)
         {
-            return (ICommand)dependencyObject.GetValue(DoubleClickParameterProperty);
+            return dependencyObject.GetValue(DoubleClickParameterProperty);
         }
 
         public static void SetDoubleClickCommand(DependencyObject dependencyObject, ICommand value)

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.Domain.Models;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.Domain.Repositories;
-using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.ViewData;
+using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewData;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewServices.Implementation
 {
