@@ -14,21 +14,23 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMappi
             var dataTemplateXaml = CreateDataTemplateXaml(map.ViewModelType.Name, map.ViewType.Name);
 
             var result = (DataTemplate)XamlReader.Parse(dataTemplateXaml, context);
+
             return result;
         }
 
         private static ParserContext CreateContext(ViewViewModelMap map)
         {
             var context = new ParserContext { XamlTypeMapper = new XamlTypeMapper(Array.Empty<string>()) };
+
             context.XamlTypeMapper.AddMappingProcessingInstruction(
                 "vm",
-                map.ViewModelType.Namespace,
-                map.ViewModelType.Assembly.FullName);
+                map.ViewModelType.Namespace ?? string.Empty,
+                map.ViewModelType.Assembly.FullName ?? string.Empty);
 
             context.XamlTypeMapper.AddMappingProcessingInstruction(
                 "v",
-                map.ViewType.Namespace,
-                map.ViewType.Assembly.FullName);
+                map.ViewType.Namespace ?? string.Empty,
+                map.ViewType.Assembly.FullName ?? string.Empty);
 
             context.XmlnsDictionary.Add(string.Empty, "http://schemas.microsoft.com/winfx/2006/xaml/presentation");
             context.XmlnsDictionary.Add("x", "http://schemas.microsoft.com/winfx/2006/xaml");
@@ -42,6 +44,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMappi
         {
             const string XamlTemplate = "<DataTemplate DataType=\"{{x:Type vm:{0}}}\"><v:{1} /></DataTemplate>";
             var result = string.Format(CultureInfo.InvariantCulture, XamlTemplate, viewModelTypeName, viewTypeName);
+
             return result;
         }
     }

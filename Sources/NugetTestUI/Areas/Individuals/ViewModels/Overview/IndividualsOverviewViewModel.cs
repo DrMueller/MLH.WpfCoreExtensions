@@ -8,15 +8,16 @@ namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI.Areas.Individuals.ViewModels.Ove
     public class IndividualsOverviewViewModel : ViewModelBase, IInitializableViewModel, INavigatableViewModel
     {
         private readonly CommandContainer _commandContainer;
-        public CommandsViewData Commands => _commandContainer.Commands;
-        public string HeadingDescription => "Individuals Overview";
-        public string NavigationDescription => "Individuals";
-        public int NavigationSequence => 1;
 
         public IndividualsOverviewViewModel(CommandContainer commandContainer)
         {
             _commandContainer = commandContainer;
         }
+
+        public CommandsViewData Commands => _commandContainer.Commands;
+        public string HeadingDescription => "Individuals Overview";
+        public string NavigationDescription => "Individuals";
+        public int NavigationSequence => 1;
 
         public async Task InitializeAsync(params object[] initParams)
         {

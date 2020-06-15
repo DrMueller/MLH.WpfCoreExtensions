@@ -20,8 +20,7 @@
         <Setter Property="Padding" Value="10" />
     </Style>
 
-    <Style TargetType="Label" BasedOn="{StaticResource BaseStyle}">
-    </Style>
+    <Style TargetType="Label" BasedOn="{StaticResource BaseStyle}" />
 
     <Style TargetType="RadioButton" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -34,7 +33,8 @@
         <Setter Property="Height" Value="25" />
         <Style.Triggers>
             <Trigger Property="Validation.HasError" Value="true">
-                <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                <Setter Property="ToolTip"
+                        Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
             </Trigger>
         </Style.Triggers>
     </Style>

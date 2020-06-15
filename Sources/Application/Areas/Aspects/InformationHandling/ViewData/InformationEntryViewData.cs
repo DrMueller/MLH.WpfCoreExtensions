@@ -1,15 +1,10 @@
 using System.Windows.Media;
+using JetBrains.Annotations;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData
 {
     internal class InformationEntryViewData
     {
-        public static string BusyIndicatorSource => "/Mmu.Mlh.WpfCoreExtensions;component/Infrastructure/Assets/FA_Cog_Green.png";
-        public int? DisplayLengthInSeconds { get; }
-        public Brush Foreground { get; }
-        public string Message { get; }
-        public bool ShowBusyIndicator { get; }
-
         public InformationEntryViewData(
             string message,
             bool showBusyIndicator,
@@ -21,5 +16,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData
             Foreground = foreground;
             DisplayLengthInSeconds = displayLengthInSeconds;
         }
+
+        public static string BusyIndicatorSource => "/Mmu.Mlh.WpfCoreExtensions;component/Infrastructure/Assets/FA_Cog_Green.png";
+        public int? DisplayLengthInSeconds { get; }
+
+        [UsedImplicitly]
+        public Brush Foreground { get; }
+
+        public string Message { get; }
+        public bool ShowBusyIndicator { get; }
     }
 }

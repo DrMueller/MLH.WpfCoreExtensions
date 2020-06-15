@@ -25,11 +25,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
     {
         public AppRegistry()
         {
-            Scan(scanner =>
-            {
-                scanner.AssemblyContainingType<AppRegistry>();
-                scanner.WithDefaultConventions();
-            });
+            Scan(
+                scanner =>
+                {
+                    scanner.AssemblyContainingType<AppRegistry>();
+                    scanner.WithDefaultConventions();
+                });
 
             // Aspects
             For<IExceptionHandler>().Use<ExceptionHandler>().Singleton();

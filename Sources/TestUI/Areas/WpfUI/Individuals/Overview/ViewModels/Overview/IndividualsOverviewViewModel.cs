@@ -2,6 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
@@ -11,11 +12,21 @@ using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewServ
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.ViewModels.Overview
 {
+    [PublicAPI]
     public class IndividualsOverviewViewModel : ViewModelBase, INavigatableViewModel, IInitializableViewModel
     {
         private readonly CommandContainer _commandContainer;
         private readonly IIndividualOverviewViewService _overviewService;
         private GridSearchExpression _searchExpression;
+
+        public IndividualsOverviewViewModel(
+            CommandContainer commandContainer,
+            IIndividualOverviewViewService overviewService)
+        {
+            _commandContainer = commandContainer;
+            _overviewService = overviewService;
+        }
+
         public CommandsViewData Commands => _commandContainer.Commands;
         public string HeadingDescription => "Individuals Overview";
         public ObservableCollection<IndividualOverviewViewData> Individuals { get; private set; }
@@ -41,14 +52,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         public IndividualOverviewViewData SelectedIndividual { get; set; }
         public ICommand UpdateIndividualCommand => _commandContainer.UpdateIndividualCommand;
 
-        public IndividualsOverviewViewModel(
-            CommandContainer commandContainer,
-            IIndividualOverviewViewService overviewService)
-        {
-            _commandContainer = commandContainer;
-            _overviewService = overviewService;
-        }
-
         public async Task InitializeAsync(params object[] initParams)
         {
             await _commandContainer.InitializeAsync(this);
@@ -59,6 +62,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private bool FilterIndividual(object data)
         {
             var ind = (IndividualOverviewViewData)data;
+
             return SearchExpression.IsPartOf(ind.FormattedName) || SearchExpression.IsPartOf(ind.FormattedBirthdate);
         }
     }

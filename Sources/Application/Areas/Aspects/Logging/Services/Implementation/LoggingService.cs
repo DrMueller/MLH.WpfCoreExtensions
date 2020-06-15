@@ -5,16 +5,16 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services.Implementatio
 {
     internal class LoggingService : ILoggingService
     {
-        private static readonly ILogger Logger = LogManager.GetLogger(nameof(LoggingService));
-
-        public void LogInformation(string message)
-        {
-            Logger.Info(message);
-        }
+        private static readonly ILogger _logger = LogManager.GetLogger(nameof(LoggingService));
 
         public void LogException(Exception exception)
         {
-            Logger.Error(exception);
+            _logger.Error(exception);
+        }
+
+        public void LogInformation(string message)
+        {
+            _logger.Info(message);
         }
     }
 }

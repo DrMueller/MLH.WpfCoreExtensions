@@ -11,33 +11,23 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging
     {
         private readonly ILoggingService _loggingService;
 
-        public CommandsViewData Commands { get; private set; }
-
-        private static ViewModelCommand ThrowException
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Throw Exception",
-                    new RelayCommand(
-                        () => throw new ArgumentException("Hello Logging Test")));
-            }
-        }
-
-        private ViewModelCommand LogInfo
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Log Info",
-                    new RelayCommand(() => _loggingService.LogInformation("Hello Info")));
-            }
-        }
-
         public CommandContainer(ILoggingService loggingService)
         {
             _loggingService = loggingService;
         }
+
+        public CommandsViewData Commands { get; private set; }
+
+        private static ViewModelCommand ThrowException =>
+            new ViewModelCommand(
+                "Throw Exception",
+                new RelayCommand(
+                    () => throw new ArgumentException("Hello Logging Test")));
+
+        private ViewModelCommand LogInfo =>
+            new ViewModelCommand(
+                "Log Info",
+                new RelayCommand(() => _loggingService.LogInformation("Hello Info")));
 
         public Task InitializeAsync(LoggingViewModel context)
         {

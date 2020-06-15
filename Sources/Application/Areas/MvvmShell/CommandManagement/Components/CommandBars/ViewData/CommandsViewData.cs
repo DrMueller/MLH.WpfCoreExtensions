@@ -6,12 +6,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components
 {
     public class CommandsViewData
     {
-        public IReadOnlyCollection<IViewModelCommand> Entries { get; }
-
         public CommandsViewData(params IViewModelCommand[] entries)
         {
             Guard.ObjectNotNull(() => entries);
             Entries = entries;
         }
+
+        public IReadOnlyCollection<IViewModelCommand> Entries { get; }
     }
 }

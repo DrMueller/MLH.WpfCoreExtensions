@@ -26,13 +26,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         {
             var allIndividuals = await _individualRepository.LoadAllAsync();
             var result = allIndividuals.Select(Adapt).ToList();
+
             return result;
         }
 
-        private IndividualOverviewViewData Adapt(Individual individual)
+        private static IndividualOverviewViewData Adapt(Individual individual)
         {
             var formattedName = $"{individual.FirstName} {individual.LastName}";
             var formattedBirthdate = individual.Birthdate.ToString("dd.MM.yyyy");
+
             return new IndividualOverviewViewData(formattedName, formattedBirthdate, individual.Id);
         }
     }

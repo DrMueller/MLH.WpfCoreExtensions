@@ -9,39 +9,41 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Models;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Components
 {
-    /// <summary>
-    /// Interaction logic for SearchGrid.xaml
-    /// </summary>
-    public partial class SearchGrid : UserControl, INotifyPropertyChanged
+    public partial class SearchGrid : INotifyPropertyChanged
     {
         public static readonly DependencyProperty DataGridProperty =
             DependencyProperty.Register(
-            nameof(DataGrid),
-            typeof(DataGrid),
-            typeof(SearchGrid),
-            new PropertyMetadata(OnDataGridChanged));
+                nameof(DataGrid),
+                typeof(DataGrid),
+                typeof(SearchGrid),
+                new PropertyMetadata(OnDataGridChanged));
 
         public static readonly DependencyProperty FilterCallbackProperty =
             DependencyProperty.Register(
-            nameof(FilterCallback),
-            typeof(Func<object, bool>),
-            typeof(SearchGrid));
+                nameof(FilterCallback),
+                typeof(Func<object, bool>),
+                typeof(SearchGrid));
 
         public static readonly DependencyProperty GridEntriesProperty =
             DependencyProperty.Register(
-            nameof(GridEntries),
-            typeof(IEnumerable<object>),
-            typeof(SearchGrid),
-            new PropertyMetadata(OnGridEntriesChanged));
+                nameof(GridEntries),
+                typeof(IEnumerable<object>),
+                typeof(SearchGrid),
+                new PropertyMetadata(OnGridEntriesChanged));
 
         public static readonly DependencyProperty SearchExpressionProperty =
             DependencyProperty.Register(
-            nameof(SearchExpression),
-            typeof(GridSearchExpression),
-            typeof(SearchGrid),
-            new PropertyMetadata(OnSearchExpressionChanged));
+                nameof(SearchExpression),
+                typeof(GridSearchExpression),
+                typeof(SearchGrid),
+                new PropertyMetadata(OnSearchExpressionChanged));
 
         private ICollectionView _gridEntriesView;
+
+        public SearchGrid()
+        {
+            InitializeComponent();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -96,11 +98,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Compo
                 _gridEntriesView = value;
                 _gridEntriesView.Filter += OnFilterRequested;
             }
-        }
-
-        public SearchGrid()
-        {
-            InitializeComponent();
         }
 
         private static void OnDataGridChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

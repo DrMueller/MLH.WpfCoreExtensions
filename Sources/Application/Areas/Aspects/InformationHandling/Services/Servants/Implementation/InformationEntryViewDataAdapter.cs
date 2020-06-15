@@ -9,6 +9,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.S
         public InformationEntryViewData Adapt(InformationEntry infoEntry)
         {
             var brush = AdaptBrush(infoEntry.EntryType);
+
             return new InformationEntryViewData(
                 infoEntry.Message,
                 infoEntry.ShowBusy,
@@ -21,24 +22,24 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.S
             switch (entryType)
             {
                 case InformationEntryType.Info:
-                    {
-                        return Brushes.Black;
-                    }
+                {
+                    return Brushes.Black;
+                }
 
                 case InformationEntryType.Success:
-                    {
-                        return Brushes.DarkGreen;
-                    }
+                {
+                    return Brushes.DarkGreen;
+                }
 
                 case InformationEntryType.Error:
-                    {
-                        return Brushes.DarkRed;
-                    }
+                {
+                    return Brushes.DarkRed;
+                }
 
                 default:
-                    {
-                        return Brushes.Black;
-                    }
+                {
+                    return Brushes.Black;
+                }
             }
         }
     }

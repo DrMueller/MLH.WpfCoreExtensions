@@ -11,31 +11,29 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Settings.ViewModels.Setti
     {
         private readonly ISettingsProvider _settingsProvider;
         private SettingsViewModel _context;
-        public CommandsViewData Commands { get; private set; }
-
-        private ViewModelCommand ReadSettings
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Read Settings",
-                    new RelayCommand(() =>
-                    {
-                        var settings = _settingsProvider.ProvideSettings();
-                        _context.SettingsInfo = settings.Value1 + Environment.NewLine + settings.Value2;
-                    }));
-            }
-        }
 
         public CommandContainer(ISettingsProvider settingsProvider)
         {
             _settingsProvider = settingsProvider;
         }
 
+        public CommandsViewData Commands { get; private set; }
+
+        private ViewModelCommand ReadSettings =>
+            new ViewModelCommand(
+                "Read Settings",
+                new RelayCommand(
+                    () =>
+                    {
+                        var settings = _settingsProvider.ProvideSettings();
+                        _context.SettingsInfo = settings.Value1 + Environment.NewLine + settings.Value2;
+                    }));
+
         public Task InitializeAsync(SettingsViewModel context)
         {
             _context = context;
             Commands = new CommandsViewData(ReadSettings);
+
             return Task.CompletedTask;
         }
     }

@@ -49,6 +49,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.AttachedPropertie
         {
             var dependencyObject = sender as DependencyObject;
             var cmd = (ICommand)dependencyObject?.GetValue(DoubleClickCommandProperty);
+
             if (cmd == null)
             {
                 return;

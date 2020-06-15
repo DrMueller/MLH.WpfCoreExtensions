@@ -9,15 +9,16 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands
         private readonly Func<Task> _action;
         private readonly Func<bool> _canExecute;
 
-        public AsyncRelayCommand(Func<Task> action)
-            : this(action, null)
-        {
-        }
-
-        public AsyncRelayCommand(Func<Task> action, Func<bool> canExecute)
+        public AsyncRelayCommand(Func<Task> action, Func<bool> canExecute = null)
         {
             _canExecute = canExecute;
             _action = action;
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
         public bool CanExecute(object parameter)
@@ -28,12 +29,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands
         public async void Execute(object parameter)
         {
             await _action();
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add => CommandManager.RequerySuggested += value;
-            remove => CommandManager.RequerySuggested -= value;
         }
     }
 }

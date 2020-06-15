@@ -27,16 +27,18 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services
 
         private static void ConfigureViewModels(Container container, Assembly wpfAssembly)
         {
-            container.Configure(cfg =>
-            {
-                cfg.Scan(scanner =>
+            container.Configure(
+                cfg =>
                 {
-                    scanner.Assembly(wpfAssembly);
-                    scanner.AddAllTypesOf<IViewModel>();
-                });
+                    cfg.Scan(
+                        scanner =>
+                        {
+                            scanner.Assembly(wpfAssembly);
+                            scanner.AddAllTypesOf<IViewModel>();
+                        });
 
-                cfg.For<IViewModel>().Transient();
-            });
+                    cfg.For<IViewModel>().Transient();
+                });
         }
     }
 }

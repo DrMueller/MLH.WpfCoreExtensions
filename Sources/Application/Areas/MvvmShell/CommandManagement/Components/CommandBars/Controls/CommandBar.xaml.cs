@@ -1,13 +1,9 @@
 using System.Windows;
-using System.Windows.Controls;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.Controls
 {
-    /// <summary>
-    /// Interaction logic for CommandBar.xaml
-    /// </summary>
-    public partial class CommandBar : UserControl
+    public partial class CommandBar
     {
         public static readonly DependencyProperty CommandsProperty =
             DependencyProperty.Register(
@@ -16,15 +12,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components
                 typeof(CommandBar),
                 new PropertyMetadata(null, null));
 
+        public CommandBar()
+        {
+            InitializeComponent();
+        }
+
         public CommandsViewData Commands
         {
             get => (CommandsViewData)GetValue(CommandsProperty);
             set => SetValue(CommandsProperty, value);
-        }
-
-        public CommandBar()
-        {
-            InitializeComponent();
         }
     }
 }

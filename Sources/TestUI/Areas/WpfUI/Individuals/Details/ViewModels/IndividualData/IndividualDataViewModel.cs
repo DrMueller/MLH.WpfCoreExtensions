@@ -1,8 +1,10 @@
-﻿using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
+﻿using JetBrains.Annotations;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewData;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewModels.IndividualData
 {
+    [PublicAPI]
     public class IndividualDataViewModel : ViewModelBase
     {
         public IndividualDetailsViewData IndividualDetails { get; private set; }

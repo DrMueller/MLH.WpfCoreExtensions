@@ -8,15 +8,16 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands
         private readonly Action _action;
         private readonly Func<bool> _canExecute;
 
-        public RelayCommand(Action action)
-            : this(action, null)
-        {
-        }
-
-        public RelayCommand(Action action, Func<bool> canExecute)
+        public RelayCommand(Action action, Func<bool> canExecute = null)
         {
             _canExecute = canExecute;
             _action = action;
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
         public bool CanExecute(object parameter)
@@ -27,12 +28,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands
         public void Execute(object parameter)
         {
             _action();
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add => CommandManager.RequerySuggested += value;
-            remove => CommandManager.RequerySuggested -= value;
         }
     }
 }

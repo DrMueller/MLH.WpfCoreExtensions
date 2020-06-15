@@ -17,6 +17,19 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
         private readonly IIndividualDetailsViewService _detailsService;
         private readonly IViewModelFactory _viewModelFactory;
         private IndividualDetailsViewData _individualDetails;
+
+        public IndividualDetailsViewModel(
+            IViewModelFactory viewModelFactory,
+            CommandContainer commandContainer,
+            IIndividualDetailsViewService detailsService,
+            IndividualDataViewModel individualData)
+        {
+            _viewModelFactory = viewModelFactory;
+            _commandContainer = commandContainer;
+            _detailsService = detailsService;
+            IndividualData = individualData;
+        }
+
         public CommandsViewData Commands => _commandContainer.Commands;
 
         public string HeadingDescription { get; private set; }
@@ -35,29 +48,17 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
             }
         }
 
-        public IndividualDetailsViewModel(
-            IViewModelFactory viewModelFactory,
-            CommandContainer commandContainer,
-            IIndividualDetailsViewService detailsService,
-            IndividualDataViewModel individualData)
-        {
-            _viewModelFactory = viewModelFactory;
-            _commandContainer = commandContainer;
-            _detailsService = detailsService;
-            IndividualData = individualData;
-        }
-
         public async Task InitializeAsync(params object[] initParams)
         {
             var idMaybe = (Maybe<string>)initParams.First();
 
             await idMaybe.Evaluate(
-                whenSome: async id =>
+                async id =>
                 {
                     IndividualDetails = await _detailsService.LoadAsync(id);
                     HeadingDescription = "Edit Individual";
                 },
-                whenNone: async () =>
+                async () =>
                 {
                     IndividualDetails = await _viewModelFactory.CreateAsync<IndividualDetailsViewData>();
                     HeadingDescription = "New Individual";

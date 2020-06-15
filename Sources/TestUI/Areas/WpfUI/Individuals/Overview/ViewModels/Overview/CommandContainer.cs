@@ -19,77 +19,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private readonly IIndividualOverviewViewService _overviewService;
         private readonly IViewModelDisplayService _vmDisplayService;
         private IndividualsOverviewViewModel _context;
-        public CommandsViewData Commands { get; private set; }
-
-        public ICommand UpdateIndividualCommand
-        {
-            get
-            {
-                return new RelayCommand(
-                        async () =>
-                        {
-                            var idMaybe = Maybe.CreateSome(_context.SelectedIndividual.Id);
-                            await _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(idMaybe);
-                        },
-                        () => IsIndividualSelected);
-            }
-        }
-
-        private ViewModelCommand ClearSearch
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Clear search",
-                    new RelayCommand(
-                        () => _context.SearchExpression = GridSearchExpression.CreateEmpty()));
-            }
-        }
-
-        private ViewModelCommand CreateIndividual
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Create",
-                    new AsyncRelayCommand(() => _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(Maybe.CreateNone<string>())));
-            }
-        }
-
-        private ViewModelCommand DeleteIndividual
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Delete",
-                    new AsyncRelayCommand(
-                        DeleteIndividualAsync,
-                        () => IsIndividualSelected));
-            }
-        }
-
-        private bool IsIndividualSelected => _context.SelectedIndividual != null;
-
-        private ViewModelCommand SearchMatthias2
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Search Matthias2",
-                    new RelayCommand(
-                        () => _context.SearchExpression = GridSearchExpression.CreateFrom("Matthias2")));
-            }
-        }
-
-        private ViewModelCommand UpdateIndividual
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Update",
-                    UpdateIndividualCommand);
-            }
-        }
 
         public CommandContainer(
             IInformationPublisher informationPublisher,
@@ -100,6 +29,48 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             _overviewService = overviewService;
             _vmDisplayService = vmDisplayService;
         }
+
+        public CommandsViewData Commands { get; private set; }
+
+        public ICommand UpdateIndividualCommand =>
+            new RelayCommand(
+                async () =>
+                {
+                    var idMaybe = Maybe.CreateSome(_context.SelectedIndividual.Id);
+                    await _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(idMaybe);
+                },
+                () => IsIndividualSelected);
+
+        private ViewModelCommand ClearSearch =>
+            new ViewModelCommand(
+                "Clear search",
+                new RelayCommand(
+                    () => _context.SearchExpression = GridSearchExpression.CreateEmpty()));
+
+        private ViewModelCommand CreateIndividual =>
+            new ViewModelCommand(
+                "Create",
+                new AsyncRelayCommand(() => _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(Maybe.CreateNone<string>())));
+
+        private ViewModelCommand DeleteIndividual =>
+            new ViewModelCommand(
+                "Delete",
+                new AsyncRelayCommand(
+                    DeleteIndividualAsync,
+                    () => IsIndividualSelected));
+
+        private bool IsIndividualSelected => _context.SelectedIndividual != null;
+
+        private ViewModelCommand SearchMatthias2 =>
+            new ViewModelCommand(
+                "Search Matthias2",
+                new RelayCommand(
+                    () => _context.SearchExpression = GridSearchExpression.CreateFrom("Matthias2")));
+
+        private ViewModelCommand UpdateIndividual =>
+            new ViewModelCommand(
+                "Update",
+                UpdateIndividualCommand);
 
         public Task InitializeAsync(IndividualsOverviewViewModel context)
         {
@@ -119,7 +90,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             _informationPublisher.Publish(InformationEntry.CreateInfo($"Deleting Individual {_context.SelectedIndividual.FormattedName}..", true));
             await _overviewService.DeleteIndividualAsync(_context.SelectedIndividual.Id);
             _context.Individuals.Remove(_context.SelectedIndividual);
-            _informationPublisher.Publish(InformationEntry.CreateSuccess($"Individual deleted", false, 5));
+            _informationPublisher.Publish(InformationEntry.CreateSuccess("Individual deleted", false, 5));
         }
     }
 }

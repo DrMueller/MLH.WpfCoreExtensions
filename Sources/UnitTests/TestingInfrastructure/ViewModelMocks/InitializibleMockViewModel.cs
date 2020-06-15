@@ -13,6 +13,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingInfrastructure.ViewModelMoc
         {
             WasInitialized = true;
             InitParams = initParams;
+
             return Task.CompletedTask;
         }
     }

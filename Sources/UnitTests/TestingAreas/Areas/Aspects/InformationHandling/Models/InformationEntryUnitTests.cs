@@ -63,7 +63,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.Aspects.Informa
             const string Message = "Hello";
 
             // Act
-            var actualInfoEntry = InformationEntry.CreateSuccess(Message, ShowBusy, null);
+            var actualInfoEntry = InformationEntry.CreateSuccess(Message, ShowBusy);
 
             // Assert
             Assert.AreEqual(ShowBusy, actualInfoEntry.ShowBusy);

@@ -12,8 +12,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Ser
 {
     internal class NavigationEntryFactory : INavigationEntryFactory
     {
-        private readonly IViewModelFactory _viewModelFactory;
         private readonly IServiceLocator _serviceLocator;
+        private readonly IViewModelFactory _viewModelFactory;
         private readonly IViewModelDisplayService _vmDisplayService;
 
         public NavigationEntryFactory(

@@ -5,9 +5,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Mod
 {
     internal class NavigationEntry
     {
-        public ICommand NavigationCommand { get; }
-        public string NavigationDescription { get; }
-
         public NavigationEntry(ICommand navigationCommand, string navigationDescription)
         {
             Guard.ObjectNotNull(() => navigationCommand);
@@ -16,5 +13,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Mod
             NavigationCommand = navigationCommand;
             NavigationDescription = navigationDescription;
         }
+
+        public ICommand NavigationCommand { get; }
+        public string NavigationDescription { get; }
     }
 }

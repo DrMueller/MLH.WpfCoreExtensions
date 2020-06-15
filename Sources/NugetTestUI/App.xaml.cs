@@ -4,10 +4,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         protected override async void OnStartup(StartupEventArgs e)
         {

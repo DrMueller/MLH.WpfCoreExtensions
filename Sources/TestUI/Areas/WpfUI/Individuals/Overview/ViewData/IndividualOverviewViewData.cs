@@ -4,10 +4,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
 {
     public class IndividualOverviewViewData
     {
-        public string FormattedBirthdate { get; }
-        public string FormattedName { get; }
-        public string Id { get; }
-
         public IndividualOverviewViewData(string formattedName, string formattedBirthdate, string id)
         {
             Guard.StringNotNullOrEmpty(() => formattedName);
@@ -18,5 +14,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             Id = id;
             FormattedBirthdate = formattedBirthdate;
         }
+
+        public string FormattedBirthdate { get; }
+        public string FormattedName { get; }
+        public string Id { get; }
     }
 }

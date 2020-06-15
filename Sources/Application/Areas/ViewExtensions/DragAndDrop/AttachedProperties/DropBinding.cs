@@ -36,9 +36,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.DragAndDrop.AttachedPro
 
             uiElement.AllowDrop = true;
             uiElement.PreviewDragOver += (sender, e) =>
-                                         {
-                                             e.Handled = true;
-                                         };
+            {
+                e.Handled = true;
+            };
 
             if (args.OldValue == null && args.NewValue != null)
             {
@@ -54,6 +54,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.DragAndDrop.AttachedPro
         {
             var dependencyObject = sender as DependencyObject;
             var callback = (Action<DroppedFile>)dependencyObject?.GetValue(DropCommandProperty);
+
             if (callback == null)
             {
                 return;
@@ -65,6 +66,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.DragAndDrop.AttachedPro
             }
 
             var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
             if (!(files?.Any() ?? false))
             {
                 return;

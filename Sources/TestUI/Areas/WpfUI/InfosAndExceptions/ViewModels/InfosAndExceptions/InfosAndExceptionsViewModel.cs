@@ -9,6 +9,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewMo
     {
         private readonly CommandContainer _commandContainer;
 
+        public InfosAndExceptionsViewModel(CommandContainer commandContainer)
+        {
+            _commandContainer = commandContainer;
+        }
+
         public CommandsViewData Commands => _commandContainer.Commands;
 
         public string HeadingDescription => "Infos and Exceptions";
@@ -16,11 +21,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewMo
         public string NavigationDescription => "Infos";
 
         public int NavigationSequence => 3;
-
-        public InfosAndExceptionsViewModel(CommandContainer commandContainer)
-        {
-            _commandContainer = commandContainer;
-        }
 
         public async Task InitializeAsync(params object[] initParams)
         {

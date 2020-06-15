@@ -19,22 +19,19 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.Settings.Services.Impl
         public FileSystemSettings ProvideFileSystemSettings()
         {
             var fileSystemSettingsDto = _settingsFactory.CreateSettings<FileSystemSettingsDto>(
-                 "FileSystemSettings",
-                 string.Empty,
-                 GetCodeBasePath());
+                "FileSystemSettings",
+                string.Empty,
+                GetCodeBasePath());
 
-            return new FileSystemSettings
-            {
-                DirectoryPath = fileSystemSettingsDto.DirectoryPath
-            };
+            return new FileSystemSettings { DirectoryPath = fileSystemSettingsDto.DirectoryPath };
         }
 
         public AppSettings ProvideSettings()
         {
             var appSettingsDto = _settingsFactory.CreateSettings<AppSettingsDto>(
-                 "AppSettings",
-                 string.Empty,
-                 GetCodeBasePath());
+                "AppSettings",
+                string.Empty,
+                GetCodeBasePath());
 
             return new AppSettings(appSettingsDto.Value1, appSettingsDto.Value2);
         }

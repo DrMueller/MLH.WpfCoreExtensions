@@ -5,9 +5,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMappi
 {
     internal class ViewViewModelMap
     {
-        public Type ViewModelType { get; }
-        public Type ViewType { get; }
-
         public ViewViewModelMap(Type viewType, Type viewModelType)
         {
             Guard.ObjectNotNull(() => viewType);
@@ -16,5 +13,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMappi
             ViewModelType = viewModelType;
             ViewType = viewType;
         }
+
+        public Type ViewModelType { get; }
+        public Type ViewType { get; }
     }
 }

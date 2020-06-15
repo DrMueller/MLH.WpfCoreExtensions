@@ -3,12 +3,14 @@ using System.Collections;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
 {
+    [PublicAPI]
     public abstract class ValidatableViewModel<T> : ViewModelBase, INotifyDataErrorInfo, IInitializableViewModel
         where T : ValidatableViewModel<T>
     {
@@ -18,12 +20,16 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
 
         public bool HasErrors => _container.HasErrors;
 
-        public IEnumerable GetErrors(string propertyName) => _container.GetErrorMessages(propertyName);
+        public IEnumerable GetErrors(string propertyName)
+        {
+            return _container.GetErrorMessages(propertyName);
+        }
 
         public Task InitializeAsync(params object[] initParams)
         {
             var configBuilder = new ValidationConfigurationBuilder<T>(this);
             _container = ConfigureValidation(configBuilder);
+
             return OnInitializeAsync(initParams);
         }
 

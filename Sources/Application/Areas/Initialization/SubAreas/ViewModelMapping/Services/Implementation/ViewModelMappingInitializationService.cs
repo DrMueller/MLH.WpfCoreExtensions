@@ -36,6 +36,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMappi
         private void AddDataTemplate(IDictionary resourceDictionary, ViewViewModelMap map)
         {
             var dataTemplate = _dataTemplateFactory.CreateWithViewModelMappings(map);
+            if (dataTemplate.DataTemplateKey == null)
+            {
+                return;
+            }
+
             resourceDictionary.Add(dataTemplate.DataTemplateKey, dataTemplate);
         }
     }

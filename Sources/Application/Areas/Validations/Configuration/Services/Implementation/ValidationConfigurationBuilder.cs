@@ -23,6 +23,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services.Imp
         {
             var propertyValidations = _rulesBuilders.Select(f => f.BuildValidation()).ToList();
             var container = new ValidationContainer<T>(_viewModel, propertyValidations);
+
             return container;
         }
 
@@ -37,6 +38,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services.Imp
 
             var propertyName = propertyExpression.Member.Name;
             var rulesBuilder = _rulesBuilders.SingleOrDefault(f => f.PropertyName == propertyName);
+
             if (rulesBuilder == null)
             {
                 rulesBuilder = new PropertyRulesBuilder<T>(propertyName, this);

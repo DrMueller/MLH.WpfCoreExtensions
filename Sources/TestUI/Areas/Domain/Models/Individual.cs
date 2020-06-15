@@ -17,8 +17,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.Domain.Models
             Birthdate = birthdate;
         }
 
+        public DateTime Birthdate { get; }
+
         public string FirstName { get; }
         public string LastName { get; }
-        public DateTime Birthdate { get; }
     }
 }

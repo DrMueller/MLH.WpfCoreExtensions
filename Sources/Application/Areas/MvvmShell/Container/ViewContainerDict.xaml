@@ -45,6 +45,7 @@
                 <TextBlock Style="{StaticResource MainHeaderTextBlock}">
                     <TextBlock.Text>
                         <PriorityBinding>
+                            <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
                             <Binding Path="CurrentContent.HeadingDescription" />
                         </PriorityBinding>
                     </TextBlock.Text>
@@ -53,7 +54,8 @@
         </Border>
     </DataTemplate>
 
-    <Style TargetType="ListBoxItem" x:Key="MainNavigationContainerStyle" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+    <Style TargetType="ListBoxItem" x:Key="MainNavigationContainerStyle"
+           BasedOn="{StaticResource {x:Type ListBoxItem}}">
         <Setter Property="ap:EventCommandBinding.EventName" Value="PreviewMouseLeftButtonDown" />
         <Setter Property="ap:EventCommandBinding.Command" Value="{Binding NavigationCommand, Mode=OneWay}" />
     </Style>

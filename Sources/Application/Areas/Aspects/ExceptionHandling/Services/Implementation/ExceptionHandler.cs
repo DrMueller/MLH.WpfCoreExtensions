@@ -8,8 +8,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services.Imp
 {
     internal class ExceptionHandler : IExceptionHandler
     {
-        private readonly ILoggingService _loggingService;
         private readonly IInformationPublisher _informationPublisher;
+        private readonly ILoggingService _loggingService;
 
         public ExceptionHandler(
             ILoggingService loggingService,

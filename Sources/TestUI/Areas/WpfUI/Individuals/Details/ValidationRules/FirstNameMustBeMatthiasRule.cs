@@ -8,6 +8,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.Valid
         public ValidationResult Validate(object value)
         {
             var val = value?.ToString() ?? string.Empty;
+
             if (val != "Matthias")
             {
                 return ValidationResult.CreateInvalid("First name must be Matthias.");

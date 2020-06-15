@@ -11,6 +11,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI.Areas.Individuals.ViewModels.Ove
     {
         private readonly IViewModelDisplayService _vmDisplayService;
 
+        public CommandContainer(IViewModelDisplayService vmDisplayService)
+        {
+            _vmDisplayService = vmDisplayService;
+        }
+
         public CommandsViewData Commands { get; private set; }
 
         private ViewModelCommand NavigateToOrganisations
@@ -23,14 +28,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI.Areas.Individuals.ViewModels.Ove
             }
         }
 
-        public CommandContainer(IViewModelDisplayService vmDisplayService)
-        {
-            _vmDisplayService = vmDisplayService;
-        }
-
         public Task InitializeAsync(IndividualsOverviewViewModel context)
         {
             Commands = new CommandsViewData(NavigateToOrganisations);
+
             return Task.CompletedTask;
         }
     }

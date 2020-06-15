@@ -20,18 +20,23 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
         private InformationEntryViewData _informationEntry;
         private IEnumerable<NavigationEntry> _navigationEntries;
 
-        public static ParametredRelayCommand CloseApp
+        public ViewModelContainer(
+            IViewModelDisplayConfigurationService vmDisplayConfigService,
+            INavigationEntryFactory navigationEntryFactory,
+            IInformationSubscriptionService informationSubscriptionService)
         {
-            get
-            {
-                return new ParametredRelayCommand(
-                    o =>
-                    {
-                        var closable = (IClosableView)o;
-                        closable.Close();
-                    });
-            }
+            _vmDisplayConfigService = vmDisplayConfigService;
+            _navigationEntryFactory = navigationEntryFactory;
+            _informationSubscriptionService = informationSubscriptionService;
         }
+
+        public static ParametredRelayCommand CloseApp =>
+            new ParametredRelayCommand(
+                o =>
+                {
+                    var closable = (IClosableView)o;
+                    closable.Close();
+                });
 
         public IViewModel CurrentContent
         {
@@ -66,22 +71,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
             get => _navigationEntries;
             set
             {
-                if (value != _navigationEntries)
+                if (!Equals(value, _navigationEntries))
                 {
                     _navigationEntries = value;
                     OnPropertyChanged();
                 }
             }
-        }
-
-        public ViewModelContainer(
-            IViewModelDisplayConfigurationService vmDisplayConfigService,
-            INavigationEntryFactory navigationEntryFactory,
-            IInformationSubscriptionService informationSubscriptionService)
-        {
-            _vmDisplayConfigService = vmDisplayConfigService;
-            _navigationEntryFactory = navigationEntryFactory;
-            _informationSubscriptionService = informationSubscriptionService;
         }
 
         public async Task InitializeAsync()

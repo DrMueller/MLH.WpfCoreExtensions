@@ -14,6 +14,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMappi
             context.XmlnsDictionary.Add("x", "http://schemas.microsoft.com/winfx/2006/xaml");
 
             var result = (ResourceDictionary)XamlReader.Parse(XamlTemplate, context);
+
             return result;
         }
     }

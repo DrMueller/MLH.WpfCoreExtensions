@@ -9,14 +9,22 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var visibility = (Visibility)value;
-            return visibility == Visibility.Visible;
+            if (value == null)
+            {
+                return false;
+            }
+
+            return (Visibility)value == Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var b = (bool)value;
-            return b ? Visibility.Visible : Visibility.Collapsed;
+            if (value == null)
+            {
+                return false;
+            }
+
+            return (bool)value ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

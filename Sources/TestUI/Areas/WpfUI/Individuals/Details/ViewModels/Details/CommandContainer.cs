@@ -14,6 +14,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
         private readonly IViewModelDisplayService _vmDisplayService;
         private IndividualDetailsViewModel _context;
 
+        public CommandContainer(
+            IViewModelDisplayService vmDisplayService,
+            IIndividualDetailsViewService detailsService)
+        {
+            _vmDisplayService = vmDisplayService;
+            _detailsService = detailsService;
+        }
+
         public CommandsViewData Commands { get; private set; }
 
         private ViewModelCommand Cancel
@@ -32,20 +40,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
             {
                 return new ViewModelCommand(
                     "Save",
-                    new RelayCommand(async () =>
-                    {
-                        await _detailsService.SaveAsync(_context.IndividualDetails);
-                        await NavigateToOverviewAsync();
-                    }));
+                    new RelayCommand(
+                        async () =>
+                        {
+                            await _detailsService.SaveAsync(_context.IndividualDetails);
+                            await NavigateToOverviewAsync();
+                        }));
             }
-        }
-
-        public CommandContainer(
-            IViewModelDisplayService vmDisplayService,
-            IIndividualDetailsViewService detailsService)
-        {
-            _vmDisplayService = vmDisplayService;
-            _detailsService = detailsService;
         }
 
         public Task InitializeAsync(IndividualDetailsViewModel context)

@@ -10,11 +10,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models
 {
     public class WindowConfiguration
     {
-        public string AppTitle { get; }
-        public int WindowWidth { get; }
-        public int WindowHeight { get; }
-        public ImageSource Icon { get; }
-
         public WindowConfiguration(
             ImageSource icon,
             string appTitle,
@@ -29,6 +24,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models
             WindowHeight = windowHeight;
             Icon = icon;
         }
+
+        public string AppTitle { get; }
+        public ImageSource Icon { get; }
+        public int WindowHeight { get; }
+        public int WindowWidth { get; }
 
         public static WindowConfiguration CreateWithDefaultIcon(
             Assembly wpfAssembly,
@@ -49,6 +49,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models
             var iconPath = Path.Combine(assemblyBasePath, "Infrastructure", "Assets", "App.ico");
             var iconUri = new Uri(iconPath);
             var icon = new BitmapImage(iconUri);
+
             return icon;
         }
     }

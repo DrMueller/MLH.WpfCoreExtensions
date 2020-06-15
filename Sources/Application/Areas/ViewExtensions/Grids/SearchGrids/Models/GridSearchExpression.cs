@@ -4,12 +4,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Model
 {
     public class GridSearchExpression
     {
-        internal string SearchText { get; }
-
         internal GridSearchExpression(string searchText)
         {
             SearchText = searchText;
         }
+
+        internal string SearchText { get; }
 
         public static GridSearchExpression CreateEmpty()
         {
@@ -29,6 +29,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Model
             }
 
             var valueStr = value.ToString();
+
+            if (string.IsNullOrEmpty(valueStr))
+            {
+                return true;
+            }
+
             return valueStr.Contains(SearchText, StringComparison.OrdinalIgnoreCase);
         }
     }

@@ -1,13 +1,9 @@
 using System.Windows;
-using System.Windows.Controls;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.ViewModelCommands;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandButtons
 {
-    /// <summary>
-    /// Interaction logic for CommandButton.xaml
-    /// </summary>
-    public partial class CommandButton : UserControl
+    public partial class CommandButton
     {
         public static readonly DependencyProperty ViewModelCommandProperty =
             DependencyProperty.Register(
@@ -16,15 +12,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components
                 typeof(CommandButton),
                 new PropertyMetadata(null, null));
 
+        public CommandButton()
+        {
+            InitializeComponent();
+        }
+
         public ViewModelCommand ViewModelCommand
         {
             get => (ViewModelCommand)GetValue(ViewModelCommandProperty);
             set => SetValue(ViewModelCommandProperty, value);
-        }
-
-        public CommandButton()
-        {
-            InitializeComponent();
         }
     }
 }
