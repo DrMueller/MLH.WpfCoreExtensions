@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models;
@@ -29,6 +30,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.I
             CheckAndPublish();
         }
 
+        [SuppressMessage("Usage", "VSTHRD110:Observe result of async calls", Justification = "Fire and forget")]
         private void CheckAndPublish()
         {
             if (!_informationEntriesQueue.Any() || _publishingInProgress)

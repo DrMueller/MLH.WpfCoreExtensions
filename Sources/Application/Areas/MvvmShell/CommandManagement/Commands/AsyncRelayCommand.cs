@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -26,6 +27,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands
             return _canExecute?.Invoke() ?? true;
         }
 
+        [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Need to use ICommand interface")]
         public async void Execute(object parameter)
         {
             await _action();

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
@@ -47,6 +48,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Ser
             return result;
         }
 
+        [SuppressMessage("Usage", "VSTHRD110:Observe result of async calls", Justification = "Need to use ICommand interface")]
         private NavigationEntry CreateNavigationEntry(INavigatableViewModel viewModel)
         {
             var navigationCommand = new RelayCommand(

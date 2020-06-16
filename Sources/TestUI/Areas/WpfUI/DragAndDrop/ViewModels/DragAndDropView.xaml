@@ -9,6 +9,6 @@
     <Grid>
         <TextBox
             Text="{Binding FilePath, Mode=TwoWay}"
-            ap:DropBinding.DropCommand="{Binding FileDropped, Mode=OneWay}" />
+            ap:DropBinding.Dropped="{Binding FileDropped, Mode=OneWay}" />
     </Grid>
 </UserControl>

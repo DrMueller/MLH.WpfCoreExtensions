@@ -7,23 +7,23 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.DragAndDrop.AttachedPro
 {
     public static class DropBinding
     {
-        public static readonly DependencyProperty DropCommandProperty = DependencyProperty.RegisterAttached(
-            "DropCommand",
+        public static readonly DependencyProperty DroppedProperty = DependencyProperty.RegisterAttached(
+            "Dropped",
             typeof(Action<DroppedFile>),
             typeof(DropBinding),
-            new PropertyMetadata(DropCommandPropertyChanged));
+            new PropertyMetadata(DroppedPropertyChanged));
 
-        public static Action<DroppedFile> GetDropCommand(DependencyObject dependencyObject)
+        public static Action<DroppedFile> GetDropped(DependencyObject dependencyObject)
         {
-            return (Action<DroppedFile>)dependencyObject.GetValue(DropCommandProperty);
+            return (Action<DroppedFile>)dependencyObject.GetValue(DroppedProperty);
         }
 
-        public static void SetDropCommand(DependencyObject dependencyObject, Action<DroppedFile> value)
+        public static void SetDropped(DependencyObject dependencyObject, Action<DroppedFile> value)
         {
-            dependencyObject.SetValue(DropCommandProperty, value);
+            dependencyObject.SetValue(DroppedProperty, value);
         }
 
-        private static void DropCommandPropertyChanged(
+        private static void DroppedPropertyChanged(
             DependencyObject dependencyObject,
             DependencyPropertyChangedEventArgs args)
         {
@@ -53,7 +53,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.DragAndDrop.AttachedPro
         private static void UiElement_Drop(object sender, DragEventArgs e)
         {
             var dependencyObject = sender as DependencyObject;
-            var callback = (Action<DroppedFile>)dependencyObject?.GetValue(DropCommandProperty);
+            var callback = (Action<DroppedFile>)dependencyObject?.GetValue(DroppedProperty);
 
             if (callback == null)
             {

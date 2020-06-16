@@ -1,13 +1,13 @@
-﻿using System.Windows;
-using JetBrains.Annotations;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI
 {
-    [PublicAPI]
     public partial class App
     {
+        [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "Need to use Application interface")]
         protected override async void OnStartup(StartupEventArgs e)
         {
             var assembly = typeof(App).Assembly;
