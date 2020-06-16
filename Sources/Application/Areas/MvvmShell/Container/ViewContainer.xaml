@@ -26,7 +26,7 @@
         <KeyBinding
             Command="{Binding Path=CloseApp, Mode=OneTime}"
             CommandParameter="{Binding ElementName=ViewContainerWindow}"
-            Key="Esc" />
+            Key="Escape" />
     </Window.InputBindings>
 
     <Grid Style="{StaticResource ContainerGrid}">

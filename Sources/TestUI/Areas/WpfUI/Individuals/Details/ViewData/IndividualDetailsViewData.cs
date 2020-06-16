@@ -19,11 +19,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewD
             get => _birthdate;
             set
             {
-                if (_birthdate != value)
+                if (_birthdate == value)
                 {
-                    _birthdate = value;
-                    OnPropertyChanged();
+                    return;
                 }
+
+                _birthdate = value;
+                OnPropertyChanged();
             }
         }
 
@@ -32,11 +34,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewD
             get => _firstName;
             set
             {
-                if (_firstName != value)
+                if (_firstName == value)
                 {
-                    _firstName = value;
-                    OnPropertyChanged();
+                    return;
                 }
+
+                _firstName = value;
+                OnPropertyChanged();
             }
         }
 
@@ -45,11 +49,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewD
             get => _id;
             set
             {
-                if (_id != value)
+                if (_id == value)
                 {
-                    _id = value;
-                    OnPropertyChanged();
+                    return;
                 }
+
+                _id = value;
+                OnPropertyChanged();
             }
         }
 
@@ -58,11 +64,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewD
             get => _lastName;
             set
             {
-                if (_lastName != value)
+                if (_lastName == value)
                 {
-                    _lastName = value;
-                    OnPropertyChanged();
+                    return;
                 }
+
+                _lastName = value;
+                OnPropertyChanged();
             }
         }
 

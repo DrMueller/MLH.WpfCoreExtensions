@@ -39,10 +39,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
             await _viewModelContainer.InitializeAsync();
             _infoPublisher.Publish(InformationEntry.CreateInfo("Here could be your text..", false));
 
-            if (afterInitializedCallback != null)
-            {
-                afterInitializedCallback.Invoke(_serviceLocator);
-            }
+            afterInitializedCallback?.Invoke(_serviceLocator);
 
             ShowApp(config);
         }

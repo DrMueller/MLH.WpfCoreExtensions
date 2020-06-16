@@ -40,11 +40,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
             get => _individualDetails;
             set
             {
-                if (_individualDetails != value)
+                if (_individualDetails == value)
                 {
-                    _individualDetails = value;
-                    OnPropertyChanged();
+                    return;
                 }
+
+                _individualDetails = value;
+                OnPropertyChanged();
             }
         }
 

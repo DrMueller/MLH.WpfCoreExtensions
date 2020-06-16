@@ -25,7 +25,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services
             await initService.StartAppAsync(config, afterInitializedCallback);
         }
 
-        private static void ConfigureViewModels(Container container, Assembly wpfAssembly)
+        private static void ConfigureViewModels(IContainer container, Assembly wpfAssembly)
         {
             container.Configure(
                 cfg =>

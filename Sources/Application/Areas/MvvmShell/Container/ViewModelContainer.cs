@@ -58,11 +58,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
             get => _informationEntry;
             set
             {
-                if (value != _informationEntry)
+                if (value == _informationEntry)
                 {
-                    _informationEntry = value;
-                    OnPropertyChanged();
+                    return;
                 }
+
+                _informationEntry = value;
+                OnPropertyChanged();
             }
         }
 
@@ -71,11 +73,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
             get => _navigationEntries;
             set
             {
-                if (!Equals(value, _navigationEntries))
+                if (Equals(value, _navigationEntries))
                 {
-                    _navigationEntries = value;
-                    OnPropertyChanged();
+                    return;
                 }
+
+                _navigationEntries = value;
+                OnPropertyChanged();
             }
         }
 

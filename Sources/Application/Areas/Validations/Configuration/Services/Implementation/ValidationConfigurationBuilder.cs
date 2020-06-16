@@ -39,11 +39,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services.Imp
             var propertyName = propertyExpression.Member.Name;
             var rulesBuilder = _rulesBuilders.SingleOrDefault(f => f.PropertyName == propertyName);
 
-            if (rulesBuilder == null)
+            if (rulesBuilder != null)
             {
-                rulesBuilder = new PropertyRulesBuilder<T>(propertyName, this);
-                _rulesBuilders.Add(rulesBuilder);
+                return rulesBuilder;
             }
+
+            rulesBuilder = new PropertyRulesBuilder<T>(propertyName, this);
+            _rulesBuilders.Add(rulesBuilder);
 
             return rulesBuilder;
         }
