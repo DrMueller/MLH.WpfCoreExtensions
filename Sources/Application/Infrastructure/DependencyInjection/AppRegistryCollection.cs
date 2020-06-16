@@ -1,4 +1,6 @@
-﻿using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services;
+﻿using Lamar;
+using Microsoft.Extensions.DependencyInjection;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Implementation;
@@ -17,18 +19,17 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.S
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation;
-using StructureMap;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
 {
-    public class AppRegistry : Registry
+    public class AppRegistryCollection : ServiceRegistry
     {
-        public AppRegistry()
+        public AppRegistryCollection()
         {
             Scan(
                 scanner =>
                 {
-                    scanner.AssemblyContainingType<AppRegistry>();
+                    scanner.AssemblyContainingType<AppRegistryCollection>();
                     scanner.WithDefaultConventions();
                 });
 
@@ -52,7 +53,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
             For<IDataTemplateFactory>().Use<DataTemplateFactory>().Singleton();
 
             // MvvmShell
-            For<ViewModelContainer>().Singleton();
+            this.AddSingleton<ViewModelContainer>();
             For<IViewModelDisplayConfigurationService>().Use<ViewModelDisplayConfigurationService>().Singleton();
             For<IViewModelDisplayService>().Use<ViewModelDisplayService>().Singleton();
             For<IViewModelFactory>().Use<ViewModelFactory>().Singleton();

@@ -1,9 +1,11 @@
 ﻿using System.Windows;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI
 {
+    [PublicAPI]
     public partial class App
     {
         protected override async void OnStartup(StartupEventArgs e)

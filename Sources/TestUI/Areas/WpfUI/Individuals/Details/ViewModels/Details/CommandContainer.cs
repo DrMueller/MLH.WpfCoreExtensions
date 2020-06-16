@@ -45,7 +45,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
                         {
                             await _detailsService.SaveAsync(_context.IndividualDetails);
                             await NavigateToOverviewAsync();
-                        }));
+                        }, () => !_context.IndividualDetails.HasErrors));
             }
         }
 
