@@ -8,14 +8,18 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
     {
         public WpfAppRegistryCollection()
         {
+            // This more of a convenience feature, therefore if the registry is loaded with the InitializeApplication method called, the WpfAssembly is null
+            if (WpfAssembly == null)
+            {
+                return;
+            }
+
             Scan(
                 scanner =>
                 {
                     scanner.Assembly(WpfAssembly);
                     scanner.AddAllTypesOf<IViewModel>();
                 });
-
-            //this.AddTransient<IViewModel>();
         }
 
         internal static Assembly WpfAssembly { get; set; }
