@@ -11,7 +11,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
 {
-    internal sealed class ViewModelContainer : ViewModelBase
+    internal sealed class ViewModelContainer : ViewModelBase, IViewModelContainer
     {
         private readonly IInformationSubscriptionService _informationSubscriptionService;
         private readonly INavigationEntryFactory _navigationEntryFactory;

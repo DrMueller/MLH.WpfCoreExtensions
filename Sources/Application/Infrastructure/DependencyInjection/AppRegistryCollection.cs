@@ -1,5 +1,4 @@
 ﻿using Lamar;
-using Microsoft.Extensions.DependencyInjection;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
@@ -53,7 +52,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
             For<IDataTemplateFactory>().Use<DataTemplateFactory>().Singleton();
 
             // MvvmShell
-            this.AddSingleton<ViewModelContainer>();
+            For<IViewModelContainer>().Use<ViewModelContainer>().Singleton();
             For<IViewModelDisplayConfigurationService>().Use<ViewModelDisplayConfigurationService>().Singleton();
             For<IViewModelDisplayService>().Use<ViewModelDisplayService>().Singleton();
             For<IViewModelFactory>().Use<ViewModelFactory>().Singleton();

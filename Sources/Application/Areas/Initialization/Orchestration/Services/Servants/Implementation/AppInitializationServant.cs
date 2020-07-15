@@ -15,12 +15,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
         private readonly IExceptionInitializationService _exceptionInitializationService;
         private readonly IInformationPublisher _infoPublisher;
         private readonly IServiceLocator _serviceLocator;
-        private readonly ViewModelContainer _viewModelContainer;
+        private readonly IViewModelContainer _viewModelContainer;
         private readonly IViewModelMappingInitializationService _viewModelMappingInitService;
 
         public AppInitializationServant(
             IViewModelMappingInitializationService viewModelMappingInitService,
-            ViewModelContainer viewModelContainer,
+            IViewModelContainer viewModelContainer,
             IExceptionInitializationService exceptionInitializationService,
             IInformationPublisher infoPublisher,
             IServiceLocator serviceLocator)
