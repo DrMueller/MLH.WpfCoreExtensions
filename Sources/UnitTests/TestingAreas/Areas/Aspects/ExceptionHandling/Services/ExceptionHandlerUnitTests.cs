@@ -1,7 +1,7 @@
 ﻿using System;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services.Implementation;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services;
 using Moq;
 using NUnit.Framework;

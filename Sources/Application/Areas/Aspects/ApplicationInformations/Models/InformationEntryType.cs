@@ -1,4 +1,4 @@
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models
 {
     public enum InformationEntryType
     {

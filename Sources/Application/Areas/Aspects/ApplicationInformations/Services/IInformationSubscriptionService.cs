@@ -1,7 +1,7 @@
 using System;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewData;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services
 {
     internal interface IInformationSubscriptionService
     {

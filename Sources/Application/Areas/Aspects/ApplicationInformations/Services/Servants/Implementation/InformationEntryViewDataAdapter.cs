@@ -1,8 +1,8 @@
 using System.Windows.Media;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewData;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Servants.Implementation
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services.Servants.Implementation
 {
     internal class InformationEntryViewDataAdapter : IInformationEntryViewDataAdapter
     {

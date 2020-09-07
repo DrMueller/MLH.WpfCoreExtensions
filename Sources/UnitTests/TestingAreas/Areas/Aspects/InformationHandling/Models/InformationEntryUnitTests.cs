@@ -1,5 +1,5 @@
 ﻿using System;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models;
 using NUnit.Framework;
 
 namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.Aspects.InformationHandling.Models

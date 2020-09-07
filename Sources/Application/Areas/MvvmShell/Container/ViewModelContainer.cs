@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;

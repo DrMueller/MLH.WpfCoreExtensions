@@ -1,10 +1,10 @@
 ﻿using Lamar;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services.Servants;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services.Servants.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services.Implementation;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Implementation;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Servants;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Servants.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants;

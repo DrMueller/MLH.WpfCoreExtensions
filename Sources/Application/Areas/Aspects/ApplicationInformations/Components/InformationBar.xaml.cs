@@ -1,7 +1,7 @@
 using System.Windows;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewData;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Components
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Components
 {
     internal partial class InformationBar
     {

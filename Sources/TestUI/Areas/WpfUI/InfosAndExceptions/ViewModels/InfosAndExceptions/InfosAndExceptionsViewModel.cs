@@ -1,13 +1,17 @@
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
+using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.InformationGrids.ViewData;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewModels.InfosAndExceptions
 {
     public class InfosAndExceptionsViewModel : ViewModelBase, IInitializableViewModel, INavigatableViewModel
     {
         private readonly CommandContainer _commandContainer;
+
+        public ObservableCollection<InformationGridEntryViewData> InformationEntries { get; } = new ObservableCollection<InformationGridEntryViewData>();
 
         public InfosAndExceptionsViewModel(CommandContainer commandContainer)
         {

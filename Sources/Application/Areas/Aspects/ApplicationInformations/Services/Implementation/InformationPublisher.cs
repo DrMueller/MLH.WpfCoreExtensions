@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Servants;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services.Servants;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewData;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services.Implementation
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services.Implementation
 {
     internal class InformationPublisher : IInformationPublisher
     {

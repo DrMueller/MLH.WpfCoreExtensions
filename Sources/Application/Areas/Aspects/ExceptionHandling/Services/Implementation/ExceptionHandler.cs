@@ -1,7 +1,7 @@
 using System;
 using Mmu.Mlh.LanguageExtensions.Areas.Exceptions;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Models;
-using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services.Implementation

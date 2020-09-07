@@ -1,7 +1,7 @@
 using System.Windows.Media;
 using JetBrains.Annotations;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.InformationHandling.ViewData
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewData
 {
     internal class InformationEntryViewData
     {
