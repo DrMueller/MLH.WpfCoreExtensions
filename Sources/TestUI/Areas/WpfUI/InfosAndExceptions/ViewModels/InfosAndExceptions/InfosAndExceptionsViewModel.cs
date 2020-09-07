@@ -13,8 +13,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewMo
     {
         private readonly CommandContainer _commandContainer;
 
-        public ObservableCollection<InformationGridEntryViewData> InformationEntries { get; } = new ObservableCollection<InformationGridEntryViewData>();
-
         public InfosAndExceptionsViewModel(CommandContainer commandContainer)
         {
             _commandContainer = commandContainer;
@@ -23,6 +21,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewMo
         public CommandsViewData Commands => _commandContainer.Commands;
 
         public string HeadingDescription => "Infos and Exceptions";
+
+        public ObservableCollection<InformationGridEntryViewData> InformationEntries { get; } = new ObservableCollection<InformationGridEntryViewData>();
 
         public string NavigationDescription => "Infos";
 
