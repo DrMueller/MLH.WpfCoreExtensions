@@ -30,9 +30,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
             {
                 return new ViewModelCommand(
                     "Cancel",
-#pragma warning disable VSTHRD101 // Avoid unsupported async delegates
-                    new RelayCommand(async () => await NavigateToOverviewAsync()));
-#pragma warning restore VSTHRD101 // Avoid unsupported async delegates
+                    new AsyncRelayCommand(async () => await NavigateToOverviewAsync()));
             }
         }
 
@@ -42,15 +40,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
             {
                 return new ViewModelCommand(
                     "Save",
-                    new RelayCommand(
-#pragma warning disable VSTHRD101 // Avoid unsupported async delegates
+                    new AsyncRelayCommand(
                         async () =>
                         {
                             await _detailsService.SaveAsync(_context.IndividualDetails);
                             await NavigateToOverviewAsync();
                         },
                         () => !_context.IndividualDetails.HasErrors));
-#pragma warning restore VSTHRD101 // Avoid unsupported async delegates
             }
         }
 
