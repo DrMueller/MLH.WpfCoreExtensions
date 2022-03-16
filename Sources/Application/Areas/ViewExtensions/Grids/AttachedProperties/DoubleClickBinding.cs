@@ -1,16 +1,23 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using JetBrains.Annotations;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.AttachedProperties
 {
+    [PublicAPI]
     public static class DoubleClickBinding
     {
-        public static readonly DependencyProperty DoubleClickCommandProperty = DependencyProperty.RegisterAttached("DoubleClickCommand", typeof(ICommand), typeof(DoubleClickBinding), new PropertyMetadata(AttachOrRemoveDataGridDoubleClickEvent));
+        public static readonly DependencyProperty DoubleClickCommandProperty =
+            DependencyProperty.RegisterAttached("DoubleClickCommand", typeof(ICommand), typeof(DoubleClickBinding),
+                new PropertyMetadata(AttachOrRemoveDataGridDoubleClickEvent));
 
-        public static readonly DependencyProperty DoubleClickParameterProperty = DependencyProperty.RegisterAttached("DoubleClickParameter", typeof(object), typeof(DoubleClickBinding), new PropertyMetadata(AttachOrRemoveDataGridDoubleClickEvent));
+        public static readonly DependencyProperty DoubleClickParameterProperty =
+            DependencyProperty.RegisterAttached("DoubleClickParameter", typeof(object), typeof(DoubleClickBinding),
+                new PropertyMetadata(AttachOrRemoveDataGridDoubleClickEvent));
 
-        public static void AttachOrRemoveDataGridDoubleClickEvent(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
+        public static void AttachOrRemoveDataGridDoubleClickEvent(DependencyObject dependencyObject,
+            DependencyPropertyChangedEventArgs args)
         {
             if (dependencyObject is DataGrid dataGrid)
             {

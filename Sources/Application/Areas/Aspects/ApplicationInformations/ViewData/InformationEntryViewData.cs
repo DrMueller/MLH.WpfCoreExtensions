@@ -17,7 +17,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewDa
             DisplayLengthInSeconds = displayLengthInSeconds;
         }
 
-        public static string BusyIndicatorSource => "/Mmu.Mlh.WpfCoreExtensions;component/Infrastructure/Assets/FA_Cog_Green.png";
+        public static string BusyIndicatorSource =>
+            "/Mmu.Mlh.WpfCoreExtensions;component/Infrastructure/Assets/FA_Cog_Green.png";
+
         public int? DisplayLengthInSeconds { get; }
 
         [UsedImplicitly]

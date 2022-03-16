@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation
 {
+    [UsedImplicitly]
     internal class ViewModelFactory : IViewModelFactory
     {
         private readonly IServiceLocator _serviceLocator;

@@ -1,8 +1,10 @@
 using System.Windows;
 using System.Windows.Markup;
+using JetBrains.Annotations;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Servants.Implementation
 {
+    [UsedImplicitly]
     internal class ResourceDictionaryFactory : IResourceDictionaryFactory
     {
         public ResourceDictionary CreateEmpty()

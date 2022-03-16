@@ -1,9 +1,11 @@
 ﻿using System.Reflection;
+using JetBrains.Annotations;
 using Lamar;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
 {
+    [UsedImplicitly]
     public class WpfAppRegistryCollection : ServiceRegistry
     {
         public WpfAppRegistryCollection()

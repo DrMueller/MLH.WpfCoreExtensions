@@ -2,10 +2,12 @@ using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Markup;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Models;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Servants.Implementation
 {
+    [UsedImplicitly]
     internal class DataTemplateFactory : IDataTemplateFactory
     {
         public DataTemplate CreateWithViewModelMappings(ViewViewModelMap map)

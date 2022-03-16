@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.ViewModelCommands;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.AttachedProperties
 {
+    [PublicAPI]
     public static class CommandBinding
     {
         public static readonly DependencyProperty ViewModelCommandProperty =

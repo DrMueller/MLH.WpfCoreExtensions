@@ -1,10 +1,12 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Models
 {
+    [PublicAPI]
     public class GridSearchExpression
     {
-        internal GridSearchExpression(string searchText)
+        private GridSearchExpression(string searchText)
         {
             SearchText = searchText;
         }

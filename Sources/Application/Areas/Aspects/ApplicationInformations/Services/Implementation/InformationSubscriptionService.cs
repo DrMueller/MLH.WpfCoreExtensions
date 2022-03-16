@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewData;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services.Implementation
 {
+    [UsedImplicitly]
     internal class InformationSubscriptionService : IInformationSubscriptionService
     {
-        private readonly List<Action<InformationEntryViewData>> _callbacks = new List<Action<InformationEntryViewData>>();
+        private readonly List<Action<InformationEntryViewData>> _callbacks =
+            new List<Action<InformationEntryViewData>>();
 
         public void OnInformationReceived(InformationEntryViewData data)
         {

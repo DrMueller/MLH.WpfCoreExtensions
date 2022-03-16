@@ -7,7 +7,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged<T>(T newValue, ref T oldValue, [CallerMemberName] string propertyName = null)
+        public void PublishPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected virtual void OnPropertyChanged<T>(T newValue, ref T oldValue,
+            [CallerMemberName] string propertyName = null)
         {
             if (Equals(newValue, oldValue))
             {
@@ -16,11 +22,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels
 
             oldValue = newValue;
             PublishPropertyChanged(propertyName);
-        }
-
-        public void PublishPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

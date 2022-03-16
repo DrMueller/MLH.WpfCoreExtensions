@@ -1,8 +1,10 @@
 using System.Windows;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.ViewModelCommands;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandButtons
 {
+    [PublicAPI]
     public partial class CommandButton
     {
         public static readonly DependencyProperty ViewModelCommandProperty =

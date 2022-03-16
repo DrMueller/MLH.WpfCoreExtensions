@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.DragAndDrop.Models;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.DragAndDrop.AttachedProperties
 {
+    [PublicAPI]
     public static class DropBinding
     {
         public static readonly DependencyProperty DroppedProperty = DependencyProperty.RegisterAttached(

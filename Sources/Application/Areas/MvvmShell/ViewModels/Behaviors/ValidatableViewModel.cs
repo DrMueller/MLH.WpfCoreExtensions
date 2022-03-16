@@ -45,7 +45,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
             return Task.CompletedTask;
         }
 
-        protected override void OnPropertyChanged<T>(T newValue, ref T oldValue, [CallerMemberName] string propertyName = null)
+        protected override void OnPropertyChanged<TP>(TP newValue, ref TP oldValue,
+            [CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(newValue, ref oldValue, propertyName);
             _container.Validate(propertyName);

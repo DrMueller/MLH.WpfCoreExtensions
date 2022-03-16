@@ -3,11 +3,13 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using JetBrains.Annotations;
 using Mmu.Mlh.LanguageExtensions.Areas.Assemblies.Extensions;
 using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models
 {
+    [PublicAPI]
     public class WindowConfiguration
     {
         public WindowConfiguration(
