@@ -19,16 +19,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.DragAndDrop.ViewModels
         public string FilePath
         {
             get => _filePath;
-            set
-            {
-                if (_filePath == value)
-                {
-                    return;
-                }
-
-                _filePath = value;
-                OnPropertyChanged();
-            }
+            set => OnPropertyChanged(value, ref _filePath);
         }
 
         public string HeadingDescription { get; } = "Drog & Drop";

@@ -41,46 +41,19 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
         public IViewModel CurrentContent
         {
             get => _currentContent;
-            private set
-            {
-                if (_currentContent == value)
-                {
-                    return;
-                }
-
-                _currentContent = value;
-                OnPropertyChanged();
-            }
+            private set => OnPropertyChanged(value, ref _currentContent);
         }
 
         public InformationEntryViewData InformationEntry
         {
             get => _informationEntry;
-            set
-            {
-                if (value == _informationEntry)
-                {
-                    return;
-                }
-
-                _informationEntry = value;
-                OnPropertyChanged();
-            }
+            set => OnPropertyChanged(value, ref _informationEntry);
         }
 
         public IEnumerable<NavigationEntry> NavigationEntries
         {
             get => _navigationEntries;
-            set
-            {
-                if (Equals(value, _navigationEntries))
-                {
-                    return;
-                }
-
-                _navigationEntries = value;
-                OnPropertyChanged();
-            }
+            set => OnPropertyChanged(value, ref _navigationEntries);
         }
 
         public async Task InitializeAsync()

@@ -24,14 +24,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Settings.ViewModels.Setti
         public string SettingsInfo
         {
             get => _settingsInfo;
-            set
-            {
-                if (_settingsInfo != value)
-                {
-                    _settingsInfo = value;
-                    OnPropertyChanged();
-                }
-            }
+            set => OnPropertyChanged(value, ref _settingsInfo);
         }
 
         public async Task InitializeAsync(params object[] initParams)

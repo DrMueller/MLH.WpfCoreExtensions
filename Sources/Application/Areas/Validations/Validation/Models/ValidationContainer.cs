@@ -10,15 +10,18 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
         private readonly IReadOnlyCollection<PropertyValidation> _propertyValidations;
         private readonly ValidatableViewModel<T> _viewModel;
 
+        private readonly PropertyErrors _propertyErrors;
+
         internal ValidationContainer(
             ValidatableViewModel<T> viewModel,
             IReadOnlyCollection<PropertyValidation> propertyValidations)
         {
             _viewModel = viewModel;
             _propertyValidations = propertyValidations;
+            _propertyErrors = new PropertyErrors();
         }
 
-        internal bool HasErrors { get; private set; }
+        internal bool HasErrors => _propertyErrors.HasErrors;
 
         internal IReadOnlyCollection<string> GetErrorMessages(string propertyName)
         {
@@ -26,14 +29,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
 
             if (propertyValidation == null)
             {
-                HasErrors = false;
-
                 return new List<string>();
             }
 
             var propertyValue = _viewModel.GetType().GetProperty(propertyName)?.GetValue(_viewModel);
             var errorMessages = propertyValidation.GetValidationErrorMessages(propertyValue);
-            HasErrors = errorMessages.Any();
+
+            _propertyErrors.UpsertProperty(propertyName, errorMessages.Any());
 
             return errorMessages;
         }

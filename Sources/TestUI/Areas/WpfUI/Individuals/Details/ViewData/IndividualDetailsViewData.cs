@@ -17,61 +17,25 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewD
         public DateTime Birthdate
         {
             get => _birthdate;
-            set
-            {
-                if (_birthdate == value)
-                {
-                    return;
-                }
-
-                _birthdate = value;
-                OnPropertyChanged();
-            }
+            set => OnPropertyChanged(value, ref _birthdate);
         }
 
         public string FirstName
         {
             get => _firstName;
-            set
-            {
-                if (_firstName == value)
-                {
-                    return;
-                }
-
-                _firstName = value;
-                OnPropertyChanged();
-            }
+            set => OnPropertyChanged(value, ref _firstName);
         }
 
         public string Id
         {
             get => _id;
-            set
-            {
-                if (_id == value)
-                {
-                    return;
-                }
-
-                _id = value;
-                OnPropertyChanged();
-            }
+            set => OnPropertyChanged(value, ref _id);
         }
 
         public string LastName
         {
             get => _lastName;
-            set
-            {
-                if (_lastName == value)
-                {
-                    return;
-                }
-
-                _lastName = value;
-                OnPropertyChanged();
-            }
+            set => OnPropertyChanged(value, ref _lastName);
         }
 
         protected override ValidationContainer<IndividualDetailsViewData> ConfigureValidation(IValidationConfigurationBuilder<IndividualDetailsViewData> builder)

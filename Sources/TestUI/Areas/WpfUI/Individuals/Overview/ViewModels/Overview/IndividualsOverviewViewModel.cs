@@ -37,16 +37,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         public GridSearchExpression SearchExpression
         {
             get => _searchExpression;
-            set
-            {
-                if (_searchExpression == value)
-                {
-                    return;
-                }
-
-                _searchExpression = value;
-                OnPropertyChanged();
-            }
+            set => OnPropertyChanged(value, ref _searchExpression);
         }
 
         public IndividualOverviewViewData SelectedIndividual { get; set; }

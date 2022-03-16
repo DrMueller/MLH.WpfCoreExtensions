@@ -38,16 +38,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
         public IndividualDetailsViewData IndividualDetails
         {
             get => _individualDetails;
-            set
-            {
-                if (_individualDetails == value)
-                {
-                    return;
-                }
-
-                _individualDetails = value;
-                OnPropertyChanged();
-            }
+            set => OnPropertyChanged(value, ref _individualDetails);
         }
 
         public async Task InitializeAsync(params object[] initParams)
