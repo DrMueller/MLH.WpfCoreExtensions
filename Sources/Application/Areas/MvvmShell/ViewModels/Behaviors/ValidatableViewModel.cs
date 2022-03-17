@@ -36,7 +36,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
         // If HasErrors is true, WPF loops through all the properties and marks them on the UI
         // We don't want always to have this behavior, especially on initial states
         // We therefore bypass INotifyDataErrorInfo
-        // Sidenote: even on Thomas Hubers Pluralsight course its directly validating, on other courses the initial validation isn't done at all
+        // Sidenote: no course or article in the internet has a solution
         // Usage of thus property can be found in the TimeBuddy
         public bool RevalidateAnyErrors()
         {
