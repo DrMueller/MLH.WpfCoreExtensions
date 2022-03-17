@@ -1,7 +1,9 @@
-﻿using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
+﻿using JetBrains.Annotations;
+using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.DragAndDrop.Models
 {
+    [PublicAPI]
     public class DroppedFile
     {
         internal DroppedFile(string filePath)

@@ -3,9 +3,11 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
+using JetBrains.Annotations;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.AttachedProperties
 {
+    [PublicAPI]
     public static class EventCommandBinding
     {
         public static readonly DependencyProperty EventNameProperty =

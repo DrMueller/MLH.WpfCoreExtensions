@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Models;
@@ -11,6 +12,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
 {
+    [PublicAPI]
     internal sealed class ViewModelContainer : ViewModelBase, IViewModelContainer
     {
         private readonly IInformationSubscriptionService _informationSubscriptionService;

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;
@@ -11,6 +12,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Services.Implementation
 {
+    [UsedImplicitly]
     internal class NavigationEntryFactory : INavigationEntryFactory
     {
         private readonly IServiceLocator _serviceLocator;
@@ -48,7 +50,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Ser
             return result;
         }
 
-        [SuppressMessage("Usage", "VSTHRD110:Observe result of async calls", Justification = "Need to use ICommand interface")]
+        [SuppressMessage("Usage", "VSTHRD110:Observe result of async calls",
+            Justification = "Need to use ICommand interface")]
         private NavigationEntry CreateNavigationEntry(INavigatableViewModel viewModel)
         {
             var navigationCommand = new RelayCommand(

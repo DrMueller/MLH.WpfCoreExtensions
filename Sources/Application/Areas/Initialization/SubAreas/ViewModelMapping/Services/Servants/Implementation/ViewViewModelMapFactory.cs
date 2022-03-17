@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using Mmu.Mlh.LanguageExtensions.Areas.Reflection.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Views.Interfaces;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Servants.Implementation
 {
+    [UsedImplicitly]
     internal class ViewViewModelMapFactory : IViewViewModelMapFactory
     {
         private static readonly Type _viewModelMapType = typeof(IViewMap<>);
@@ -28,7 +30,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMappi
 
         private ViewViewModelMap CreateFromViewMapType(Type viewMapType)
         {
-            var mapInterface = viewMapType.GetInterfaces().First(f => _typeReflectionService.CheckIfTypeIsAssignableToGenericType(f, _viewModelMapType));
+            var mapInterface = viewMapType.GetInterfaces().First(f =>
+                _typeReflectionService.CheckIfTypeIsAssignableToGenericType(f, _viewModelMapType));
 
             var viewModelType = mapInterface.GetGenericArguments().First();
 

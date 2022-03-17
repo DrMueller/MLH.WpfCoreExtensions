@@ -8,10 +8,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
     public class ValidationContainer<T>
         where T : ValidatableViewModel<T>
     {
+        private readonly PropertyErrors _propertyErrors;
         private readonly IReadOnlyCollection<PropertyValidation> _propertyValidations;
         private readonly ValidatableViewModel<T> _viewModel;
-
-        private readonly PropertyErrors _propertyErrors;
 
         internal ValidationContainer(
             ValidatableViewModel<T> viewModel,

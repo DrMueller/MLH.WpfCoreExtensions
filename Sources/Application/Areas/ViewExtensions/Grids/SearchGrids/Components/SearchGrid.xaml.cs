@@ -5,10 +5,12 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Models;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Components
 {
+    [PublicAPI]
     public partial class SearchGrid : INotifyPropertyChanged
     {
         public static readonly DependencyProperty DataGridProperty =

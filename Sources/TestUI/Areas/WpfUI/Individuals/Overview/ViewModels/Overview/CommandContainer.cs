@@ -33,14 +33,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         public CommandsViewData Commands { get; private set; }
 
         public ICommand UpdateIndividualCommand =>
-            new RelayCommand(
-#pragma warning disable VSTHRD101 // Avoid unsupported async delegates
+            new AsyncRelayCommand(
                 async () =>
                 {
                     var idMaybe = Maybe.CreateSome(_context.SelectedIndividual.Id);
                     await _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(idMaybe);
                 },
-#pragma warning restore VSTHRD101 // Avoid unsupported async delegates
                 () => IsIndividualSelected);
 
         private ViewModelCommand ClearSearch =>

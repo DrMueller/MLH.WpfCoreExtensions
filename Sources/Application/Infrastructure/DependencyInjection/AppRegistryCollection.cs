@@ -1,4 +1,5 @@
-﻿using Lamar;
+﻿using JetBrains.Annotations;
+using Lamar;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services.Servants;
@@ -21,6 +22,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementati
 
 namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
 {
+    [UsedImplicitly]
     public class AppRegistryCollection : ServiceRegistry
     {
         public AppRegistryCollection()

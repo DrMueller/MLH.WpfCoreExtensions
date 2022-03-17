@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation
 {
+    [UsedImplicitly]
     internal class ViewModelDisplayService : IViewModelDisplayService
     {
         private readonly IViewModelDisplayConfigurationService _displayConfigService;

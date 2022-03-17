@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using Mmu.Mlh.LanguageExtensions.Areas.Exceptions;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services;
@@ -6,6 +7,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services.Implementation
 {
+    [UsedImplicitly]
     internal class ExceptionHandler : IExceptionHandler
     {
         private readonly IInformationPublisher _informationPublisher;

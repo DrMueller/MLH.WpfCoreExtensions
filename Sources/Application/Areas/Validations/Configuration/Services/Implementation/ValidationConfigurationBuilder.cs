@@ -33,7 +33,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services.Imp
             if (!(expression.Body is MemberExpression propertyExpression))
 #pragma warning restore SA1119 // Statement must not use unnecessary parenthesis
             {
-                throw new ArgumentException("You must pass a lambda of the form: '() => Class.Property' or '() => object.Property'");
+                throw new ArgumentException(
+                    "You must pass a lambda of the form: '() => Class.Property' or '() => object.Property'");
             }
 
             var propertyName = propertyExpression.Member.Name;
