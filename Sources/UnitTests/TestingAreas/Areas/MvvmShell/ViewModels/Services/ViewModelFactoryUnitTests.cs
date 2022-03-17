@@ -27,21 +27,21 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.MvvmShell.ViewM
             // Arrange
             var viewModel = new InitializibleMockViewModel();
 
-            var initParam1 = "Hello";
-            var initParam2 = 12345;
+            const string InitParam1 = "Hello";
+            const int InitParam2 = 12345;
 
             _serviceLocatorMock.Setup(f => f.GetService(It.IsAny<Type>())).Returns(viewModel);
 
             // Act
-            var actualViewModel = await _sut.CreateAsync<InitializibleMockViewModel>(initParam1, initParam2);
+            var actualViewModel = await _sut.CreateAsync<InitializibleMockViewModel>(InitParam1, InitParam2);
 
             // Assert
             Assert.IsNotNull(actualViewModel);
             Assert.AreEqual(viewModel, actualViewModel);
             Assert.IsTrue(actualViewModel.WasInitialized);
             Assert.IsNotNull(actualViewModel.InitParams);
-            Assert.AreEqual(initParam1, actualViewModel.InitParams[0]);
-            Assert.AreEqual(initParam2, actualViewModel.InitParams[1]);
+            Assert.AreEqual(InitParam1, actualViewModel.InitParams[0]);
+            Assert.AreEqual(InitParam2, actualViewModel.InitParams[1]);
         }
     }
 }

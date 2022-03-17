@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Mmu.Mlh.LanguageExtensions.Areas.Collections;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
