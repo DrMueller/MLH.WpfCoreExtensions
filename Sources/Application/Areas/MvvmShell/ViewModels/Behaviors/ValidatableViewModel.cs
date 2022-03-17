@@ -33,6 +33,21 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
             return OnInitializeAsync(initParams);
         }
 
+        // If HasErrors is true, WPF loops through all the properties and marks them on the UI
+        // We don't want always to have this behavior, especially on initial states
+        // We therefore bypass INotifyDataErrorInfo
+        // Sidenote: even on Thomas Hubers Pluralsight course its directly validating, on other courses the initial validation isn't done at all
+        // Usage of thus property can be found in the TimeBuddy
+        public bool RevalidateAnyErrors()
+        {
+            return _container.RevalidateAnyErrors();
+        }
+
+        public void ValidateProperty(string propertyName)
+        {
+            _container.Validate(propertyName);
+        }
+
         internal void OnErrorsChanged([CallerMemberName] string propertyName = null)
         {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
