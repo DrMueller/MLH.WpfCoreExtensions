@@ -30,7 +30,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implemen
         {
             if (!typeof(IDisplayableViewModel).IsAssignableFrom(targetType))
             {
-                throw new ArgumentException($"{targetType.Name} is not assignable from IDisplayableViewModel.");
+                throw new ArgumentException($"{targetType!.Name} is not assignable from IDisplayableViewModel.");
             }
 
             var target = (IDisplayableViewModel)await _viewModelFactory.CreateAsync(targetType);

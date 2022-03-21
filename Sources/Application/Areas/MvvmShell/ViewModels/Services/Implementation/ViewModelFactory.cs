@@ -33,7 +33,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implemen
 
             if (!viewModelBaseType.IsAssignableFrom(viewModelType))
             {
-                throw new ArgumentException($"{viewModelType.Name} is not assignable from IViewModel.");
+                throw new ArgumentException($"{viewModelType!.Name} is not assignable from IViewModel.");
             }
 
             var result = (IViewModel)_serviceLocator.GetService(viewModelType);

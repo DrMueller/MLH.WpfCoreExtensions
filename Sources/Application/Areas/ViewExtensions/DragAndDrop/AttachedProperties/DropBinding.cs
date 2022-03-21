@@ -37,7 +37,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.DragAndDrop.AttachedPro
             }
 
             uiElement.AllowDrop = true;
-            uiElement.PreviewDragOver += (sender, e) =>
+            uiElement.PreviewDragOver += (_, e) =>
             {
                 e.Handled = true;
             };
