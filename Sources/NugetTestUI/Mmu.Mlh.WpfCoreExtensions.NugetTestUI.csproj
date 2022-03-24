@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mmu.Mlh.WpfCoreExtensions" Version="1.1.6" />
+    <PackageReference Include="Mmu.Mlh.WpfCoreExtensions" Version="2.3.24" />
   </ItemGroup>
 
   <ItemGroup>
