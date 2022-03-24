@@ -22,18 +22,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
 
         internal bool HasErrors => _propertyErrors.HasErrors;
 
-        internal bool RevalidateAnyErrors()
-        {
-            var allErorrMessages = _propertyValidations.SelectMany(val => ReadErrorMessages(val.PropertyName, val));
-            return allErorrMessages.Any();
-        }
-
-        private IReadOnlyCollection<string> ReadErrorMessages(string propertyName, PropertyValidation propertyValidation)
-        {
-            var propertyValue = _viewModel.GetType().GetProperty(propertyName)?.GetValue(_viewModel);
-            return propertyValidation.GetValidationErrorMessages(propertyValue);
-        }
-
         internal IReadOnlyCollection<string> GetErrorMessages(string propertyName)
         {
             var propertyValidation = _propertyValidations.SingleOrDefault(f => f.PropertyName == propertyName);
@@ -49,12 +37,26 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
             return errorMessages;
         }
 
+        internal bool RevalidateAnyErrors()
+        {
+            var allErorrMessages = _propertyValidations.SelectMany(val => ReadErrorMessages(val.PropertyName, val));
+
+            return allErorrMessages.Any();
+        }
+
         internal void Validate(string propertyName)
         {
             if (GetErrorMessages(propertyName).Any())
             {
                 _viewModel.OnErrorsChanged(propertyName);
             }
+        }
+
+        private IReadOnlyCollection<string> ReadErrorMessages(string propertyName, PropertyValidation propertyValidation)
+        {
+            var propertyValue = _viewModel.GetType().GetProperty(propertyName)?.GetValue(_viewModel);
+
+            return propertyValidation.GetValidationErrorMessages(propertyValue);
         }
     }
 }

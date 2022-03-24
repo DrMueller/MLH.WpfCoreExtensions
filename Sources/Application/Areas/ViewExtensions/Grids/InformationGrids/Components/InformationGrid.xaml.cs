@@ -9,8 +9,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.InformationGrids.
     public partial class InformationGrid
     {
         public static readonly DependencyProperty InformationEntriesProperty =
-            DependencyProperty.Register(nameof(InformationEntries),
-                typeof(ObservableCollection<InformationGridEntryViewData>), typeof(InformationGrid));
+            DependencyProperty.Register(
+                nameof(InformationEntries),
+                typeof(ObservableCollection<InformationGridEntryViewData>),
+                typeof(InformationGrid));
 
         public InformationGrid()
         {

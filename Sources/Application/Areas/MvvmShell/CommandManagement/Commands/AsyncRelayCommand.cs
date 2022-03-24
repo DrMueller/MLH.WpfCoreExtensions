@@ -27,7 +27,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands
             return _canExecute?.Invoke() ?? true;
         }
 
-        [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods",
+        [SuppressMessage(
+            "Usage",
+            "VSTHRD100:Avoid async void methods",
             Justification = "Need to use ICommand interface")]
         public async void Execute(object parameter)
         {

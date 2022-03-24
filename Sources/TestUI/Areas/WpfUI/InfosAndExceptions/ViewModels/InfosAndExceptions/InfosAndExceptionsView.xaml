@@ -16,9 +16,7 @@
 
 		<controls:CommandBar Commands="{Binding Path=Commands, Mode=OneWay}" />
 
-		<components:InformationGrid Grid.Row="1" InformationEntries="{Binding InformationEntries, Mode=OneWay}">
-
-		</components:InformationGrid>
+		<components:InformationGrid Grid.Row="1" InformationEntries="{Binding InformationEntries, Mode=OneWay}" />
 
 	</Grid>
 </UserControl>

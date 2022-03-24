@@ -6,7 +6,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models
     [PublicAPI]
     public class InformationEntry
     {
-        private InformationEntry(string message, InformationEntryType entryType, bool showBusy,
+        private InformationEntry(
+            string message, InformationEntryType entryType, bool showBusy,
             int? displayLengthInSeconds)
         {
             Message = message;
@@ -40,7 +41,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models
             return new InformationEntry(infoMessage, InformationEntryType.Info, showBusy, displayLengthInSeconds);
         }
 
-        public static InformationEntry CreateSuccess(string successMessage, bool showBusy,
+        public static InformationEntry CreateSuccess(
+            string successMessage, bool showBusy,
             int? displayLengthInSeconds = null)
         {
             return new InformationEntry(successMessage, InformationEntryType.Success, showBusy, displayLengthInSeconds);

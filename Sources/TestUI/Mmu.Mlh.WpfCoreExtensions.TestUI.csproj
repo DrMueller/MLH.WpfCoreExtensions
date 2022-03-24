@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <Folder Include="Areas\DataAccess\Repositories\" />
+    <Folder Include="Areas\WpfUI\ViewModelHierarchy\ViewServices\" />
+    <Folder Include="Areas\WpfUI\ViewModelHierarchy\ViewData\" />
     <Folder Include="Infrastructure\Assets\" />
   </ItemGroup>
 

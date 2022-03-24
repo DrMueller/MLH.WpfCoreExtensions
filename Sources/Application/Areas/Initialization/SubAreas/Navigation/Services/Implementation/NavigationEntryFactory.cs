@@ -50,7 +50,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Ser
             return result;
         }
 
-        [SuppressMessage("Usage", "VSTHRD110:Observe result of async calls",
+        [SuppressMessage(
+            "Usage",
+            "VSTHRD110:Observe result of async calls",
             Justification = "Need to use ICommand interface")]
         private NavigationEntry CreateNavigationEntry(INavigatableViewModel viewModel)
         {

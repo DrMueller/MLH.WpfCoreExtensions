@@ -30,8 +30,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMappi
 
         private ViewViewModelMap CreateFromViewMapType(Type viewMapType)
         {
-            var mapInterface = viewMapType.GetInterfaces().First(f =>
-                _typeReflectionService.CheckIfTypeIsAssignableToGenericType(f, _viewModelMapType));
+            var mapInterface = viewMapType.GetInterfaces().First(
+                f =>
+                    _typeReflectionService.CheckIfTypeIsAssignableToGenericType(f, _viewModelMapType));
 
             var viewModelType = mapInterface.GetGenericArguments().First();
 

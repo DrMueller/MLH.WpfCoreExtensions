@@ -12,9 +12,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services
 {
     public static class AppStartService
     {
-        [SuppressMessage("Code Quality", "IDE0067:Dispose objects before losing scope",
+        [SuppressMessage(
+            "Code Quality",
+            "IDE0067:Dispose objects before losing scope",
             Justification = "The disposable lives and dies with the application")]
-        public static async Task StartAppAsync(WpfAppConfiguration config,
+        public static async Task StartAppAsync(
+            WpfAppConfiguration config,
             Action<IServiceLocator> afterInitializedCallback = null)
         {
             WpfAppRegistryCollection.WpfAssembly = config.WpfAssembly;

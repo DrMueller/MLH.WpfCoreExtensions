@@ -24,31 +24,21 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
 
         public CommandsViewData Commands { get; private set; }
 
-        private ViewModelCommand Cancel
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Cancel",
-                    new AsyncRelayCommand(async () => await NavigateToOverviewAsync()));
-            }
-        }
+        private ViewModelCommand Cancel =>
+            new ViewModelCommand(
+                "Cancel",
+                new AsyncRelayCommand(async () => await NavigateToOverviewAsync()));
 
-        private ViewModelCommand SaveIndividual
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Save",
-                    new AsyncRelayCommand(
-                        async () =>
-                        {
-                            await _detailsService.SaveAsync(_context.IndividualDetails);
-                            await NavigateToOverviewAsync();
-                        },
-                        () => !_context.IndividualDetails.HasErrors));
-            }
-        }
+        private ViewModelCommand SaveIndividual =>
+            new ViewModelCommand(
+                "Save",
+                new AsyncRelayCommand(
+                    async () =>
+                    {
+                        await _detailsService.SaveAsync(_context.IndividualDetails);
+                        await NavigateToOverviewAsync();
+                    },
+                    () => !_context.IndividualDetails.HasErrors));
 
         public Task InitializeAsync(IndividualDetailsViewModel context)
         {

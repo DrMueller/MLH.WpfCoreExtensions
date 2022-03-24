@@ -18,15 +18,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI.Areas.Individuals.ViewModels.Ove
 
         public CommandsViewData Commands { get; private set; }
 
-        private ViewModelCommand NavigateToOrganisations
-        {
-            get
-            {
-                return new ViewModelCommand(
-                    "Show Organisations",
-                    new AsyncRelayCommand(() => _vmDisplayService.DisplayAsync<OrganisationsOverviewViewModel>()));
-            }
-        }
+        private ViewModelCommand NavigateToOrganisations =>
+            new ViewModelCommand(
+                "Show Organisations",
+                new AsyncRelayCommand(() => _vmDisplayService.DisplayAsync<OrganisationsOverviewViewModel>()));
 
         public Task InitializeAsync(IndividualsOverviewViewModel context)
         {
