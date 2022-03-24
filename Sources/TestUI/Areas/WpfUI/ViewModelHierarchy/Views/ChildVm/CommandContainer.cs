@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.ViewData;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.ViewModelCommands;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.ViewModelHierarchy.Views.ChildVm
 {
+    [PublicAPI]
     public class CommandContainer : IViewModelCommandContainer<IChildVmViewModel>
     {
         private IChildVmViewModel _context;

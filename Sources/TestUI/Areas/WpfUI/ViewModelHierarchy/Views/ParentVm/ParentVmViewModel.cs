@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.ViewModelHierarchy.Views.ChildVm;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.ViewModelHierarchy.Views.ParentVm
 {
+    [PublicAPI]
     public class ParentVmViewModel : ViewModelBase, IParentVmViewModel
     {
         private readonly IViewModelFactory _vmFactory;
