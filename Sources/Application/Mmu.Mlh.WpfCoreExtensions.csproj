@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>Mmu.Mlh.WpfCoreExtensions</AssemblyName>
     <RootNamespace>Mmu.Mlh.WpfCoreExtensions</RootNamespace>
