@@ -4,6 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:watermarks="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks;assembly=Mmu.Mlh.WpfCoreExtensions"
 	mc:Ignorable="d"
 	d:DesignHeight="450" d:DesignWidth="800">
 	<Grid>
@@ -20,11 +21,19 @@
 
 		<Label Grid.Row="0" Grid.Column="0" Content="First Name:" VerticalAlignment="Center" />
 		<TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"
-											Text="{Binding IndividualDetails.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+											Text="{Binding IndividualDetails.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+			<watermarks:WatermarkService.Watermark>
+				<TextBlock>Mattias</TextBlock>
+			</watermarks:WatermarkService.Watermark>
+		</TextBox>
 
 		<Label Grid.Row="1" Grid.Column="0" Content="Last Name:" VerticalAlignment="Center" />
 		<TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"
-											Text="{Binding IndividualDetails.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+											Text="{Binding IndividualDetails.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+			<watermarks:WatermarkService.Watermark>
+				<TextBlock>Müller</TextBlock>
+			</watermarks:WatermarkService.Watermark>
+		</TextBox>
 
 		<Label Grid.Row="2" Grid.Column="0" Content="Birthdate:" VerticalAlignment="Center" />
 		<DatePicker Grid.Row="2" Grid.Column="1"

@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using JetBrains.Annotations;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.AttachedProperties
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions
 {
     [PublicAPI]
     public static class EventCommandBinding

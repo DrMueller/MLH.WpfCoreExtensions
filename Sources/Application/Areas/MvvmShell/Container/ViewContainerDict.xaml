@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:ap="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.AttachedProperties"
 	xmlns:nav="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Models"
 	xmlns:vm="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:viewExtensions="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions">
 
 	<Style TargetType="TextBlock" x:Key="MainHeaderTextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
 		<Setter Property="FontSize" Value="30" />
@@ -56,7 +56,7 @@
 
 	<Style TargetType="ListBoxItem" x:Key="MainNavigationContainerStyle"
 								BasedOn="{StaticResource {x:Type ListBoxItem}}">
-		<Setter Property="ap:EventCommandBinding.EventName" Value="PreviewMouseLeftButtonDown" />
-		<Setter Property="ap:EventCommandBinding.Command" Value="{Binding NavigationCommand, Mode=OneWay}" />
+		<Setter Property="viewExtensions:EventCommandBinding.EventName" Value="PreviewMouseLeftButtonDown" />
+		<Setter Property="viewExtensions:EventCommandBinding.Command" Value="{Binding NavigationCommand, Mode=OneWay}" />
 	</Style>
 </ResourceDictionary>
