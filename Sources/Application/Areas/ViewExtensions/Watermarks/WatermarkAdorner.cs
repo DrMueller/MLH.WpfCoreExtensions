@@ -17,7 +17,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks
             _contentPresenter = new ContentPresenter {
                 Content = watermark,
                 Opacity = 0.5,
-                Margin = new Thickness(Control.Margin.Left + Control.Padding.Left, Control.Margin.Top + Control.Padding.Top, 0, 0)
+                Margin = new Thickness(Control.Margin.Left + Control.Padding.Left + 5, Control.Margin.Top + Control.Padding.Top + 3, 0, 0)
             };
 
             if (Control is ItemsControl && !(Control is ComboBox))
