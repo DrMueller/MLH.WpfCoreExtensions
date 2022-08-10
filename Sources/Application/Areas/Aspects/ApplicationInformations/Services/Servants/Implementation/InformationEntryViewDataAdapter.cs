@@ -10,39 +10,31 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Servic
     {
         public InformationEntryViewData Adapt(InformationEntry infoEntry)
         {
-            var brush = AdaptBrush(infoEntry.EntryType);
-
             return new InformationEntryViewData(
                 infoEntry.Message,
                 infoEntry.ShowBusy,
-                brush,
-                infoEntry.DisplayLengthInSeconds);
+                infoEntry.DisplayLengthInSeconds,
+                AdaptType(infoEntry.EntryType));
         }
 
-        private static Brush AdaptBrush(InformationEntryType entryType)
+        private InformationEntryTypeViewData AdaptType(InformationEntryType type)
         {
-            switch (entryType)
+            switch (type)
             {
-                case InformationEntryType.Info:
-                    {
-                        return Brushes.Black;
-                    }
-
+                case InformationEntryType.Error:
+                {
+                    return InformationEntryTypeViewData.Error;
+                }
                 case InformationEntryType.Success:
                     {
-                        return Brushes.DarkGreen;
+                        return InformationEntryTypeViewData.Success;
                     }
-
-                case InformationEntryType.Error:
-                    {
-                        return Brushes.DarkRed;
-                    }
-
                 default:
                     {
-                        return Brushes.Black;
+                        return InformationEntryTypeViewData.Info;
                     }
             }
         }
+
     }
 }

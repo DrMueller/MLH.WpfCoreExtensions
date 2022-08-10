@@ -19,7 +19,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Implemen
             {
                 {
                     var savedTheme = _registryHandler.LoadFromCurrentUserApplicationRegistry(RegistryKeyAppearanceTheme);
-                    var appearanceTheme = AppearanceTheme.Light;
+                    var appearanceTheme = AppearanceTheme.Dark;
                     if (!string.IsNullOrEmpty(savedTheme))
                     {
                         appearanceTheme = (AppearanceTheme)Enum.Parse(typeof(AppearanceTheme), savedTheme);
@@ -31,7 +31,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Implemen
             set
             {
                 var baseTheme = value == AppearanceTheme.Dark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
-                //_paletteHelper(baseTheme);
+                var theme = _paletteHelper.GetTheme();
+                theme.SetBaseTheme(baseTheme);
+                _paletteHelper.SetTheme(theme);
+
                 _registryHandler.SaveIntoCurrentUserApplicationRegistry(RegistryKeyAppearanceTheme, value.ToString());
             }
         }

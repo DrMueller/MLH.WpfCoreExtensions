@@ -8,23 +8,20 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewDa
         public InformationEntryViewData(
             string message,
             bool showBusyIndicator,
-            Brush foreground,
-            int? displayLengthInSeconds)
+            int? displayLengthInSeconds,
+            InformationEntryTypeViewData entryType)
         {
             Message = message;
             ShowBusyIndicator = showBusyIndicator;
-            Foreground = foreground;
             DisplayLengthInSeconds = displayLengthInSeconds;
+            EntryType = (int)entryType;
         }
 
         public static string BusyIndicatorSource =>
             "/Mmu.Mlh.WpfCoreExtensions;component/Infrastructure/Assets/FA_Cog_Green.png";
 
         public int? DisplayLengthInSeconds { get; }
-
-        [UsedImplicitly]
-        public Brush Foreground { get; }
-
+        public int EntryType { get; }
         public string Message { get; }
         public bool ShowBusyIndicator { get; }
     }

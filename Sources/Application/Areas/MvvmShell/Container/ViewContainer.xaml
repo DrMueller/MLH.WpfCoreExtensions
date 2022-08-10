@@ -13,6 +13,7 @@
 								WindowStartupLocation="CenterScreen"
 								Width="1200"
 								xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+								xmlns:viewExtensions="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions"
 								TextElement.Foreground="{DynamicResource MaterialDesignBody}"
 								Background="{DynamicResource MaterialDesignPaper}"
 								TextElement.FontWeight="Medium"
@@ -52,16 +53,12 @@
 
 			<md:DrawerHost IsLeftDrawerOpen="{Binding IsMainNavigationPaneOpen, Mode=TwoWay}" Margin="0,10,0,0" LeftDrawerBackground="{DynamicResource MaterialDesignPaper}">
 				<md:DrawerHost.LeftDrawerContent>
-					<StackPanel Width="150">
-						<TextBlock Text="Some left content" HorizontalAlignment="Center"/>
-						<md:PackIcon Kind="Headset" Height="Auto" Width="Auto" />
-					</StackPanel>
-					<!--<ListBox
+					<ListBox
 						viewExtensions:EventCommandBinding.EventName="MouseLeftButtonUp"
 						viewExtensions:EventCommandBinding.Command="{Binding CloseMainNavigationPane, Mode=OneWay}"
 						ItemContainerStyle="{StaticResource MainNavigationContainerStyle}"
 						ItemTemplate="{StaticResource MainNavigation}"
-						ItemsSource="{Binding NavigationEntries, Mode=OneWay}" />-->
+						ItemsSource="{Binding NavigationEntries, Mode=OneWay}" />
 				</md:DrawerHost.LeftDrawerContent>
 
 				<ContentPresenter Content="{Binding CurrentContent, Mode=OneWay}" />

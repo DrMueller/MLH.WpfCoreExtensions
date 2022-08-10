@@ -4,7 +4,11 @@
 	xmlns:vm="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:viewExtensions="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions"
-	xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+	xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+	xmlns:converters="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Converters">
+
+	<converters:DarkThemeToBooleanConverter x:Key="DarkToBoolConverter" />
+	<converters:LightThemeToBooleanConverter x:Key="LightToBoolConverter" />
 
 	<Style TargetType="TextBlock" x:Key="MainHeaderTextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
 		<Setter Property="FontSize" Value="30" />
@@ -12,8 +16,16 @@
 		<Setter Property="HorizontalAlignment" Value="Stretch" />
 		<Setter Property="TextAlignment" Value="Center" />
 		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="Panel.ZIndex" Value="-99" />
 	</Style>
-	
+
+	<Style TargetType="RadioButton" x:Key="StyleSwitchRadioButton" BasedOn="{StaticResource {x:Type RadioButton}}">
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="Margin" Value="10" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+	</Style>
+
 	<Style TargetType="Border" x:Key="HeaderBorder">
 		<!--<Setter Property="BorderThickness" Value="0.1" />
 		<Setter Property="BorderBrush" Value="Black" />
@@ -48,16 +60,16 @@
 					HorizontalAlignment="Left"
 					Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
 
-				<!--<TextBlock
+				<TextBlock
                     Style="{StaticResource MainHeaderTextBlock}">
 					<TextBlock.Text>
-						<PriorityBinding FallbackValue=""> --><!--PriorityBinding is a best effort, as not all IViewModels have a heading--><!--
+						<PriorityBinding FallbackValue=""> <!--PriorityBinding is a best effort, as not all IViewModels have a heading-->
 							<Binding Path="CurrentContent.HeadingDescription" />
 						</PriorityBinding>
 					</TextBlock.Text>
-				</TextBlock>-->
+				</TextBlock>
 
-				<!--<materialDesign:PopupBox
+				<materialDesign:PopupBox
                     HorizontalAlignment="Right"
                     PlacementMode="BottomAndAlignRightEdges"
                     StaysOpen="True">
@@ -75,12 +87,12 @@
 						<Separator />
 
 						<Button
-                            Command="{Binding Command, Mode=OneWay}"
+							Command="{Binding Command, Mode=OneWay}"
                             CommandParameter="{Binding ElementName=ViewContainerWindow, Mode=OneWay}"
                             Content="{Binding Description, Mode=OneWay}"
-                            DataContext="{Binding CloseVmc, Mode=OneTime}" />
+                            DataContext="{Binding CloseApp, Mode=OneTime}" />
 					</StackPanel>
-				</materialDesign:PopupBox>-->
+				</materialDesign:PopupBox>
 			</Grid>
 		</materialDesign:ColorZone>
 	</DataTemplate>
