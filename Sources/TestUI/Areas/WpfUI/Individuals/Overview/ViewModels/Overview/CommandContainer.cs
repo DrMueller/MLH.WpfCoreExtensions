@@ -36,7 +36,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             new AsyncRelayCommand(
                 async () =>
                 {
-                    var idMaybe = Maybe.CreateSome(_context.SelectedIndividual.Id);
+                    var idMaybe = (Maybe<string>)_context.SelectedIndividual.Id;
                     await _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(idMaybe);
                 },
                 () => IsIndividualSelected);
