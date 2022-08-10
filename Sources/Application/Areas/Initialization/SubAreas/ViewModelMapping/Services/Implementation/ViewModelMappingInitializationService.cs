@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Windows;
 using JetBrains.Annotations;
 using Mmu.Mlh.LanguageExtensions.Areas.Collections;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.RessourceDictionaries.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Servants;
 

@@ -3,7 +3,8 @@
 	xmlns:nav="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Models"
 	xmlns:vm="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:viewExtensions="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions">
+	xmlns:viewExtensions="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions"
+	xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
 	<Style TargetType="TextBlock" x:Key="MainHeaderTextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
 		<Setter Property="FontSize" Value="30" />
@@ -12,11 +13,11 @@
 		<Setter Property="TextAlignment" Value="Center" />
 		<Setter Property="VerticalAlignment" Value="Center" />
 	</Style>
-
+	
 	<Style TargetType="Border" x:Key="HeaderBorder">
-		<Setter Property="BorderThickness" Value="0.1" />
+		<!--<Setter Property="BorderThickness" Value="0.1" />
 		<Setter Property="BorderBrush" Value="Black" />
-		<Setter Property="Background" Value="LightBlue" />
+		<Setter Property="Background" Value="LightBlue" />-->
 	</Style>
 
 	<Style TargetType="Grid" x:Key="ContainerGrid">
@@ -26,12 +27,12 @@
 	<Style TargetType="ListBox" x:Key="NavigationListBox">
 		<Setter Property="Margin" Value="0,10,0,0" />
 		<Setter Property="BorderThickness" Value="0.3" />
-		<Setter Property="BorderBrush" Value="Black" />
+		<!--<Setter Property="BorderBrush" Value="Black" />-->
 	</Style>
 
 	<Style TargetType="Border" x:Key="ContentBorder">
 		<Setter Property="BorderThickness" Value="0.1" />
-		<Setter Property="BorderBrush" Value="Black" />
+		<!--<Setter Property="BorderBrush" Value="Black" />-->
 		<Setter Property="Margin" Value="10,10,0,0" />
 	</Style>
 
@@ -40,18 +41,48 @@
 	</DataTemplate>
 
 	<DataTemplate x:Key="MainHeader" DataType="{x:Type vm:ViewModelContainer}">
-		<Border Style="{StaticResource HeaderBorder}">
+		<materialDesign:ColorZone Mode="PrimaryMid">
 			<Grid>
-				<TextBlock Style="{StaticResource MainHeaderTextBlock}">
+				<ToggleButton
+					IsChecked="{Binding IsMainNavigationPaneOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+					HorizontalAlignment="Left"
+					Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+
+				<!--<TextBlock
+                    Style="{StaticResource MainHeaderTextBlock}">
 					<TextBlock.Text>
-						<PriorityBinding>
-							<!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
+						<PriorityBinding FallbackValue=""> --><!--PriorityBinding is a best effort, as not all IViewModels have a heading--><!--
 							<Binding Path="CurrentContent.HeadingDescription" />
 						</PriorityBinding>
 					</TextBlock.Text>
-				</TextBlock>
+				</TextBlock>-->
+
+				<!--<materialDesign:PopupBox
+                    HorizontalAlignment="Right"
+                    PlacementMode="BottomAndAlignRightEdges"
+                    StaysOpen="True">
+					<StackPanel Orientation="Vertical">
+						<RadioButton
+                            Content="Light"
+                            IsChecked="{Binding SelectedAppearanceTheme, Converter={StaticResource LightToBoolConverter}, Mode=TwoWay}"
+                            Style="{StaticResource StyleSwitchRadioButton}" />
+
+						<RadioButton
+                            Content="Dark"
+                            IsChecked="{Binding SelectedAppearanceTheme, Converter={StaticResource DarkToBoolConverter}, Mode=TwoWay}"
+                            Style="{StaticResource StyleSwitchRadioButton}" />
+
+						<Separator />
+
+						<Button
+                            Command="{Binding Command, Mode=OneWay}"
+                            CommandParameter="{Binding ElementName=ViewContainerWindow, Mode=OneWay}"
+                            Content="{Binding Description, Mode=OneWay}"
+                            DataContext="{Binding CloseVmc, Mode=OneTime}" />
+					</StackPanel>
+				</materialDesign:PopupBox>-->
 			</Grid>
-		</Border>
+		</materialDesign:ColorZone>
 	</DataTemplate>
 
 	<Style TargetType="ListBoxItem" x:Key="MainNavigationContainerStyle"

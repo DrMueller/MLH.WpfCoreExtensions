@@ -4,6 +4,7 @@
 								xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 								xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 								xmlns:components="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Components"
+								xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
 								mc:Ignorable="d"
 								d:DesignHeight="600"
 								d:DesignWidth="600"
@@ -11,6 +12,12 @@
 								Title="Todo Title"
 								WindowStartupLocation="CenterScreen"
 								Width="1200"
+								xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+								TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+								Background="{DynamicResource MaterialDesignPaper}"
+								TextElement.FontWeight="Medium"
+								TextElement.FontSize="14"
+								FontFamily="{materialDesign:MaterialDesignFont}"
 								Height="800">
 
 	<Window.Resources>
@@ -42,15 +49,23 @@
 				DockPanel.Dock="Top"
 				Content="{Binding ., Mode=OneWay}"
 				ContentTemplate="{StaticResource MainHeader}" />
-			<ListBox
-				Style="{StaticResource NavigationListBox}"
-				ItemContainerStyle="{StaticResource MainNavigationContainerStyle}"
-				ItemTemplate="{StaticResource MainNavigation}"
-				ItemsSource="{Binding NavigationEntries, Mode=OneWay}" />
 
-			<Border Style="{StaticResource ContentBorder}">
-				<ContentPresenter DockPanel.Dock="Right" Content="{Binding CurrentContent, Mode=OneWay}" />
-			</Border>
+			<md:DrawerHost IsLeftDrawerOpen="{Binding IsMainNavigationPaneOpen, Mode=TwoWay}" Margin="0,10,0,0" LeftDrawerBackground="{DynamicResource MaterialDesignPaper}">
+				<md:DrawerHost.LeftDrawerContent>
+					<StackPanel Width="150">
+						<TextBlock Text="Some left content" HorizontalAlignment="Center"/>
+						<md:PackIcon Kind="Headset" Height="Auto" Width="Auto" />
+					</StackPanel>
+					<!--<ListBox
+						viewExtensions:EventCommandBinding.EventName="MouseLeftButtonUp"
+						viewExtensions:EventCommandBinding.Command="{Binding CloseMainNavigationPane, Mode=OneWay}"
+						ItemContainerStyle="{StaticResource MainNavigationContainerStyle}"
+						ItemTemplate="{StaticResource MainNavigation}"
+						ItemsSource="{Binding NavigationEntries, Mode=OneWay}" />-->
+				</md:DrawerHost.LeftDrawerContent>
+
+				<ContentPresenter Content="{Binding CurrentContent, Mode=OneWay}" />
+			</md:DrawerHost>
 		</DockPanel>
 	</Grid>
 </Window>

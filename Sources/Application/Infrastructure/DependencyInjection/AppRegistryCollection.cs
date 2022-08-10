@@ -10,12 +10,20 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.RessourceDictionaries.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.RessourceDictionaries.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Servants;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Servants.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Servants;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Servants.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation;
@@ -52,12 +60,17 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
             For<IResourceDictionaryFactory>().Use<ResourceDictionaryFactory>().Singleton();
             For<IViewViewModelMapFactory>().Use<ViewViewModelMapFactory>().Singleton();
             For<IDataTemplateFactory>().Use<DataTemplateFactory>().Singleton();
+            For<IMaterialDesignInitializationService>().Use<MaterialDesignInitializationService>().Singleton();
 
             // MvvmShell
             For<IViewModelContainer>().Use<ViewModelContainer>().Singleton();
             For<IViewModelDisplayConfigurationService>().Use<ViewModelDisplayConfigurationService>().Singleton();
             For<IViewModelDisplayService>().Use<ViewModelDisplayService>().Singleton();
             For<IViewModelFactory>().Use<ViewModelFactory>().Singleton();
+
+            // Appearance
+            For<IAppearanceService>().Use<AppearanceService>().Singleton();
+            For<IRegistryHandler>().Use<RegistryHandler>().Singleton();
         }
     }
 }

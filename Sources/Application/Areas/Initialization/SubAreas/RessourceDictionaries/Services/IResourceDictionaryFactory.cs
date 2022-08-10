@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Servants
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.RessourceDictionaries.Services
 {
     internal interface IResourceDictionaryFactory
     {

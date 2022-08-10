@@ -28,7 +28,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels
         }
 
         protected virtual void OnPropertyChanged<T>(
-            T newValue, ref T oldValue,
+            T newValue,
+            ref T oldValue,
             [CallerMemberName] string propertyName = null)
         {
             if (Equals(newValue, oldValue))

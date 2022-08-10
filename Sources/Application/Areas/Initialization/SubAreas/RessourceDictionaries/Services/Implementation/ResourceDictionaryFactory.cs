@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Markup;
 using JetBrains.Annotations;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services.Servants.Implementation
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.RessourceDictionaries.Services.Implementation
 {
     [UsedImplicitly]
     internal class ResourceDictionaryFactory : IResourceDictionaryFactory

@@ -31,7 +31,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         public string HeadingDescription => "Individuals Overview";
         public ObservableCollection<IndividualOverviewViewData> Individuals { get; private set; }
         public string NavigationDescription => "Individuals";
-        public int NavigationSequence => 2;
+        public int NavigationSequence => 0;
         public Func<object, bool> OnFiltering => FilterIndividual;
 
         public GridSearchExpression SearchExpression
