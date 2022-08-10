@@ -14,9 +14,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI
             var windowConfig = WindowConfiguration.CreateWithDefaultIcon(assembly, "Test UI");
             var appConfig = new WpfAppConfiguration(assembly, windowConfig);
             await AppStartService.StartAppAsync(appConfig);
-
-            //var tra = new Window1();
-            //tra.Show();
         }
     }
 }

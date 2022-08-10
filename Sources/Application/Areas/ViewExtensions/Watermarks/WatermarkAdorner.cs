@@ -9,12 +9,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks
     internal class WatermarkAdorner : Adorner
     {
         private readonly ContentPresenter _contentPresenter;
+
         public WatermarkAdorner(UIElement adornedElement, object watermark) :
             base(adornedElement)
         {
             IsHitTestVisible = false;
 
-            _contentPresenter = new ContentPresenter {
+            _contentPresenter = new ContentPresenter
+            {
                 Content = watermark,
                 Opacity = 0.5,
                 Margin = new Thickness(Control.Margin.Left + Control.Padding.Left + 5, Control.Margin.Top + Control.Padding.Top + 3, 0, 0)
@@ -26,17 +28,20 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks
                 _contentPresenter.HorizontalAlignment = HorizontalAlignment.Center;
             }
 
-            var binding = new Binding("IsVisible")
-            {
-                Source = adornedElement,
-                Converter = new BooleanToVisibilityConverter()
-            };
+            var binding = new Binding("IsVisible") { Source = adornedElement, Converter = new BooleanToVisibilityConverter() };
 
             SetBinding(VisibilityProperty, binding);
         }
 
         protected override int VisualChildrenCount => 1;
         private Control Control => (Control)AdornedElement;
+
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            _contentPresenter.Arrange(new Rect(finalSize));
+
+            return finalSize;
+        }
 
         protected override Visual GetVisualChild(int index)
         {
@@ -48,13 +53,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks
             _contentPresenter.Measure(Control.RenderSize);
 
             return Control.RenderSize;
-        }
-    
-        protected override Size ArrangeOverride(Size finalSize)
-        {
-            _contentPresenter.Arrange(new Rect(finalSize));
-
-            return finalSize;
         }
     }
 }

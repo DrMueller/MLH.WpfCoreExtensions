@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Media;
 using MaterialDesignThemes.Wpf;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.RessourceDictionaries.Services;
 
@@ -16,21 +17,21 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign
 
         public void Initialize()
         {
-            //var bundledTheme = new BundledTheme
-            //{
-            //    BaseTheme = BaseTheme.Light,
-            //    PrimaryColor = MaterialDesignColors.PrimaryColor.DeepPurple,
-            //    SecondaryColor = MaterialDesignColors.SecondaryColor.Lime
-            //};
+            var customColorTheme = new CustomColorTheme
+            {
+                BaseTheme = BaseTheme.Inherit,
+                PrimaryColor = Color.FromRgb(0, 11, 178),
+                SecondaryColor = Color.FromRgb(194, 255, 218)
+            };
 
-            //var mergedDict = _resourceDictionaryFactory.CreateEmpty();
-            //mergedDict.MergedDictionaries.Add(bundledTheme);
+            var mergedDict = _resourceDictionaryFactory.CreateEmpty();
+            mergedDict.MergedDictionaries.Add(customColorTheme);
 
-            //var defaultsDict = _resourceDictionaryFactory.CreateEmpty();
-            //defaultsDict.Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml");
-            //mergedDict.MergedDictionaries.Add(defaultsDict);
+            var defaultsDict = _resourceDictionaryFactory.CreateEmpty();
+            defaultsDict.Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml");
+            mergedDict.MergedDictionaries.Add(defaultsDict);
 
-            //Application.Current.Resources.MergedDictionaries.Add(mergedDict);
+            Application.Current.Resources.MergedDictionaries.Add(mergedDict);
         }
     }
 }

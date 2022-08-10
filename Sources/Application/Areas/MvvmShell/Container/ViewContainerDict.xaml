@@ -26,12 +26,6 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 	</Style>
 
-	<Style TargetType="Border" x:Key="HeaderBorder">
-		<!--<Setter Property="BorderThickness" Value="0.1" />
-		<Setter Property="BorderBrush" Value="Black" />
-		<Setter Property="Background" Value="LightBlue" />-->
-	</Style>
-
 	<Style TargetType="Grid" x:Key="ContainerGrid">
 		<Setter Property="Margin" Value="10" />
 	</Style>
@@ -39,12 +33,10 @@
 	<Style TargetType="ListBox" x:Key="NavigationListBox">
 		<Setter Property="Margin" Value="0,10,0,0" />
 		<Setter Property="BorderThickness" Value="0.3" />
-		<!--<Setter Property="BorderBrush" Value="Black" />-->
 	</Style>
 
 	<Style TargetType="Border" x:Key="ContentBorder">
 		<Setter Property="BorderThickness" Value="0.1" />
-		<!--<Setter Property="BorderBrush" Value="Black" />-->
 		<Setter Property="Margin" Value="10,10,0,0" />
 	</Style>
 
@@ -55,42 +47,43 @@
 	<DataTemplate x:Key="MainHeader" DataType="{x:Type vm:ViewModelContainer}">
 		<materialDesign:ColorZone Mode="PrimaryMid">
 			<Grid>
+				<!-- ReSharper disable once Xaml.StaticResourceNotResolved -->
 				<ToggleButton
 					IsChecked="{Binding IsMainNavigationPaneOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					HorizontalAlignment="Left"
 					Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
 
 				<TextBlock
-                    Style="{StaticResource MainHeaderTextBlock}">
+					Style="{StaticResource MainHeaderTextBlock}">
 					<TextBlock.Text>
 						<PriorityBinding FallbackValue=""> <!--PriorityBinding is a best effort, as not all IViewModels have a heading-->
+							<!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
 							<Binding Path="CurrentContent.HeadingDescription" />
 						</PriorityBinding>
 					</TextBlock.Text>
 				</TextBlock>
 
 				<materialDesign:PopupBox
-                    HorizontalAlignment="Right"
-                    PlacementMode="BottomAndAlignRightEdges"
-                    StaysOpen="True">
+					HorizontalAlignment="Right"
+					PlacementMode="BottomAndAlignRightEdges"
+					StaysOpen="True">
 					<StackPanel Orientation="Vertical">
 						<RadioButton
-                            Content="Light"
-                            IsChecked="{Binding SelectedAppearanceTheme, Converter={StaticResource LightToBoolConverter}, Mode=TwoWay}"
-                            Style="{StaticResource StyleSwitchRadioButton}" />
+							Content="Light"
+							IsChecked="{Binding SelectedAppearanceTheme, Converter={StaticResource LightToBoolConverter}, Mode=TwoWay}"
+							Style="{StaticResource StyleSwitchRadioButton}" />
 
 						<RadioButton
-                            Content="Dark"
-                            IsChecked="{Binding SelectedAppearanceTheme, Converter={StaticResource DarkToBoolConverter}, Mode=TwoWay}"
-                            Style="{StaticResource StyleSwitchRadioButton}" />
+							Content="Dark"
+							IsChecked="{Binding SelectedAppearanceTheme, Converter={StaticResource DarkToBoolConverter}, Mode=TwoWay}"
+							Style="{StaticResource StyleSwitchRadioButton}" />
 
 						<Separator />
 
 						<Button
-							Command="{Binding Command, Mode=OneWay}"
-                            CommandParameter="{Binding ElementName=ViewContainerWindow, Mode=OneWay}"
-                            Content="{Binding Description, Mode=OneWay}"
-                            DataContext="{Binding CloseApp, Mode=OneTime}" />
+							Command="{Binding CloseApp, Mode=OneWay}"
+							CommandParameter="{Binding ElementName=ViewContainerWindow, Mode=OneWay}"
+							Content="Close" />
 					</StackPanel>
 				</materialDesign:PopupBox>
 			</Grid>

@@ -51,7 +51,8 @@
 				Content="{Binding ., Mode=OneWay}"
 				ContentTemplate="{StaticResource MainHeader}" />
 
-			<md:DrawerHost IsLeftDrawerOpen="{Binding IsMainNavigationPaneOpen, Mode=TwoWay}" Margin="0,10,0,0" LeftDrawerBackground="{DynamicResource MaterialDesignPaper}">
+			<md:DrawerHost IsLeftDrawerOpen="{Binding IsMainNavigationPaneOpen, Mode=TwoWay}" Margin="0,10,0,0"
+																		LeftDrawerBackground="{DynamicResource MaterialDesignPaper}">
 				<md:DrawerHost.LeftDrawerContent>
 					<ListBox
 						viewExtensions:EventCommandBinding.EventName="MouseLeftButtonUp"

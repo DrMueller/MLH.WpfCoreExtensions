@@ -42,18 +42,18 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
                 () => IsIndividualSelected);
 
         private ViewModelCommand ClearSearch =>
-            new ViewModelCommand(
+            new(
                 "Clear search",
                 new RelayCommand(
                     () => _context.SearchExpression = GridSearchExpression.CreateEmpty()));
 
         private ViewModelCommand CreateIndividual =>
-            new ViewModelCommand(
+            new(
                 "Create",
                 new AsyncRelayCommand(() => _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(Maybe.CreateNone<string>())));
 
         private ViewModelCommand DeleteIndividual =>
-            new ViewModelCommand(
+            new(
                 "Delete",
                 new AsyncRelayCommand(
                     DeleteIndividualAsync,
@@ -62,13 +62,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private bool IsIndividualSelected => _context.SelectedIndividual != null;
 
         private ViewModelCommand SearchMatthias2 =>
-            new ViewModelCommand(
+            new(
                 "Search Matthias2",
                 new RelayCommand(
                     () => _context.SearchExpression = GridSearchExpression.CreateFrom("Matthias2")));
 
         private ViewModelCommand UpdateIndividual =>
-            new ViewModelCommand(
+            new(
                 "Update",
                 UpdateIndividualCommand);
 

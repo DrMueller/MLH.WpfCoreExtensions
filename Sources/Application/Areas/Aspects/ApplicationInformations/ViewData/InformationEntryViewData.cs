@@ -1,8 +1,8 @@
-using System.Windows.Media;
 using JetBrains.Annotations;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewData
 {
+    [PublicAPI]
     internal class InformationEntryViewData
     {
         public InformationEntryViewData(

@@ -11,13 +11,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var appearanceTheme = (AppearanceTheme)value;
+            var appearanceTheme = (AppearanceTheme)value!;
+
             return appearanceTheme == AppearanceTheme.Dark;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var appearanceThemeIsDark = (bool)value;
+            var appearanceThemeIsDark = (bool)value!;
+
             return appearanceThemeIsDark ? AppearanceTheme.Dark : AppearanceTheme.Light;
         }
     }

@@ -1,4 +1,3 @@
-using System.Windows.Media;
 using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.ViewData;
@@ -17,14 +16,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Servic
                 AdaptType(infoEntry.EntryType));
         }
 
-        private InformationEntryTypeViewData AdaptType(InformationEntryType type)
+        private static InformationEntryTypeViewData AdaptType(InformationEntryType type)
         {
             switch (type)
             {
                 case InformationEntryType.Error:
-                {
-                    return InformationEntryTypeViewData.Error;
-                }
+                    {
+                        return InformationEntryTypeViewData.Error;
+                    }
                 case InformationEntryType.Success:
                     {
                         return InformationEntryTypeViewData.Success;
@@ -35,6 +34,5 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Servic
                     }
             }
         }
-
     }
 }

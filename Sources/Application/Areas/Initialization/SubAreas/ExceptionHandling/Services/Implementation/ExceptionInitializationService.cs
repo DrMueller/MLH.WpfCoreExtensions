@@ -2,8 +2,9 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
 using JetBrains.Annotations;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services;
 
-namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services.Implementation
+namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ExceptionHandling.Services.Implementation
 {
     [UsedImplicitly]
     internal class ExceptionInitializationService : IExceptionInitializationService

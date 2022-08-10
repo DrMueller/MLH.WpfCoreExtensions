@@ -10,6 +10,8 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.Logging.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ExceptionHandling.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ExceptionHandling.Services.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign.Implementation;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Services;
@@ -70,7 +72,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
 
             // Appearance
             For<IAppearanceService>().Use<AppearanceService>().Singleton();
-            For<IRegistryHandler>().Use<RegistryHandler>().Singleton();
+            For<IAppearanceThemeRepository>().Use<AppearanceThemeRepository>().Singleton();
         }
     }
 }
