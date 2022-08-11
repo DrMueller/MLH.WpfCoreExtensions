@@ -50,10 +50,11 @@
     <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
     <PackageReference Include="MaterialDesignColors" Version="2.0.6" />
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
-    <PackageReference Include="Mmu.Mlh.LanguageExtensions" Version="2.4.11" />
-    <PackageReference Include="Mmu.Mlh.ServiceProvisioning" Version="2.1.8" />
+    <PackageReference Include="Mmu.Mlh.ServiceProvisioning" Version="3.0.2" />
     <PackageReference Include="NLog" Version="5.0.1" />
   </ItemGroup>
+
+
 
   <ItemGroup>
     <Compile Update="Areas\MvvmShell\Container\ViewContainer.xaml.cs" />

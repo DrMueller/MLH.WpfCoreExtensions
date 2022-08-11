@@ -1,8 +1,10 @@
 ﻿using JetBrains.Annotations;
 using Lamar;
-using Mmu.Mlh.DataAccess.FileSystem.Infrastructure.Settings.Services;
+using Mmu.Mlh.DataAccess.FileSystem.Areas.Settings.Services;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.Settings.Services;
 using Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.Settings.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.Settings.Services.Servants;
+using Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.Settings.Services.Servants.Implementation;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.DependencyInjection
 {
@@ -20,6 +22,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.DependencyInjection
 
             For<IFileSystemSettingsProvider>().Use<SettingsProvider>().Singleton();
             For<ISettingsProvider>().Use<SettingsProvider>().Singleton();
+            For<IAppSettingsFactory>().Use<AppSettingsFactory>().Singleton();
         }
     }
 }

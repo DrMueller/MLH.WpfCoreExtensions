@@ -46,6 +46,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
             var idMaybe = (Maybe<string>)initParams.First();
 
             var id = idMaybe.Reduce(() => string.Empty);
+
             if (!string.IsNullOrEmpty(id))
             {
                 IndividualDetails = await _detailsService.LoadAsync(id);

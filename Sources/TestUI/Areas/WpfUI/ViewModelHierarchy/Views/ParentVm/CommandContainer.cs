@@ -14,7 +14,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.ViewModelHierarchy.Views.
 
         public CommandsViewData Commands { get; private set; }
 
-        private ViewModelCommand SetChildText => new(
+        private ViewModelCommand SetChildText => new ViewModelCommand(
             "Set child text",
             new RelayCommand(
                 () =>
