@@ -20,7 +20,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Mmu.Mlh.DataAccess.FileSystem" Version="3.0.1" />
-    <PackageReference Include="Mmu.Mlh.DomainExtensions" Version="2.2.13" />
+    <PackageReference Include="Mmu.Mlh.DomainExtensions" Version="2.2.15" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +42,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Infrastructure\Assets\App.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

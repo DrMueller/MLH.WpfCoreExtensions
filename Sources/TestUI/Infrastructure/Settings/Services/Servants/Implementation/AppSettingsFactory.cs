@@ -16,9 +16,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.Settings.Services.Serv
 
             var configRoot = configBuilder.Build();
 
-            return configRoot
+            var settings = configRoot
                 .GetSection(AppSettings.SectionKey)
                 .Get<AppSettings>();
+
+            return settings;
         }
     }
 }
