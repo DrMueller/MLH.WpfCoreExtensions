@@ -24,7 +24,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
         private readonly IViewModelDisplayConfigurationService _vmDisplayConfigService;
         private IViewModel _currentContent;
         private InformationEntryViewData _informationEntry;
-        private bool _isMainNavigationPaneOpen = true;
+        private bool _isMainNavigationPaneOpen;
         private IEnumerable<NavigationEntry> _navigationEntries;
 
         public ViewModelContainer(
