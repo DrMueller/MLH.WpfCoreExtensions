@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
@@ -27,6 +28,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ExceptionHandl
             {
                 Debugger.Break();
             }
+
+            Console.WriteLine($"Global exception: {e.Exception}");
+            Debug.WriteLine($"Global exception: {e.Exception}");
 
             _exceptionHandler.Handle(e.Exception);
             e.Handled = true;
