@@ -23,22 +23,23 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.ViewModelHierarchy.Views.
             _vmFactory = vmFactory;
         }
 
-        public ChildVmViewModel ChildVm
-        {
-            get => _childVm;
-            set => OnPropertyChanged(value, ref _childVm);
-        }
-
         public CommandContainer CommandContainer { get; }
-        public string HeadingDescription => "Parent Child Stuff";
-        public string NavigationDescription => "Parent Child";
-        public int NavigationSequence => 7;
 
         public string ParentText
         {
             get => _parentText;
             set => OnPropertyChanged(value, ref _parentText);
         }
+
+        public ChildVmViewModel ChildVm
+        {
+            get => _childVm;
+            set => OnPropertyChanged(value, ref _childVm);
+        }
+
+        public string HeadingDescription => "Parent Child Stuff";
+        public string NavigationDescription => "Parent Child";
+        public int NavigationSequence => 7;
 
         public async Task InitializeAsync(params object[] initParams)
         {

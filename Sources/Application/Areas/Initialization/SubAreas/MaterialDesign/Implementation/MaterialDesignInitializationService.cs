@@ -28,7 +28,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign
             mergedDict.MergedDictionaries.Add(customColorTheme);
 
             var defaultsDict = _resourceDictionaryFactory.CreateEmpty();
-            defaultsDict.Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml");
+            defaultsDict.Source =
+                new Uri(
+                    "pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml");
             mergedDict.MergedDictionaries.Add(defaultsDict);
 
             Application.Current.Resources.MergedDictionaries.Add(mergedDict);

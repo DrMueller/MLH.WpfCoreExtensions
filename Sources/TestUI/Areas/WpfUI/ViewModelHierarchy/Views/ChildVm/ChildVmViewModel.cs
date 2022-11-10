@@ -14,13 +14,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.ViewModelHierarchy.Views.
             CommandContainer = commandContainer;
         }
 
+        public CommandContainer CommandContainer { get; }
+
         public string ChildText
         {
             get => _childText;
             set => OnPropertyChanged(value, ref _childText);
         }
-
-        public CommandContainer CommandContainer { get; }
 
         public async Task InitializeAsync(params object[] initParams)
         {

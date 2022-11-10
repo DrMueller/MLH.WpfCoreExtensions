@@ -5,29 +5,28 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.ViewModelComma
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfCoreExtensions.NugetTestUI.Areas.Organisations.ViewModels.Overview;
 
-namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI.Areas.Individuals.ViewModels.Overview
+namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI.Areas.Individuals.ViewModels.Overview;
+
+public class CommandContainer : IViewModelCommandContainer<IndividualsOverviewViewModel>
 {
-    public class CommandContainer : IViewModelCommandContainer<IndividualsOverviewViewModel>
+    private readonly IViewModelDisplayService _vmDisplayService;
+
+    public CommandContainer(IViewModelDisplayService vmDisplayService)
     {
-        private readonly IViewModelDisplayService _vmDisplayService;
+        _vmDisplayService = vmDisplayService;
+    }
 
-        public CommandContainer(IViewModelDisplayService vmDisplayService)
-        {
-            _vmDisplayService = vmDisplayService;
-        }
+    public CommandsViewData Commands { get; private set; }
 
-        public CommandsViewData Commands { get; private set; }
+    private ViewModelCommand NavigateToOrganisations =>
+        new(
+            "Show Organisations",
+            new AsyncRelayCommand(() => _vmDisplayService.DisplayAsync<OrganisationsOverviewViewModel>()));
 
-        private ViewModelCommand NavigateToOrganisations =>
-            new(
-                "Show Organisations",
-                new AsyncRelayCommand(() => _vmDisplayService.DisplayAsync<OrganisationsOverviewViewModel>()));
+    public Task InitializeAsync(IndividualsOverviewViewModel context)
+    {
+        Commands = new CommandsViewData(NavigateToOrganisations);
 
-        public Task InitializeAsync(IndividualsOverviewViewModel context)
-        {
-            Commands = new CommandsViewData(NavigateToOrganisations);
-
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
     }
 }

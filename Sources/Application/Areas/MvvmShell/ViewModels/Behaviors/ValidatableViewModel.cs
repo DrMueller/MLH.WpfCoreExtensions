@@ -16,6 +16,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
     {
         private ValidationContainer<T> _container;
 
+        public Task InitializeAsync(params object[] initParams)
+        {
+            var configBuilder = new ValidationConfigurationBuilder<T>(this);
+            _container = ConfigureValidation(configBuilder);
+
+            return OnInitializeAsync(initParams);
+        }
+
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
         public bool HasErrors => _container.HasErrors;
@@ -23,14 +31,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
         public IEnumerable GetErrors(string propertyName)
         {
             return _container.GetErrorMessages(propertyName);
-        }
-
-        public Task InitializeAsync(params object[] initParams)
-        {
-            var configBuilder = new ValidationConfigurationBuilder<T>(this);
-            _container = ConfigureValidation(configBuilder);
-
-            return OnInitializeAsync(initParams);
         }
 
         // If HasErrors is true, WPF loops through all the properties and marks them on the UI

@@ -47,8 +47,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Compo
             InitializeComponent();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public DataGrid DataGrid
         {
             get => (DataGrid)GetValue(DataGridProperty);
@@ -101,6 +99,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Compo
                 _gridEntriesView.Filter += OnFilterRequested;
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private static void OnDataGridChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

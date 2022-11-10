@@ -52,7 +52,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
             }
         }
 
-        private IReadOnlyCollection<string> ReadErrorMessages(string propertyName, PropertyValidation propertyValidation)
+        private IReadOnlyCollection<string> ReadErrorMessages(string propertyName,
+            PropertyValidation propertyValidation)
         {
             var propertyValue = _viewModel.GetType().GetProperty(propertyName)?.GetValue(_viewModel);
 

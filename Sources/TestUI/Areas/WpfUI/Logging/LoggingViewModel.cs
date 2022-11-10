@@ -15,13 +15,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging
         }
 
         public CommandsViewData Commands => _commandContainer.Commands;
-        public string HeadingDescription => "Logging stuff";
-        public string NavigationDescription => "Logging";
-        public int NavigationSequence => 4;
 
         public async Task InitializeAsync(params object[] initParams)
         {
             await _commandContainer.InitializeAsync(this);
         }
+
+        public string HeadingDescription => "Logging stuff";
+        public string NavigationDescription => "Logging";
+        public int NavigationSequence => 4;
     }
 }

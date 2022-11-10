@@ -22,7 +22,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMappi
 
         private static ParserContext CreateContext(ViewViewModelMap map)
         {
-            var context = new ParserContext { XamlTypeMapper = new XamlTypeMapper(Array.Empty<string>()) };
+            var context = new ParserContext {XamlTypeMapper = new XamlTypeMapper(Array.Empty<string>())};
 
             context.XamlTypeMapper.AddMappingProcessingInstruction(
                 "vm",

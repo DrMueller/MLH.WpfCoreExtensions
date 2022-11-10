@@ -6,7 +6,8 @@ using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.Domain.Models;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.DataAccess.Repositories.DataModelRepositories.Adapters.Implementation
 {
-    public class IndividualDataModelAdapter : DataModelAdapterBase<IndividualDataModel, Individual, string>, IIndividualDataModelAdapter
+    public class IndividualDataModelAdapter : DataModelAdapterBase<IndividualDataModel, Individual, string>,
+        IIndividualDataModelAdapter
     {
         private readonly IIndividualFactory _individualFactory;
 

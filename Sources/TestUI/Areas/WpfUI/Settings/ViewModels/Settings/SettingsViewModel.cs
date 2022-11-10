@@ -17,9 +17,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Settings.ViewModels.Setti
         }
 
         public CommandsViewData Commands => _commandContainer.Commands;
-        public string HeadingDescription => "Settings";
-        public string NavigationDescription => "Fun with Settings";
-        public int NavigationSequence => 5;
 
         public string SettingsInfo
         {
@@ -31,5 +28,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Settings.ViewModels.Setti
         {
             await _commandContainer.InitializeAsync(this);
         }
+
+        public string HeadingDescription => "Settings";
+        public string NavigationDescription => "Fun with Settings";
+        public int NavigationSequence => 5;
     }
 }

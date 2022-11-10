@@ -38,7 +38,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewD
             set => OnPropertyChanged(value, ref _lastName);
         }
 
-        protected override ValidationContainer<IndividualDetailsViewData> ConfigureValidation(IValidationConfigurationBuilder<IndividualDetailsViewData> builder)
+        protected override ValidationContainer<IndividualDetailsViewData> ConfigureValidation(
+            IValidationConfigurationBuilder<IndividualDetailsViewData> builder)
         {
             return builder.ForProperty(f => f.Birthdate)
                 .ApplyRule(ValidationRuleFactory.StringNotNullOrEmpty())

@@ -24,5 +24,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.InformationGrids.
             get => (ObservableCollection<InformationGridEntryViewData>)GetValue(InformationEntriesProperty);
             set => SetValue(InformationEntriesProperty, value);
         }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            InformationEntries.Clear();
+        }
     }
 }

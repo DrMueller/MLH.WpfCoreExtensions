@@ -19,7 +19,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Implemen
             get => _themeRepo.Load();
             set
             {
-                var baseTheme = value == AppearanceTheme.Dark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
+                var baseTheme = value == AppearanceTheme.Dark
+                    ? new MaterialDesignDarkTheme()
+                    : (IBaseTheme)new MaterialDesignLightTheme();
                 var theme = _paletteHelper.GetTheme();
                 theme.SetBaseTheme(baseTheme);
                 _paletteHelper.SetTheme(theme);

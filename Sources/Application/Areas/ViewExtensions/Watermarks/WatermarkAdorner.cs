@@ -19,7 +19,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks
             {
                 Content = watermark,
                 Opacity = 0.5,
-                Margin = new Thickness(Control.Margin.Left + Control.Padding.Left + 5, Control.Margin.Top + Control.Padding.Top + 3, 0, 0)
+                Margin = new Thickness(Control.Margin.Left + Control.Padding.Left + 5,
+                    Control.Margin.Top + Control.Padding.Top + 3, 0, 0)
             };
 
             if (Control is ItemsControl && !(Control is ComboBox))
@@ -28,7 +29,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks
                 _contentPresenter.HorizontalAlignment = HorizontalAlignment.Center;
             }
 
-            var binding = new Binding("IsVisible") { Source = adornedElement, Converter = new BooleanToVisibilityConverter() };
+            var binding =
+                new Binding("IsVisible") {Source = adornedElement, Converter = new BooleanToVisibilityConverter()};
 
             SetBinding(VisibilityProperty, binding);
         }

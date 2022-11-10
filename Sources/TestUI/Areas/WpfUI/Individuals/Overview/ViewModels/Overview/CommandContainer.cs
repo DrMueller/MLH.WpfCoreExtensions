@@ -50,7 +50,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private ViewModelCommand CreateIndividual =>
             new ViewModelCommand(
                 "Create",
-                new AsyncRelayCommand(() => _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(Maybe.CreateNone<string>())));
+                new AsyncRelayCommand(() =>
+                    _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(Maybe.CreateNone<string>())));
 
         private ViewModelCommand DeleteIndividual =>
             new ViewModelCommand(
@@ -87,7 +88,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
 
         private async Task DeleteIndividualAsync()
         {
-            _informationPublisher.Publish(InformationEntry.CreateInfo($"Deleting Individual {_context.SelectedIndividual.FormattedName}..", true));
+            _informationPublisher.Publish(
+                InformationEntry.CreateInfo($"Deleting Individual {_context.SelectedIndividual.FormattedName}..",
+                    true));
             await _overviewService.DeleteIndividualAsync(_context.SelectedIndividual.Id);
             _context.Individuals.Remove(_context.SelectedIndividual);
             _informationPublisher.Publish(InformationEntry.CreateSuccess("Individual deleted", false, 5));

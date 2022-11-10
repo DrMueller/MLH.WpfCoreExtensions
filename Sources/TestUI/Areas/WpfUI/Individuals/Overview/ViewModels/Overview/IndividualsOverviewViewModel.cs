@@ -28,10 +28,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         }
 
         public CommandsViewData Commands => _commandContainer.Commands;
-        public string HeadingDescription => "Individuals Overview";
         public ObservableCollection<IndividualOverviewViewData> Individuals { get; private set; }
-        public string NavigationDescription => "Individuals";
-        public int NavigationSequence => 0;
         public Func<object, bool> OnFiltering => FilterIndividual;
 
         public GridSearchExpression SearchExpression
@@ -49,6 +46,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
             var individuals = await _overviewService.LoadAllAsync();
             Individuals = new ObservableCollection<IndividualOverviewViewData>(individuals);
         }
+
+        public string HeadingDescription => "Individuals Overview";
+        public string NavigationDescription => "Individuals";
+        public int NavigationSequence => 0;
 
         private bool FilterIndividual(object data)
         {

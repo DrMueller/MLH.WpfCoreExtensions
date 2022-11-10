@@ -31,8 +31,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
         }
 
         public CommandsViewData Commands => _commandContainer.Commands;
-
-        public string HeadingDescription { get; private set; }
         public IndividualDataViewModel IndividualData { get; }
 
         public IndividualDetailsViewData IndividualDetails
@@ -40,6 +38,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
             get => _individualDetails;
             set => OnPropertyChanged(value, ref _individualDetails);
         }
+
+        public string HeadingDescription { get; private set; }
 
         public async Task InitializeAsync(params object[] initParams)
         {

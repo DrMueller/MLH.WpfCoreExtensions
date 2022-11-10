@@ -4,7 +4,8 @@ using Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.DataAccess.DataModeling;
 
 namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.DataAccess.Repositories.DataModelRepositories.Implementation
 {
-    public class IndividualDataModelRepository : FileSystemDataModelRepository<IndividualDataModel>, IIndividualDataModelRepository
+    public class IndividualDataModelRepository : FileSystemDataModelRepository<IndividualDataModel>,
+        IIndividualDataModelRepository
     {
         public IndividualDataModelRepository(
             IFileSystemProxy<IndividualDataModel> fileSystemProxy,

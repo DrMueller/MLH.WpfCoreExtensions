@@ -3,25 +3,25 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.Com
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 
-namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI.Areas.Individuals.ViewModels.Overview
+namespace Mmu.Mlh.WpfCoreExtensions.NugetTestUI.Areas.Individuals.ViewModels.Overview;
+
+public class IndividualsOverviewViewModel : ViewModelBase, IInitializableViewModel, INavigatableViewModel
 {
-    public class IndividualsOverviewViewModel : ViewModelBase, IInitializableViewModel, INavigatableViewModel
+    private readonly CommandContainer _commandContainer;
+
+    public IndividualsOverviewViewModel(CommandContainer commandContainer)
     {
-        private readonly CommandContainer _commandContainer;
-
-        public IndividualsOverviewViewModel(CommandContainer commandContainer)
-        {
-            _commandContainer = commandContainer;
-        }
-
-        public CommandsViewData Commands => _commandContainer.Commands;
-        public string HeadingDescription => "Individuals Overview";
-        public string NavigationDescription => "Individuals";
-        public int NavigationSequence => 1;
-
-        public async Task InitializeAsync(params object[] initParams)
-        {
-            await _commandContainer.InitializeAsync(this);
-        }
+        _commandContainer = commandContainer;
     }
+
+    public CommandsViewData Commands => _commandContainer.Commands;
+
+    public async Task InitializeAsync(params object[] initParams)
+    {
+        await _commandContainer.InitializeAsync(this);
+    }
+
+    public string HeadingDescription => "Individuals Overview";
+    public string NavigationDescription => "Individuals";
+    public int NavigationSequence => 1;
 }
