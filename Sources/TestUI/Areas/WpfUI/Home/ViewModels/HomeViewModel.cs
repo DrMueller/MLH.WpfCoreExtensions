@@ -7,7 +7,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Home.ViewModels
     {
         public string HeadingDescription => "Hello Home";
         public string NavigationDescription => "Home";
-
         public int NavigationSequence => 1;
     }
 }

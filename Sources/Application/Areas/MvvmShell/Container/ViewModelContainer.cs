@@ -27,18 +27,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
         private bool _isMainNavigationPaneOpen;
         private IEnumerable<NavigationEntry> _navigationEntries;
 
-        public ViewModelContainer(
-            IViewModelDisplayConfigurationService vmDisplayConfigService,
-            INavigationEntryFactory navigationEntryFactory,
-            IInformationSubscriptionService informationSubscriptionService,
-            IAppearanceService appearanceService)
-        {
-            _vmDisplayConfigService = vmDisplayConfigService;
-            _navigationEntryFactory = navigationEntryFactory;
-            _informationSubscriptionService = informationSubscriptionService;
-            _appearanceService = appearanceService;
-        }
-
         public static ParametredRelayCommand CloseApp =>
             new ParametredRelayCommand(
                 o =>
@@ -90,6 +78,18 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container
                 {
                     IsMainNavigationPaneOpen = !_isMainNavigationPaneOpen;
                 });
+
+        public ViewModelContainer(
+            IViewModelDisplayConfigurationService vmDisplayConfigService,
+            INavigationEntryFactory navigationEntryFactory,
+            IInformationSubscriptionService informationSubscriptionService,
+            IAppearanceService appearanceService)
+        {
+            _vmDisplayConfigService = vmDisplayConfigService;
+            _navigationEntryFactory = navigationEntryFactory;
+            _informationSubscriptionService = informationSubscriptionService;
+            _appearanceService = appearanceService;
+        }
 
         public async Task InitializeAsync()
         {

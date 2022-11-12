@@ -13,12 +13,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewMo
     {
         private readonly IInformationPublisher _infoPublisher;
         private InfosAndExceptionsViewModel _context;
-
-        public CommandContainer(IInformationPublisher infoPublisher)
-        {
-            _infoPublisher = infoPublisher;
-        }
-
         public CommandsViewData Commands { get; private set; }
 
         private static ViewModelCommand ThrowException =>
@@ -45,6 +39,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewMo
             new ViewModelCommand(
                 "Show Success",
                 new RelayCommand(() => _infoPublisher.Publish(InformationEntry.CreateSuccess("Hello Success", false))));
+
+        public CommandContainer(IInformationPublisher infoPublisher)
+        {
+            _infoPublisher = infoPublisher;
+        }
 
         public Task InitializeAsync(InfosAndExceptionsViewModel context)
         {

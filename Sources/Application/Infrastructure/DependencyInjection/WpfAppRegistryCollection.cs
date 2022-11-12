@@ -8,6 +8,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
     [UsedImplicitly]
     public class WpfAppRegistryCollection : ServiceRegistry
     {
+        internal static Assembly WpfAssembly { get; set; }
+
         public WpfAppRegistryCollection()
         {
             // This more of a convenience feature, therefore if the registry is loaded with the InitializeApplication method called, the WpfAssembly is null
@@ -23,7 +25,5 @@ namespace Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection
                     scanner.AddAllTypesOf<IViewModel>();
                 });
         }
-
-        internal static Assembly WpfAssembly { get; set; }
     }
 }

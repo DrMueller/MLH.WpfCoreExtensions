@@ -19,33 +19,24 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Compo
                 typeof(DataGrid),
                 typeof(SearchGrid),
                 new PropertyMetadata(OnDataGridChanged));
-
         public static readonly DependencyProperty FilterCallbackProperty =
             DependencyProperty.Register(
                 nameof(FilterCallback),
                 typeof(Func<object, bool>),
                 typeof(SearchGrid));
-
         public static readonly DependencyProperty GridEntriesProperty =
             DependencyProperty.Register(
                 nameof(GridEntries),
                 typeof(IEnumerable<object>),
                 typeof(SearchGrid),
                 new PropertyMetadata(OnGridEntriesChanged));
-
         public static readonly DependencyProperty SearchExpressionProperty =
             DependencyProperty.Register(
                 nameof(SearchExpression),
                 typeof(GridSearchExpression),
                 typeof(SearchGrid),
                 new PropertyMetadata(OnSearchExpressionChanged));
-
         private ICollectionView _gridEntriesView;
-
-        public SearchGrid()
-        {
-            InitializeComponent();
-        }
 
         public DataGrid DataGrid
         {
@@ -100,7 +91,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Compo
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public SearchGrid()
+        {
+            InitializeComponent();
+        }
 
         private static void OnDataGridChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -149,5 +143,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Compo
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

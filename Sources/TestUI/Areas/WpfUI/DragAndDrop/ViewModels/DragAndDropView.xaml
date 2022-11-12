@@ -6,9 +6,9 @@
              xmlns:ap="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.DragAndDrop.AttachedProperties;assembly=Mmu.Mlh.WpfCoreExtensions"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBox
-            Text="{Binding FilePath, Mode=TwoWay}"
-            ap:DropBinding.Dropped="{Binding FileDropped, Mode=OneWay}" />
-    </Grid>
+ <Grid>
+  <TextBox
+   Text="{Binding FilePath, Mode=TwoWay}"
+   ap:DropBinding.Dropped="{Binding FileDropped, Mode=OneWay}" />
+ </Grid>
 </UserControl>

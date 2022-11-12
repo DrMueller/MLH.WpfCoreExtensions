@@ -6,13 +6,13 @@
              xmlns:controls="clr-namespace:Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components.CommandBars.Controls;assembly=Mmu.Mlh.WpfCoreExtensions"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+ <Grid>
+  <Grid.RowDefinitions>
+   <RowDefinition Height="Auto" />
+   <RowDefinition Height="*" />
+  </Grid.RowDefinitions>
 
-        <controls:CommandBar Commands="{Binding Path=Commands, Mode=OneWay}" />
-        <Label Grid.Row="1" Content="{Binding SettingsInfo, Mode=OneWay}" />
-    </Grid>
+  <controls:CommandBar Commands="{Binding Path=Commands, Mode=OneWay}" />
+  <Label Grid.Row="1" Content="{Binding SettingsInfo, Mode=OneWay}" />
+ </Grid>
 </UserControl>

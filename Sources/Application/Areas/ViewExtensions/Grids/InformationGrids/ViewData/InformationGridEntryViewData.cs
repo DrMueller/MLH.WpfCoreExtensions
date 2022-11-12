@@ -6,13 +6,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.InformationGrids.
     [PublicAPI]
     public class InformationGridEntryViewData
     {
+        public string Message { get; }
+
         public InformationGridEntryViewData(string message)
         {
             Guard.StringNotNullOrEmpty(() => message);
 
             Message = message;
         }
-
-        public string Message { get; }
     }
 }

@@ -15,6 +15,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
         where T : ValidatableViewModel<T>
     {
         private ValidationContainer<T> _container;
+        public bool HasErrors => _container.HasErrors;
+
+        public IEnumerable GetErrors(string propertyName)
+        {
+            return _container.GetErrorMessages(propertyName);
+        }
 
         public Task InitializeAsync(params object[] initParams)
         {
@@ -22,15 +28,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
             _container = ConfigureValidation(configBuilder);
 
             return OnInitializeAsync(initParams);
-        }
-
-        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
-
-        public bool HasErrors => _container.HasErrors;
-
-        public IEnumerable GetErrors(string propertyName)
-        {
-            return _container.GetErrorMessages(propertyName);
         }
 
         // If HasErrors is true, WPF loops through all the properties and marks them on the UI
@@ -67,5 +64,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
             base.OnPropertyChanged(newValue, ref oldValue, propertyName);
             _container.Validate(propertyName);
         }
+
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
     }
 }

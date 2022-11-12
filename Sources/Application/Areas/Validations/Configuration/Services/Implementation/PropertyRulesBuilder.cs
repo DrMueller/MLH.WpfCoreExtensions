@@ -11,6 +11,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services.Imp
     {
         private readonly IValidationConfigurationBuilder<T> _parent;
         private readonly List<IValidationRule> _rules;
+        public string PropertyName { get; }
 
         public PropertyRulesBuilder(string propertyName, IValidationConfigurationBuilder<T> parent)
         {
@@ -18,8 +19,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Configuration.Services.Imp
             PropertyName = propertyName;
             _parent = parent;
         }
-
-        public string PropertyName { get; }
 
         public IPropertyRulesBuilder<T> ApplyRule(IValidationRule rule)
         {

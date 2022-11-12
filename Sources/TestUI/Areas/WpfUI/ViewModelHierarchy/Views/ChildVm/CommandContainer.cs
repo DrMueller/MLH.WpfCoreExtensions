@@ -11,7 +11,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.ViewModelHierarchy.Views.
     public class CommandContainer : IViewModelCommandContainer<IChildVmViewModel>
     {
         private IChildVmViewModel _context;
-
         public CommandsViewData Commands { get; private set; }
 
         private ViewModelCommand SetChildText => new ViewModelCommand(

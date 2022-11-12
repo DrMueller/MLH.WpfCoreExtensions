@@ -7,22 +7,22 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <GroupBox Header="Child view">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+ <GroupBox Header="Child view">
+  <Grid>
+   <Grid.RowDefinitions>
+    <RowDefinition Height="Auto" />
+    <RowDefinition Height="*" />
+   </Grid.RowDefinitions>
 
-            <controls:CommandBar Commands="{Binding CommandContainer.Commands, Mode=OneWay}" />
+   <controls:CommandBar Commands="{Binding CommandContainer.Commands, Mode=OneWay}" />
 
-            <TextBox
-                TextWrapping="Wrap"
-                AcceptsReturn="True"
-                VerticalScrollBarVisibility="Visible"
-                Grid.Row="1"
-                Text="{Binding ChildText, Mode=TwoWay}" />
-        </Grid>
-    </GroupBox>
+   <TextBox
+    TextWrapping="Wrap"
+    AcceptsReturn="True"
+    VerticalScrollBarVisibility="Visible"
+    Grid.Row="1"
+    Text="{Binding ChildText, Mode=TwoWay}" />
+  </Grid>
+ </GroupBox>
 
 </UserControl>

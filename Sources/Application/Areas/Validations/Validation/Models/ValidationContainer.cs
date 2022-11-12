@@ -10,6 +10,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
         private readonly PropertyErrors _propertyErrors;
         private readonly IReadOnlyCollection<PropertyValidation> _propertyValidations;
         private readonly ValidatableViewModel<T> _viewModel;
+        internal bool HasErrors => _propertyErrors.HasErrors;
 
         internal ValidationContainer(
             ValidatableViewModel<T> viewModel,
@@ -19,8 +20,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
             _propertyValidations = propertyValidations;
             _propertyErrors = new PropertyErrors();
         }
-
-        internal bool HasErrors => _propertyErrors.HasErrors;
 
         internal IReadOnlyCollection<string> GetErrorMessages(string propertyName)
         {
@@ -52,7 +51,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
             }
         }
 
-        private IReadOnlyCollection<string> ReadErrorMessages(string propertyName,
+        private IReadOnlyCollection<string> ReadErrorMessages(
+            string propertyName,
             PropertyValidation propertyValidation)
         {
             var propertyValue = _viewModel.GetType().GetProperty(propertyName)?.GetValue(_viewModel);

@@ -12,6 +12,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models
     [PublicAPI]
     public class WindowConfiguration
     {
+        public string AppTitle { get; }
+        public ImageSource Icon { get; }
+        public int WindowHeight { get; }
+        public int WindowWidth { get; }
+
         public WindowConfiguration(
             ImageSource icon,
             string appTitle,
@@ -26,11 +31,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models
             WindowHeight = windowHeight;
             Icon = icon;
         }
-
-        public string AppTitle { get; }
-        public ImageSource Icon { get; }
-        public int WindowHeight { get; }
-        public int WindowWidth { get; }
 
         public static WindowConfiguration CreateWithDefaultIcon(
             Assembly wpfAssembly,

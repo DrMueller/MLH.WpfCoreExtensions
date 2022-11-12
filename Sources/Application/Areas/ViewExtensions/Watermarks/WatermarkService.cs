@@ -15,7 +15,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks
             typeof(object),
             typeof(WatermarkService),
             new FrameworkPropertyMetadata(null, OnWatermarkChanged));
-
         private static readonly Dictionary<object, ItemsControl>
             _itemsControls = new Dictionary<object, ItemsControl>();
 

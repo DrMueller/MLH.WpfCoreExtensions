@@ -11,15 +11,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Compon
                 typeof(InformationEntryViewData),
                 typeof(InformationBar));
 
-        public InformationBar()
-        {
-            InitializeComponent();
-        }
-
         public InformationEntryViewData InformationEntry
         {
             get => (InformationEntryViewData)GetValue(InformationEntryProperty);
             set => SetValue(InformationEntryProperty, value);
+        }
+
+        public InformationBar()
+        {
+            InitializeComponent();
         }
     }
 }

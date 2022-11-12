@@ -11,12 +11,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Settings.ViewModels.Setti
     {
         private readonly ISettingsProvider _settingsProvider;
         private SettingsViewModel _context;
-
-        public CommandContainer(ISettingsProvider settingsProvider)
-        {
-            _settingsProvider = settingsProvider;
-        }
-
         public CommandsViewData Commands { get; private set; }
 
         private ViewModelCommand ReadSettings =>
@@ -28,6 +22,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Settings.ViewModels.Setti
                         var settings = _settingsProvider.ProvideSettings();
                         _context.SettingsInfo = settings.Value1 + Environment.NewLine + settings.Value2;
                     }));
+
+        public CommandContainer(ISettingsProvider settingsProvider)
+        {
+            _settingsProvider = settingsProvider;
+        }
 
         public Task InitializeAsync(SettingsViewModel context)
         {

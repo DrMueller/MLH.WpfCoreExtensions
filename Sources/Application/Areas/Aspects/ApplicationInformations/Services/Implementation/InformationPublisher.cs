@@ -14,7 +14,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Servic
     {
         private readonly Queue<InformationEntryViewData> _informationEntriesQueue =
             new Queue<InformationEntryViewData>();
-
         private readonly IInformationSubscriptionService _subscriptionService;
         private readonly IInformationEntryViewDataAdapter _viewDataAdapter;
         private bool _publishingInProgress;

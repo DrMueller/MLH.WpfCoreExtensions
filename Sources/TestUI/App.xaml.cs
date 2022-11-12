@@ -7,7 +7,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI
 {
     public partial class App
     {
-        [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods",
+        [SuppressMessage(
+            "Usage",
+            "VSTHRD100:Avoid async void methods",
             Justification = "Need to use Application interface")]
         protected override async void OnStartup(StartupEventArgs e)
         {

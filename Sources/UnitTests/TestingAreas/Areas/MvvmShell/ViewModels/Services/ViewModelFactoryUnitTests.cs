@@ -11,15 +11,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.MvvmShell.ViewM
 [TestFixture]
 public class ViewModelFactoryUnitTests
 {
+    private Mock<IServiceLocator> _serviceLocatorMock;
+    private ViewModelFactory _sut;
+
     [SetUp]
     public void Align()
     {
         _serviceLocatorMock = new Mock<IServiceLocator>();
         _sut = new ViewModelFactory(_serviceLocatorMock.Object);
     }
-
-    private Mock<IServiceLocator> _serviceLocatorMock;
-    private ViewModelFactory _sut;
 
     [Test]
     public async Task Creating_ViewModelBeingInitializable_InitializesViewModel_WithPassedParameters()

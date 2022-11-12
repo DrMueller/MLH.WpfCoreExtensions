@@ -7,7 +7,7 @@
              AllowDrop="True"
              Drop="UserControl_Drop"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Label>Hello</Label>
-    </Grid>
+ <Grid>
+  <Label>Hello</Label>
+ </Grid>
 </UserControl>

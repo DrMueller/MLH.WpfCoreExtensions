@@ -11,6 +11,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.Aspects.Excepti
 [TestFixture]
 public class ExceptionHandlerUnitTests
 {
+    private Mock<IInformationPublisher> _informationPublisherMock;
+    private Mock<ILoggingService> _loggingServiceMock;
+    private ExceptionHandler _sut;
+
     [SetUp]
     public void Align()
     {
@@ -19,10 +23,6 @@ public class ExceptionHandlerUnitTests
 
         _sut = new ExceptionHandler(_loggingServiceMock.Object, _informationPublisherMock.Object);
     }
-
-    private Mock<IInformationPublisher> _informationPublisherMock;
-    private Mock<ILoggingService> _loggingServiceMock;
-    private ExceptionHandler _sut;
 
     [Test]
     public void HandlingException_LogsExceptionOnce()

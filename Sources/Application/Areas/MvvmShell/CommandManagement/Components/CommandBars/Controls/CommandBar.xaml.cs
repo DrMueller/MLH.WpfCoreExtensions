@@ -12,15 +12,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Components
                 typeof(CommandBar),
                 new PropertyMetadata(null, null));
 
-        public CommandBar()
-        {
-            InitializeComponent();
-        }
-
         public CommandsViewData Commands
         {
             get => (CommandsViewData)GetValue(CommandsProperty);
             set => SetValue(CommandsProperty, value);
+        }
+
+        public CommandBar()
+        {
+            InitializeComponent();
         }
     }
 }

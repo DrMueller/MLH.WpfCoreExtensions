@@ -7,20 +7,20 @@
              x:Name="Uc"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <UserControl.Resources>
-        <ResourceDictionary Source="SearchGridDict.xaml" />
-    </UserControl.Resources>
+ <UserControl.Resources>
+  <ResourceDictionary Source="SearchGridDict.xaml" />
+ </UserControl.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+ <Grid>
+  <Grid.RowDefinitions>
+   <RowDefinition Height="40" />
+   <RowDefinition Height="*" />
+  </Grid.RowDefinitions>
 
-        <TextBox
-            Template="{StaticResource TextBoxWithWatermark}"
-            Text="{Binding SearchText, Mode=TwoWay, ElementName=Uc, UpdateSourceTrigger=PropertyChanged}" />
+  <TextBox
+   Template="{StaticResource TextBoxWithWatermark}"
+   Text="{Binding SearchText, Mode=TwoWay, ElementName=Uc, UpdateSourceTrigger=PropertyChanged}" />
 
-        <ContentPresenter Grid.Row="1" Content="{Binding DataGrid, Mode=OneWay, ElementName=Uc}" />
-    </Grid>
+  <ContentPresenter Grid.Row="1" Content="{Binding DataGrid, Mode=OneWay, ElementName=Uc}" />
+ </Grid>
 </UserControl>

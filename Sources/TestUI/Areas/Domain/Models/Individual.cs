@@ -6,6 +6,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.Domain.Models
 {
     public class Individual : AggregateRoot<string>
     {
+        public DateTime Birthdate { get; }
+        public string FirstName { get; }
+        public string LastName { get; }
+
         public Individual(string firstName, string lastName, DateTime birthdate, string id)
             : base(id)
         {
@@ -16,10 +20,5 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.Domain.Models
             LastName = lastName;
             Birthdate = birthdate;
         }
-
-        public DateTime Birthdate { get; }
-
-        public string FirstName { get; }
-        public string LastName { get; }
     }
 }

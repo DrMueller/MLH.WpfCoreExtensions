@@ -9,11 +9,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Implemen
         private static readonly PaletteHelper _paletteHelper = new PaletteHelper();
         private readonly IAppearanceThemeRepository _themeRepo;
 
-        public AppearanceService(IAppearanceThemeRepository themeRepo)
-        {
-            _themeRepo = themeRepo;
-        }
-
         public AppearanceTheme AppearanceTheme
         {
             get => _themeRepo.Load();
@@ -28,6 +23,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Implemen
 
                 _themeRepo.Save(value);
             }
+        }
+
+        public AppearanceService(IAppearanceThemeRepository themeRepo)
+        {
+            _themeRepo = themeRepo;
         }
     }
 }

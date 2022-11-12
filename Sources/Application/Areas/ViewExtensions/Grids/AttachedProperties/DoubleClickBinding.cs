@@ -14,7 +14,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.AttachedPropertie
                 typeof(ICommand),
                 typeof(DoubleClickBinding),
                 new PropertyMetadata(AttachOrRemoveDataGridDoubleClickEvent));
-
         public static readonly DependencyProperty DoubleClickParameterProperty =
             DependencyProperty.RegisterAttached(
                 "DoubleClickParameter",

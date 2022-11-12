@@ -6,12 +6,12 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Model
     [PublicAPI]
     public class GridSearchExpression
     {
+        internal string SearchText { get; }
+
         private GridSearchExpression(string searchText)
         {
             SearchText = searchText;
         }
-
-        internal string SearchText { get; }
 
         public static GridSearchExpression CreateEmpty()
         {

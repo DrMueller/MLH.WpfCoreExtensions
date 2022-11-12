@@ -8,15 +8,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Settings.ViewModels.Setti
     public class SettingsViewModel : ViewModelBase, INavigatableViewModel, IInitializableViewModel
     {
         private readonly CommandContainer _commandContainer;
-
         private string _settingsInfo;
-
-        public SettingsViewModel(CommandContainer commandContainer)
-        {
-            _commandContainer = commandContainer;
-        }
-
         public CommandsViewData Commands => _commandContainer.Commands;
+        public string HeadingDescription => "Settings";
+        public string NavigationDescription => "Fun with Settings";
+        public int NavigationSequence => 5;
 
         public string SettingsInfo
         {
@@ -24,13 +20,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Settings.ViewModels.Setti
             set => OnPropertyChanged(value, ref _settingsInfo);
         }
 
+        public SettingsViewModel(CommandContainer commandContainer)
+        {
+            _commandContainer = commandContainer;
+        }
+
         public async Task InitializeAsync(params object[] initParams)
         {
             await _commandContainer.InitializeAsync(this);
         }
-
-        public string HeadingDescription => "Settings";
-        public string NavigationDescription => "Fun with Settings";
-        public int NavigationSequence => 5;
     }
 }

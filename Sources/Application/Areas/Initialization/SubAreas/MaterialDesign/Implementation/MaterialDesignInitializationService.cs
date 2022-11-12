@@ -17,12 +17,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign
 
         public void Initialize()
         {
-            var customColorTheme = new CustomColorTheme
-            {
-                BaseTheme = BaseTheme.Inherit,
-                PrimaryColor = Color.FromRgb(0, 11, 178),
-                SecondaryColor = Color.FromRgb(194, 255, 218)
-            };
+            var customColorTheme = new CustomColorTheme { BaseTheme = BaseTheme.Inherit, PrimaryColor = Color.FromRgb(0, 11, 178), SecondaryColor = Color.FromRgb(194, 255, 218) };
 
             var mergedDict = _resourceDictionaryFactory.CreateEmpty();
             mergedDict.MergedDictionaries.Add(customColorTheme);

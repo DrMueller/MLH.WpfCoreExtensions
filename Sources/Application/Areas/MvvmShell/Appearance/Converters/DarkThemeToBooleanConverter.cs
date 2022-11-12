@@ -6,7 +6,9 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Models;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Converters
 {
-    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses",
+    [SuppressMessage(
+        "Microsoft.Performance",
+        "CA1812:AvoidUninstantiatedInternalClasses",
         Justification = "Instantiated by StructureMap")]
     internal class DarkThemeToBooleanConverter : IValueConverter
     {

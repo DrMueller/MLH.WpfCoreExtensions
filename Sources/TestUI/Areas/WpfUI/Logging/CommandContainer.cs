@@ -10,12 +10,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging
     public class CommandContainer : IViewModelCommandContainer<LoggingViewModel>
     {
         private readonly ILoggingService _loggingService;
-
-        public CommandContainer(ILoggingService loggingService)
-        {
-            _loggingService = loggingService;
-        }
-
         public CommandsViewData Commands { get; private set; }
 
         private static ViewModelCommand ThrowException =>
@@ -28,6 +22,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging
             new ViewModelCommand(
                 "Log Info",
                 new RelayCommand(() => _loggingService.LogInformation("Hello Info")));
+
+        public CommandContainer(ILoggingService loggingService)
+        {
+            _loggingService = loggingService;
+        }
 
         public Task InitializeAsync(LoggingViewModel context)
         {

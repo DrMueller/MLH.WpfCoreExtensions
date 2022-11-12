@@ -22,13 +22,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.DragAndDrop.ViewModels
             set => OnPropertyChanged(value, ref _filePath);
         }
 
+        public string HeadingDescription { get; } = "Drog & Drop";
+        public string NavigationDescription { get; } = "Drag & Drop";
+        public int NavigationSequence { get; } = 5;
+
         public Task InitializeAsync(params object[] initParams)
         {
             return Task.CompletedTask;
         }
-
-        public string HeadingDescription { get; } = "Drog & Drop";
-        public string NavigationDescription { get; } = "Drag & Drop";
-        public int NavigationSequence { get; } = 5;
     }
 }

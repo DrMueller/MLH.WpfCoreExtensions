@@ -17,6 +17,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
         private readonly IIndividualDetailsViewService _detailsService;
         private readonly IViewModelFactory _viewModelFactory;
         private IndividualDetailsViewData _individualDetails;
+        public CommandsViewData Commands => _commandContainer.Commands;
+        public string HeadingDescription { get; private set; }
+        public IndividualDataViewModel IndividualData { get; }
+
+        public IndividualDetailsViewData IndividualDetails
+        {
+            get => _individualDetails;
+            set => OnPropertyChanged(value, ref _individualDetails);
+        }
 
         public IndividualDetailsViewModel(
             IViewModelFactory viewModelFactory,
@@ -29,17 +38,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
             _detailsService = detailsService;
             IndividualData = individualData;
         }
-
-        public CommandsViewData Commands => _commandContainer.Commands;
-        public IndividualDataViewModel IndividualData { get; }
-
-        public IndividualDetailsViewData IndividualDetails
-        {
-            get => _individualDetails;
-            set => OnPropertyChanged(value, ref _individualDetails);
-        }
-
-        public string HeadingDescription { get; private set; }
 
         public async Task InitializeAsync(params object[] initParams)
         {

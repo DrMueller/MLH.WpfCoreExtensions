@@ -10,7 +10,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels
     public abstract class ViewModelBase : IViewModel, INotifyPropertyChanged
     {
         private readonly IDictionary<string, Action> _propChangeCallbacks = new Dictionary<string, Action>();
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public void PublishPropertyChanged(string propertyName)
         {
@@ -40,5 +39,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels
             oldValue = newValue;
             PublishPropertyChanged(propertyName);
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

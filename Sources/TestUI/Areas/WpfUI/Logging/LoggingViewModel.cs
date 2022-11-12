@@ -8,21 +8,19 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Logging
     public class LoggingViewModel : ViewModelBase, INavigatableViewModel, IInitializableViewModel
     {
         private readonly CommandContainer _commandContainer;
+        public CommandsViewData Commands => _commandContainer.Commands;
+        public string HeadingDescription => "Logging stuff";
+        public string NavigationDescription => "Logging";
+        public int NavigationSequence => 4;
 
         public LoggingViewModel(CommandContainer commandContainer)
         {
             _commandContainer = commandContainer;
         }
 
-        public CommandsViewData Commands => _commandContainer.Commands;
-
         public async Task InitializeAsync(params object[] initParams)
         {
             await _commandContainer.InitializeAsync(this);
         }
-
-        public string HeadingDescription => "Logging stuff";
-        public string NavigationDescription => "Logging";
-        public int NavigationSequence => 4;
     }
 }

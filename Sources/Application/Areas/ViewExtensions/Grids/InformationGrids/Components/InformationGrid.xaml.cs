@@ -14,15 +14,15 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.InformationGrids.
                 typeof(ObservableCollection<InformationGridEntryViewData>),
                 typeof(InformationGrid));
 
-        public InformationGrid()
-        {
-            InitializeComponent();
-        }
-
         public ObservableCollection<InformationGridEntryViewData> InformationEntries
         {
             get => (ObservableCollection<InformationGridEntryViewData>)GetValue(InformationEntriesProperty);
             set => SetValue(InformationEntriesProperty, value);
+        }
+
+        public InformationGrid()
+        {
+            InitializeComponent();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)

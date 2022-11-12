@@ -9,6 +9,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks
     internal class WatermarkAdorner : Adorner
     {
         private readonly ContentPresenter _contentPresenter;
+        protected override int VisualChildrenCount => 1;
+        private Control Control => (Control)AdornedElement;
 
         public WatermarkAdorner(UIElement adornedElement, object watermark) :
             base(adornedElement)
@@ -19,8 +21,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks
             {
                 Content = watermark,
                 Opacity = 0.5,
-                Margin = new Thickness(Control.Margin.Left + Control.Padding.Left + 5,
-                    Control.Margin.Top + Control.Padding.Top + 3, 0, 0)
+                Margin = new Thickness(
+                    Control.Margin.Left + Control.Padding.Left + 5,
+                    Control.Margin.Top + Control.Padding.Top + 3,
+                    0,
+                    0)
             };
 
             if (Control is ItemsControl && !(Control is ComboBox))
@@ -30,13 +35,10 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Watermarks
             }
 
             var binding =
-                new Binding("IsVisible") {Source = adornedElement, Converter = new BooleanToVisibilityConverter()};
+                new Binding("IsVisible") { Source = adornedElement, Converter = new BooleanToVisibilityConverter() };
 
             SetBinding(VisibilityProperty, binding);
         }
-
-        protected override int VisualChildrenCount => 1;
-        private Control Control => (Control)AdornedElement;
 
         protected override Size ArrangeOverride(Size finalSize)
         {

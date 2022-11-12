@@ -19,17 +19,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private readonly IIndividualOverviewViewService _overviewService;
         private readonly IViewModelDisplayService _vmDisplayService;
         private IndividualsOverviewViewModel _context;
-
-        public CommandContainer(
-            IInformationPublisher informationPublisher,
-            IIndividualOverviewViewService overviewService,
-            IViewModelDisplayService vmDisplayService)
-        {
-            _informationPublisher = informationPublisher;
-            _overviewService = overviewService;
-            _vmDisplayService = vmDisplayService;
-        }
-
         public CommandsViewData Commands { get; private set; }
 
         public ICommand UpdateIndividualCommand =>
@@ -50,8 +39,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private ViewModelCommand CreateIndividual =>
             new ViewModelCommand(
                 "Create",
-                new AsyncRelayCommand(() =>
-                    _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(Maybe.CreateNone<string>())));
+                new AsyncRelayCommand(
+                    () =>
+                        _vmDisplayService.DisplayAsync<IndividualDetailsViewModel>(Maybe.CreateNone<string>())));
 
         private ViewModelCommand DeleteIndividual =>
             new ViewModelCommand(
@@ -73,6 +63,16 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
                 "Update",
                 UpdateIndividualCommand);
 
+        public CommandContainer(
+            IInformationPublisher informationPublisher,
+            IIndividualOverviewViewService overviewService,
+            IViewModelDisplayService vmDisplayService)
+        {
+            _informationPublisher = informationPublisher;
+            _overviewService = overviewService;
+            _vmDisplayService = vmDisplayService;
+        }
+
         public Task InitializeAsync(IndividualsOverviewViewModel context)
         {
             _context = context;
@@ -89,7 +89,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Overview.View
         private async Task DeleteIndividualAsync()
         {
             _informationPublisher.Publish(
-                InformationEntry.CreateInfo($"Deleting Individual {_context.SelectedIndividual.FormattedName}..",
+                InformationEntry.CreateInfo(
+                    $"Deleting Individual {_context.SelectedIndividual.FormattedName}..",
                     true));
             await _overviewService.DeleteIndividualAsync(_context.SelectedIndividual.Id);
             _context.Individuals.Remove(_context.SelectedIndividual);

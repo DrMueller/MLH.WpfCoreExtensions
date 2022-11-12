@@ -15,7 +15,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Infrastructure.Settings.Services.Impl
         {
             _lazyAppSettings = new Lazy<AppSettings>(appSettingsFactory.Create);
             _lazyFileSystemSettingsSettings = new Lazy<FileSystemSettings>(
-                () => new FileSystemSettings {DirectoryPath = _lazyAppSettings.Value.DirectoryPath});
+                () => new FileSystemSettings { DirectoryPath = _lazyAppSettings.Value.DirectoryPath });
         }
 
         public FileSystemSettings ProvideFileSystemSettings()

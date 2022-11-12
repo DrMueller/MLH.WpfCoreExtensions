@@ -6,6 +6,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models
     [PublicAPI]
     public class InformationEntry
     {
+        public int? DisplayLengthInSeconds { get; }
+        public InformationEntryType EntryType { get; }
+        public string Message { get; }
+        public bool ShowBusy { get; }
+
         private InformationEntry(
             string message, InformationEntryType entryType, bool showBusy,
             int? displayLengthInSeconds)
@@ -15,11 +20,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models
             ShowBusy = showBusy;
             DisplayLengthInSeconds = displayLengthInSeconds;
         }
-
-        public int? DisplayLengthInSeconds { get; }
-        public InformationEntryType EntryType { get; }
-        public string Message { get; }
-        public bool ShowBusy { get; }
 
         public static InformationEntry CreateEmpty()
         {

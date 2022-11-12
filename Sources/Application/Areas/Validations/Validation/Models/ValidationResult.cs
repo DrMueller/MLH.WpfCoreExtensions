@@ -2,14 +2,14 @@
 {
     public class ValidationResult
     {
+        public string ErrorMessage { get; }
+        public bool IsValid { get; }
+
         private ValidationResult(bool isValid, string errorMessage)
         {
             IsValid = isValid;
             ErrorMessage = errorMessage;
         }
-
-        public string ErrorMessage { get; }
-        public bool IsValid { get; }
 
         public static ValidationResult CreateInvalid(string errorMessage)
         {
