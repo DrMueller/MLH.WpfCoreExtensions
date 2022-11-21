@@ -34,7 +34,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
         // We don't want always to have this behavior, especially on initial states
         // We therefore bypass INotifyDataErrorInfo
         // Sidenote: no course or article in the internet has a solution
-        // Usage of thus property can be found in the TimeBuddy
+        // Usage of this property can be found in the TimeBuddy
         public bool RevalidateAnyErrors()
         {
             return _container.RevalidateAnyErrors();
