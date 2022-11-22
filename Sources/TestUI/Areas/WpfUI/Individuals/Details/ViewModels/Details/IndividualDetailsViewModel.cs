@@ -41,7 +41,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.Individuals.Details.ViewM
 
         public async Task InitializeAsync(params object[] initParams)
         {
-            var idMaybe = (Maybe<string>)initParams.First();
+            var idMaybe = (Maybe<string>)initParams!.First();
 
             var id = idMaybe.Reduce(() => string.Empty);
 
