@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Threading;
 using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ExceptionHandling.Services;
 
@@ -19,7 +18,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ExceptionHandl
 
         public void HookGlobalExceptions(bool handleException)
         {
-            Application.Current.DispatcherUnhandledException += (sender, args) =>
+            Application.Current.DispatcherUnhandledException += (_, args) =>
             {
                 if (Debugger.IsAttached)
                 {
