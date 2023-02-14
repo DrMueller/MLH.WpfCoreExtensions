@@ -2,6 +2,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ExceptionHandl
 {
     internal interface IExceptionInitializationService
     {
-        void HookGlobalExceptions();
+        void HookGlobalExceptions(bool handleException);
     }
 }

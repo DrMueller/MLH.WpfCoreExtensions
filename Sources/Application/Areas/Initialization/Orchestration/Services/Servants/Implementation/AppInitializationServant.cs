@@ -41,7 +41,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
         public async Task StartAppAsync(WpfAppConfiguration config, Action<IServiceLocator> afterInitializedCallback)
         {
             _mdInitServices.Initialize();
-            _exceptionInitializationService.HookGlobalExceptions();
+            _exceptionInitializationService.HookGlobalExceptions(config.HandleException);
             _viewModelMappingInitService.Initialize(config.WpfAssembly);
             await _viewModelContainer.InitializeAsync();
             _infoPublisher.Publish(InformationEntry.CreateInfo("Here could be your text..", false));

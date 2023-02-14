@@ -17,23 +17,21 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ExceptionHandl
             _exceptionHandler = exceptionHandler;
         }
 
-        public void HookGlobalExceptions()
+        public void HookGlobalExceptions(bool handleException)
         {
-            Application.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
-        }
-
-        private void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            if (Debugger.IsAttached)
+            Application.Current.DispatcherUnhandledException += (sender, args) =>
             {
-                Debugger.Break();
-            }
+                if (Debugger.IsAttached)
+                {
+                    Debugger.Break();
+                }
 
-            Console.WriteLine($"Global exception: {e.Exception}");
-            Debug.WriteLine($"Global exception: {e.Exception}");
+                Console.WriteLine($"Global exception: {args.Exception}");
+                Debug.WriteLine($"Global exception: {args.Exception}");
 
-            _exceptionHandler.Handle(e.Exception);
-            e.Handled = true;
+                _exceptionHandler.Handle(args.Exception);
+                args.Handled = handleException;
+            };
         }
     }
 }
