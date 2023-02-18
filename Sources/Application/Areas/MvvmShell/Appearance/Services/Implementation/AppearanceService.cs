@@ -6,23 +6,34 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Implemen
 {
     internal class AppearanceService : IAppearanceService
     {
-        private static readonly PaletteHelper _paletteHelper = new PaletteHelper();
+        private static readonly PaletteHelper _paletteHelper = new();
         private readonly IAppearanceThemeRepository _themeRepo;
+
+        public void Initialize()
+        {
+            var existingTheme = _themeRepo.Load();
+            ApplyTheme(existingTheme);
+        }
 
         public AppearanceTheme AppearanceTheme
         {
             get => _themeRepo.Load();
             set
             {
-                var baseTheme = value == AppearanceTheme.Dark
-                    ? new MaterialDesignDarkTheme()
-                    : (IBaseTheme)new MaterialDesignLightTheme();
-                var theme = _paletteHelper.GetTheme();
-                theme.SetBaseTheme(baseTheme);
-                _paletteHelper.SetTheme(theme);
-
-                _themeRepo.Save(value);
+                ApplyTheme(value);
             }
+        }
+
+        private void ApplyTheme(AppearanceTheme appeareanceTheme)
+        {
+            var baseTheme = appeareanceTheme == AppearanceTheme.Dark
+                ? new MaterialDesignDarkTheme()
+                : (IBaseTheme)new MaterialDesignLightTheme();
+            var theme = _paletteHelper.GetTheme();
+            theme.SetBaseTheme(baseTheme);
+            _paletteHelper.SetTheme(theme);
+
+            _themeRepo.Save(appeareanceTheme);
         }
 
         public AppearanceService(IAppearanceThemeRepository themeRepo)

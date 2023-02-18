@@ -3,16 +3,21 @@ using System.Windows;
 using System.Windows.Media;
 using MaterialDesignThemes.Wpf;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.RessourceDictionaries.Services;
+using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign.Implementation
 {
     internal class MaterialDesignInitializationService : IMaterialDesignInitializationService
     {
         private readonly IResourceDictionaryFactory _resourceDictionaryFactory;
+        private readonly IAppearanceService _appearanceService;
 
-        public MaterialDesignInitializationService(IResourceDictionaryFactory resourceDictionaryFactory)
+        public MaterialDesignInitializationService(
+            IResourceDictionaryFactory resourceDictionaryFactory,
+            IAppearanceService appearanceService)
         {
             _resourceDictionaryFactory = resourceDictionaryFactory;
+            _appearanceService = appearanceService;
         }
 
         public void Initialize()
@@ -29,6 +34,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign
             mergedDict.MergedDictionaries.Add(defaultsDict);
 
             Application.Current.Resources.MergedDictionaries.Add(mergedDict);
+
+            _appearanceService.Initialize();
         }
     }
 }
