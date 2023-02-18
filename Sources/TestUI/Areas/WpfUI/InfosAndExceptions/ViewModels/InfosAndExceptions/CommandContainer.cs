@@ -38,7 +38,13 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewMo
         private ViewModelCommand ShowSuccess =>
             new ViewModelCommand(
                 "Show Success",
-                new RelayCommand(() => _infoPublisher.Publish(InformationEntry.CreateSuccess("Hello Success", false))));
+                new RelayCommand(() => _infoPublisher.Publish(InformationEntry.CreateSuccess("Hello Success"))));
+
+        private ViewModelCommand ShowError =>
+            new ViewModelCommand(
+                "Show Error",
+                new RelayCommand(() => _infoPublisher.Publish(InformationEntry.CreateError("Hello error", true, 5))));
+
 
         public CommandContainer(IInformationPublisher infoPublisher)
         {
@@ -52,6 +58,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewMo
             Commands = new CommandsViewData(
                 ShowInfo,
                 ShowSuccess,
+                ShowError,
                 ThrowException,
                 AddInformationGridEntry);
 
