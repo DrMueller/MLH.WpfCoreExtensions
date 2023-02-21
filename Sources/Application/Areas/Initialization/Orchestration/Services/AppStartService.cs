@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using System.Threading.Tasks;
 using Mmu.Mlh.ServiceProvisioning.Areas.Initialization.Models;
 using Mmu.Mlh.ServiceProvisioning.Areas.Initialization.Services;
@@ -12,6 +13,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services
 {
     public static class AppStartService
     {
+        private static Mutex _mutex;
+
         [SuppressMessage(
             "Code Quality",
             "IDE0067:Dispose objects before losing scope",
@@ -20,6 +23,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services
             WpfAppConfiguration config,
             Action<IServiceLocator> afterInitializedCallback = null)
         {
+            _mutex = new Mutex(false, config.WindowConfiguration.AppTitle);
+            _mutex.WaitOne();
+
             WpfAppRegistryCollection.WpfAssembly = config.WpfAssembly;
 
             var containerConfig =
@@ -28,6 +34,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services
 
             var initService = container.GetInstance<IAppInitializationServant>();
             await initService.StartAppAsync(config, afterInitializedCallback);
+            _mutex.ReleaseMutex();
         }
     }
 }
