@@ -17,6 +17,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
         private ValidationContainer<T> _container;
         public bool HasErrors => _container.HasErrors;
 
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+
         public IEnumerable GetErrors(string propertyName)
         {
             return _container.GetErrorMessages(propertyName);
@@ -64,7 +66,5 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors
             base.OnPropertyChanged(newValue, ref oldValue, propertyName);
             _container.Validate(propertyName);
         }
-
-        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
     }
 }

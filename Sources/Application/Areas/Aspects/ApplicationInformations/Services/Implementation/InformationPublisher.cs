@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models;
@@ -12,11 +9,9 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Servic
     [UsedImplicitly]
     internal class InformationPublisher : IInformationPublisher
     {
-        private readonly Queue<InformationEntryViewData> _informationEntriesQueue =
-            new Queue<InformationEntryViewData>();
         private readonly IInformationSubscriptionService _subscriptionService;
         private readonly IInformationEntryViewDataAdapter _viewDataAdapter;
-        private bool _publishingInProgress;
+        private InformationEntryViewData _currentViewData;
 
         public InformationPublisher(
             IInformationEntryViewDataAdapter viewDataAdapter,
@@ -29,39 +24,30 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Servic
         public void Publish(InformationEntry infoEntry)
         {
             var viewData = _viewDataAdapter.Adapt(infoEntry);
-            _informationEntriesQueue.Enqueue(viewData);
-            CheckAndPublish();
+            _subscriptionService.OnInformationReceived(viewData);
+            _currentViewData = viewData;
+
+            if (viewData.DisplayLengthInSeconds.HasValue)
+            {
+                ResetInfo(viewData);
+            }
         }
 
-        [SuppressMessage("Usage", "VSTHRD110:Observe result of async calls", Justification = "Fire and forget")]
-        private void CheckAndPublish()
+        private void ResetInfo(
+            InformationEntryViewData viewData
+        )
         {
-            if (!_informationEntriesQueue.Any() || _publishingInProgress)
-            {
-                return;
-            }
+            Task.Run(
+                async () =>
+                {
+                    await Task.Delay(viewData.DisplayLengthInSeconds!.Value * 1000);
 
-            _publishingInProgress = true;
-
-            var nextEntry = _informationEntriesQueue.Dequeue();
-            _subscriptionService.OnInformationReceived(nextEntry);
-
-            if (nextEntry.DisplayLengthInSeconds.HasValue)
-            {
-                Task.Run(
-                    async () =>
+                    if (viewData.Message == _currentViewData.Message)
                     {
-                        await Task.Delay(nextEntry.DisplayLengthInSeconds.Value * 1000);
                         var emptyInfo = _viewDataAdapter.Adapt(InformationEntry.CreateEmpty());
                         _subscriptionService.OnInformationReceived(emptyInfo);
-                        _publishingInProgress = false;
-                        CheckAndPublish();
-                    });
-            }
-            else
-            {
-                _publishingInProgress = false;
-            }
+                    }
+                });
         }
     }
 }

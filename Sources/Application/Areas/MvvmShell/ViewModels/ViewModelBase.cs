@@ -11,6 +11,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels
     {
         private readonly IDictionary<string, Action> _propChangeCallbacks = new Dictionary<string, Action>();
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public void PublishPropertyChanged(string propertyName)
         {
             if (_propChangeCallbacks.TryGetValue(propertyName, out var callback))
@@ -39,7 +41,5 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels
             oldValue = newValue;
             PublishPropertyChanged(propertyName);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

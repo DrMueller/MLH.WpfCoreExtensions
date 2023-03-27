@@ -9,19 +9,21 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Implemen
         private static readonly PaletteHelper _paletteHelper = new();
         private readonly IAppearanceThemeRepository _themeRepo;
 
+        public AppearanceTheme AppearanceTheme
+        {
+            get => _themeRepo.Load();
+            set => ApplyTheme(value);
+        }
+
+        public AppearanceService(IAppearanceThemeRepository themeRepo)
+        {
+            _themeRepo = themeRepo;
+        }
+
         public void Initialize()
         {
             var existingTheme = _themeRepo.Load();
             ApplyTheme(existingTheme);
-        }
-
-        public AppearanceTheme AppearanceTheme
-        {
-            get => _themeRepo.Load();
-            set
-            {
-                ApplyTheme(value);
-            }
         }
 
         private void ApplyTheme(AppearanceTheme appeareanceTheme)
@@ -34,11 +36,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Appearance.Services.Implemen
             _paletteHelper.SetTheme(theme);
 
             _themeRepo.Save(appeareanceTheme);
-        }
-
-        public AppearanceService(IAppearanceThemeRepository themeRepo)
-        {
-            _themeRepo = themeRepo;
         }
     }
 }

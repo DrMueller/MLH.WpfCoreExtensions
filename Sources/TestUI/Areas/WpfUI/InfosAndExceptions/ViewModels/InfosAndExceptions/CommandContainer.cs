@@ -30,6 +30,11 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewMo
                         _context.InformationEntries.Add(new InformationGridEntryViewData("Tra " + Guid.NewGuid()));
                     }));
 
+        private ViewModelCommand ShowError =>
+            new ViewModelCommand(
+                "Show Error",
+                new RelayCommand(() => _infoPublisher.Publish(InformationEntry.CreateError("Hello error", true, 5))));
+
         private ViewModelCommand ShowInfo =>
             new ViewModelCommand(
                 "Show Info",
@@ -39,12 +44,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.TestUI.Areas.WpfUI.InfosAndExceptions.ViewMo
             new ViewModelCommand(
                 "Show Success",
                 new RelayCommand(() => _infoPublisher.Publish(InformationEntry.CreateSuccess("Hello Success"))));
-
-        private ViewModelCommand ShowError =>
-            new ViewModelCommand(
-                "Show Error",
-                new RelayCommand(() => _infoPublisher.Publish(InformationEntry.CreateError("Hello error", true, 5))));
-
 
         public CommandContainer(IInformationPublisher infoPublisher)
         {

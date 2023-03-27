@@ -96,6 +96,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Compo
             InitializeComponent();
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private static void OnDataGridChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var searchGrid = (SearchGrid)d;
@@ -143,7 +145,5 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions.Grids.SearchGrids.Compo
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

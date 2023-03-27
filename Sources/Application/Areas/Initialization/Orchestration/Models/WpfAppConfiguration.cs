@@ -5,8 +5,8 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models
 {
     public class WpfAppConfiguration
     {
-        public WindowConfiguration WindowConfiguration { get; }
         public bool HandleException { get; }
+        public WindowConfiguration WindowConfiguration { get; }
         public Assembly WpfAssembly { get; }
 
         public WpfAppConfiguration(
