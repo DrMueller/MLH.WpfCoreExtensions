@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation;
+using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection.Provisioning.Services;
 using Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingInfrastructure.ViewModelMocks;
 using Moq;
 using NUnit.Framework;

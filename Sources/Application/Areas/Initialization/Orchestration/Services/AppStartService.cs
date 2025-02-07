@@ -2,12 +2,12 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
-using Mmu.Mlh.ServiceProvisioning.Areas.Initialization.Models;
-using Mmu.Mlh.ServiceProvisioning.Areas.Initialization.Services;
-using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants;
 using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection;
+using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection.Initialization.Models;
+using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection.Initialization.Services;
+using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection.Provisioning.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services
 {

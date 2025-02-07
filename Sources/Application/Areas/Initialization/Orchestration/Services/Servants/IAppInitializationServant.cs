@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models;
+using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection.Provisioning.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants
 {

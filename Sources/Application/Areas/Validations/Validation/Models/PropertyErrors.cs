@@ -15,14 +15,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Validations.Validation.Models
 
         internal void UpsertProperty(string propertyName, bool hasErrors)
         {
-            if (!_propertyErrors.ContainsKey(propertyName))
-            {
-                _propertyErrors.Add(propertyName, hasErrors);
-            }
-            else
-            {
-                _propertyErrors[propertyName] = hasErrors;
-            }
+            _propertyErrors[propertyName] = hasErrors;
         }
     }
 }

@@ -10,6 +10,7 @@
 		<CodeAnalysisRuleSet>..\..\CA_ProductionCode.ruleset</CodeAnalysisRuleSet>
 		<Authors>DrMueller</Authors>
 		<Company>DrMueller</Company>
+		<PackageId>MyLittleHelpers.WpfCoreExtensions</PackageId>
 		<Product>MyLittleHelpers.WpfCoreExtensions</Product>
 		<Description>DrMuellers little WPF Core Extensions</Description>
 		<PackageIconUrl>https://raw.githubusercontent.com/DrMueller/MLH.WpfCoreExtensions/master/Sources/Application/Infrastructure/Assets/M.png</PackageIconUrl>
@@ -47,10 +48,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="11.0.1" />
 		<PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
 		<PackageReference Include="MaterialDesignColors" Version="2.0.6" />
 		<PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
-		<PackageReference Include="Mmu.Mlh.ServiceProvisioning" Version="3.0.6" />
+		<PackageReference Include="MyLittleHelpers.LanguageExtensions" Version="2.4.25" />
 		<PackageReference Include="NLog" Version="5.0.1" />
 	</ItemGroup>
 

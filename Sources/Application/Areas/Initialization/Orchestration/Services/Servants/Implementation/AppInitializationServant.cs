@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Aspects.ApplicationInformations.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Models;
@@ -9,6 +8,7 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ExceptionHandling.
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container;
+using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection.Provisioning.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants.Implementation
 {
