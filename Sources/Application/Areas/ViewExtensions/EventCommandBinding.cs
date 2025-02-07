@@ -96,12 +96,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.ViewExtensions
             var fieldInfoRoutedEvent = allRoutedEvents.FirstOrDefault(f => f.Name == eventName);
             var result = (RoutedEvent)fieldInfoRoutedEvent?.GetValue(null);
 
-            if (result == null)
-            {
-                throw new NotImplementedException($"Routed Event {eventName} not found on UIElement.");
-            }
-
-            return result;
+            return result ?? throw new NotImplementedException($"Routed Event {eventName} not found on UIElement.");
         }
 
         private static void OnEvent(object sender, RoutedEventArgs e)
