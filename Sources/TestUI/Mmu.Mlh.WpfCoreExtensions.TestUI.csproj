@@ -21,6 +21,7 @@
   <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
   <PackageReference Include="Mmu.Mlh.DataAccess.FileSystem" Version="3.0.1" />
   <PackageReference Include="Mmu.Mlh.DomainExtensions" Version="2.2.15" />
+  <PackageReference Include="System.Text.Json" Version="6.0.11" />
  </ItemGroup>
 
  <ItemGroup>
