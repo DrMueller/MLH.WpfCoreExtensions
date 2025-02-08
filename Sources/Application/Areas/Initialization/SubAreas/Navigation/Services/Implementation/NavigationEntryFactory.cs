@@ -1,39 +1,40 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
+using Microsoft.Extensions.DependencyInjection;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Models;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.CommandManagement.Commands;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services;
-using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection.Provisioning.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.Navigation.Services.Implementation
 {
     [UsedImplicitly]
     internal class NavigationEntryFactory : INavigationEntryFactory
     {
-        private readonly IServiceLocator _serviceLocator;
+        private readonly IServiceProvider _serviceProvider;
         private readonly IViewModelFactory _viewModelFactory;
         private readonly IViewModelDisplayService _vmDisplayService;
 
         public NavigationEntryFactory(
             IViewModelDisplayService vmDisplayService,
             IViewModelFactory viewModelFactory,
-            IServiceLocator serviceLocator)
+            IServiceProvider serviceProvider)
         {
             _vmDisplayService = vmDisplayService;
             _viewModelFactory = viewModelFactory;
-            _serviceLocator = serviceLocator;
+            _serviceProvider = serviceProvider;
         }
 
         public async Task<IReadOnlyCollection<NavigationEntry>> CreateAllAsync()
         {
             var navigatableViewModelTypes =
-                _serviceLocator
-                    .GetAllServices<IViewModel>()
+                _serviceProvider
+                    .GetServices<IViewModel>()
                     .OfType<INavigatableViewModel>()
                     .Select(f => f.GetType())
                     .ToList();

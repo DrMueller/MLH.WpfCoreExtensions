@@ -8,7 +8,6 @@ using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ExceptionHandling.
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.MaterialDesign;
 using Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.SubAreas.ViewModelMapping.Services;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Container;
-using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection.Provisioning.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.Servants.Implementation
 {
@@ -18,7 +17,6 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
         private readonly IExceptionInitializationService _exceptionInitializationService;
         private readonly IInformationPublisher _infoPublisher;
         private readonly IMaterialDesignInitializationService _mdInitServices;
-        private readonly IServiceLocator _serviceLocator;
         private readonly IViewModelContainer _viewModelContainer;
         private readonly IViewModelMappingInitializationService _viewModelMappingInitService;
 
@@ -27,26 +25,23 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.Initialization.Orchestration.Services.
             IViewModelContainer viewModelContainer,
             IExceptionInitializationService exceptionInitializationService,
             IInformationPublisher infoPublisher,
-            IServiceLocator serviceLocator,
+            IServiceProvider serviceProvider,
             IMaterialDesignInitializationService mdInitServices)
         {
             _viewModelMappingInitService = viewModelMappingInitService;
             _viewModelContainer = viewModelContainer;
             _exceptionInitializationService = exceptionInitializationService;
             _infoPublisher = infoPublisher;
-            _serviceLocator = serviceLocator;
             _mdInitServices = mdInitServices;
         }
 
-        public async Task StartAppAsync(WpfAppConfiguration config, Action<IServiceLocator> afterInitializedCallback)
+        public async Task StartAppAsync(WpfAppConfiguration config)
         {
             _mdInitServices.Initialize();
             _exceptionInitializationService.HookGlobalExceptions(config.HandleException);
             _viewModelMappingInitService.Initialize(config.WpfAssembly);
             await _viewModelContainer.InitializeAsync();
             _infoPublisher.Publish(InformationEntry.CreateInfo("Here could be your text.."));
-
-            afterInitializedCallback?.Invoke(_serviceLocator);
 
             ShowApp(config);
         }

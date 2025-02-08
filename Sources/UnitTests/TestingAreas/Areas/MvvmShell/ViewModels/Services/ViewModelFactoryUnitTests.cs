@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation;
-using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection.Provisioning.Services;
 using Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingInfrastructure.ViewModelMocks;
 using Moq;
 using NUnit.Framework;
@@ -11,14 +10,14 @@ namespace Mmu.Mlh.WpfCoreExtensions.UnitTests.TestingAreas.Areas.MvvmShell.ViewM
 [TestFixture]
 public class ViewModelFactoryUnitTests
 {
-    private Mock<IServiceLocator> _serviceLocatorMock;
+    private Mock<IServiceProvider> _serviceProviderMock;
     private ViewModelFactory _sut;
 
     [SetUp]
     public void Align()
     {
-        _serviceLocatorMock = new Mock<IServiceLocator>();
-        _sut = new ViewModelFactory(_serviceLocatorMock.Object);
+        _serviceProviderMock = new Mock<IServiceProvider>();
+        _sut = new ViewModelFactory(_serviceProviderMock.Object);
     }
 
     [Test]
@@ -30,7 +29,7 @@ public class ViewModelFactoryUnitTests
         const string InitParam1 = "Hello";
         const int InitParam2 = 12345;
 
-        _serviceLocatorMock.Setup(f => f.GetService(It.IsAny<Type>())).Returns(viewModel);
+        _serviceProviderMock.Setup(f => f.GetService(It.IsAny<Type>())).Returns(viewModel);
 
         // Act
         var actualViewModel = await _sut.CreateAsync<InitializibleMockViewModel>(InitParam1, InitParam2);

@@ -2,18 +2,17 @@
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Behaviors;
-using Mmu.Mlh.WpfCoreExtensions.Infrastructure.DependencyInjection.Provisioning.Services;
 
 namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implementation
 {
     [UsedImplicitly]
     internal class ViewModelFactory : IViewModelFactory
     {
-        private readonly IServiceLocator _serviceLocator;
+        private readonly IServiceProvider _serviceProvider;
 
-        public ViewModelFactory(IServiceLocator serviceLocator)
+        public ViewModelFactory(IServiceProvider serviceProvider)
         {
-            _serviceLocator = serviceLocator;
+            _serviceProvider = serviceProvider;
         }
 
         public async Task<T> CreateAsync<T>(params object[] initParams)
@@ -36,7 +35,7 @@ namespace Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.ViewModels.Services.Implemen
                 throw new ArgumentException($"{viewModelType!.Name} is not assignable from IViewModel.");
             }
 
-            var result = (IViewModel)_serviceLocator.GetService(viewModelType);
+            var result = (IViewModel)_serviceProvider.GetService(viewModelType);
 
             if (result is IInitializableViewModel initializable)
             {
